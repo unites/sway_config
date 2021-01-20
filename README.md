@@ -1,10 +1,6 @@
 # Personal Sway Config
 
-## Pull config
-```sh
-cd ~
-git clone https://github.com/unites/.config.git
-```
+
 ## Base Built and package install
 Base build, built on top of Fedora Server Minimal...
 ```sh
@@ -84,6 +80,14 @@ obs-studio
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
+
+## Pull config
+```sh
+cd ~
+git clone https://github.com/unites/.config.git
+```
+
+## Misc Required
 
 Also Need to do the following...
 
