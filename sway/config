@@ -1,0 +1,48 @@
+# My Sway Config
+
+# Mod Key Mapping, Mod1 for Alt
+set $mod Mod4
+
+# Font Config
+#font pango: Inconsolata 12
+font Hack Nerd Font 12
+
+# Hide cursor
+seat seat0 hide_cursor 5000
+
+# i3-gaps in sway
+    # for_window [class="^.*"] border pixel 0
+    gaps inner 4
+    gaps outer 4
+    smart_gaps on
+    default_border pixel 1
+    #smart_borders on
+    #set $borderwidth 1
+    hide_edge_borders both
+
+# Bar
+bar {
+    position top
+    swaybar_command waybar
+    workspace_buttons yes
+}
+
+# this makes the popup window for mic access small and stickied instead of an
+# extra window, this will work until it's fixed in firefox
+for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable
+
+# Lock 
+exec swayidle -w \
+        timeout 300 'swaylock -f -i ~/Images/background.jpg' \
+        timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' 
+
+# Start programs
+exec mako 
+exec nextcloud --background
+exec mpd
+exec sleep 
+
+include ~/.config/sway/config.d/workspaces
+include ~/.config/sway/config.d/hotkeys
+include /usr/local/etc/sway/config.d/*

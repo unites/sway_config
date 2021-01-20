@@ -1,0 +1,313 @@
+# My Sway Config
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Direction Keys
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+# set $term alacritty
+set $term gnome-terminal
+# Application launcher with fzf
+#set $menu exec $term --class=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
+set $menu exec wofi
+# Wallpaper
+output * bg ~/Images/background.jpg fill
+# Monitor Config (if needed)
+# output HDMI-A-1 resolution 1920x1080 position 1920,0
+set $lmon "HDMI-A-2" 
+set $cmon "HDMI-A-1" 
+
+# Font Config
+font pango: Inconsolata 12
+
+# i3-gaps
+    # for_window [class="^.*"] border pixel 0
+    gaps inner 4
+    gaps outer 4
+    smart_gaps on
+    default_border pixel 1
+    #smart_borders on
+    #set $borderwidth 1
+    hide_edge_borders both
+
+### Key bindings
+    # Start a terminal
+    bindsym $mod+Return exec $term
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+    # Start your launcher
+    bindsym $mod+d exec $menu
+    floating_modifier $mod normal
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Moving around:
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+# Workspaces:
+    # Switch to workspace
+    # Workspace Variables
+    set $ws1 "1:  Terminal"
+    set $ws2 "2:  Code"
+    set $ws3 "3:  Chrome"
+    set $ws4 "4:  Remote"
+    set $ws5 "5:  Comms"
+    set $ws6 "6:  Game"
+    set $ws7 "7:  Rebel"
+    set $ws8 "8:  Empire"
+    set $ws9 "9:  First Order"
+    set $ws10 "10:  Firefox"
+    # switch to workspace
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10 
+    # monitors
+    workspace $ws1 output $cmon
+    workspace $ws2 output $cmon
+    workspace $ws3 output $cmon
+    workspace $ws4 output $cmon
+    workspace $ws5 output $cmon
+    workspace $ws6 output $cmon
+    workspace $ws7 output $cmon
+    workspace $ws8 output $cmon
+    workspace $ws9 output $lmon 
+    workspace $ws10 output $lmon
+
+# Layout stuff:
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+    
+# Scratchpad:
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+i move scratchpad
+    bindsym $mod+u scratchpad show
+
+# Resizing containers:
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Bar
+bar {
+    position top
+    swaybar_command waybar
+    workspace_buttons yes
+}
+
+# Bind App to workspace
+# Check class by : xprop
+# swaymsg -t get_tree | grep -e class -e app_id
+# Use class for xwindows and app_id for wayland
+assign [class="google-chrome"] $ws3
+assign [class="Microsoft-edge-dev"] $ws4
+assign [app_id="sublime_text"] $ws2
+assign [app_id="firefox"] $ws10
+assign [class="chromium-browser"] $ws4
+assign [class="discord"] $ws4
+
+# assign [app_id="org.remmina.Remmina"] $ws7
+# assign [class="Skype"] $ws7
+
+# Custom Keybinds
+bindsym $mod+c exec google-chrome-stable
+
+# bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
+
+# Lock
+bindsym $mod+q exec "swaylock -i ~/Images/background.jpg"
+
+# Mako
+bindsym $mod+m exec makoctl dismiss
+bindsym $mod+n exec makoctl invoke
+bindsym $mod+Shift+n exec makoctl dismiss -a
+
+# Windows config, what is before sleep ***
+#for_window [app_id="^launcher$"] floating enable, border none, opacity 0.8
+#         before-sleep 'swaylock -f -c 000000'
+
+# this makes the popup window for mic access small and stickied instead of an
+# extra window, this will work until it's fixed in firefox
+for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable
+
+# Hide cursor
+seat seat0 hide_cursor 5000
+
+# Press $mod+o followed by either f, t, Esc or Return to launch firefox,
+# thunderbird or return to the default mode, respectively.
+# set $mode_launcher Launcher
+# bindsym $mod+o mode "$mode_launcher"
+# mode "$mode_launcher" {
+#     bindsym t exec microsoft-edge-dev --app=https://teams.microsoft.com
+#     bindsym o exec microsoft-edge-dev --app=https://outlook.office.com/mail/inbox
+#     bindsym n exec microsoft-edge-dev --app=https://www.office.com/launch/onenote
+#     bindsym d exec microsoft-edge-dev --app=https://discord.com/channels/@me
+#     bindsym Return mode "default"
+#     bindsym Escape    mode "default"
+# }
+
+# Shutdown, Reboot, Lock Screen, and Logout 
+
+# set $power_mode "power"
+# bindsym $mod+Shift+p      mode $power_mode
+# mode $power_mode {
+#     bindsym p         exec systemctl poweroff
+#     bindsym r         exec systemctl reboot 
+#     bindsym l         exec swaylock -i ~/Images/background.jpg, mode "default"
+#     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
+#     bindsym h         exec systemctl hibernate 
+#     #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+#     bindsym s         exec pm-suspend
+
+#     bindsym Return    mode "default"
+#     bindsym Escape    mode "default"
+# }
+
+for_window [instance="Remmina Remote Desktop Client"] floating enable
+
+
+# Teamviewer
+# for_window [instance="TeamViewer.exe"] floating enable
+# for_window [class="TeamViewer"] floating enable
+#for_window [instance="Qt-subapplication" title="TeamViewer"] move scratchpad
+
+# Rename workspace with i3-input using numbers and text, CONFLICT
+# bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+# screenshot
+# bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+# bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+
+bindsym $mod+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+#capture the focused monitor to clipboard    
+bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+
+# multimedia keys
+bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioStop  exec "mpc stop"
+bindsym XF86AudioNext  exec "mpc next"
+bindsym XF86AudioPrev  exec "mpc prev"
+bindsym XF86AudioPause exec "mpc pause"
+
+# # volume / brightness / media controls
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ dnf toggle
+# bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+# bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
+
+# Start programs
+exec mako 
+exec nextcloud --background
+
+# Lock 
+exec swayidle -w \
+        timeout 300 'swaylock -f -i ~/Images/background.jpg' \
+        timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' 
+exec mpd
+exec sleep 
+
+# Floating windows
+
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="bubble"] floating enable
+# for_window [window_role="task_dialog"] floating enable
+# for_window [window_role="Preferences"] floating enable
+
+# for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
+# for_window [window_role="Open Files"] floating enable sticky
+# for_window [window_role="File Operation Progress"] floating enable sticky
+# for_window [window_role="Save As"] floating enable
+
+# for_window [class="qBittorrent" window_role="pop-up"] floating enable
+# for_window [class="mtp-ng-qt" window_role="Open"] floating enable
+# for_window [window_type="dialog"] floating enable
+# for_window [window_type="menu"] floating enable
+#for_window [class="VirtualBox"] floating enable
+
+# exec --no-startup-id i3-msg 'workspace 3:Web; exec /usr/bin/firefox-wayland'
+
+# bindsym $mod+Alt+f exec firefox-wayland
+# bindsym $mod+Alt+c exec google-chrome
+# bindsym $mod+Alt+e exec exec microsoft-edge-dev
+# bindsym $mod+Alt+s exec subl
+# bindsym $mod+Alt+d exec Discord
+# bindsym $mod+Alt+x exec Citrix
+# bindsym $mod+Alt+r exec remmina
+# bindsym $mod+Alt+t exec gnome-terminal
+# bindsym $mod+Alt+v exec chromium-browser
+# bindsym $mod+Alt+q kill
+
+include ~/.config/sway/config.d/*
+include /usr/local/etc/sway/config.d/*
