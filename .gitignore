@@ -1,0 +1,9 @@
+*/
+
+!sway/
+!sway/config.d/
+!waybar/
+!wofi/
+!mpd/mpd.conf
+
+mimeapps.list
