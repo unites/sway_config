@@ -88,22 +88,40 @@ echo "export EDITOR='vim'" >> ~/.bashrc
 Also Need to do the following...
 
 ```sh
+# Install Oh My ZSH
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Fun Plugins for OhMyZSH
+cd ~
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# P10k for ohmyzsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+chmod -R 755 ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+chmod -R 755 ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# This is to use the gnome keyrings
 sudo vi /etc/pam.d/login
 # Add just after last auth entry
 auth       optional     pam_gnome_keyring.so
 
+# Nerd Fonts, my favs
 cd ~
 git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
 cd .nerd-fonts 
 sudo ./install.sh Hack
 sudo ./install.sh Terminus
 
-
+# Switch Shell, because chsh is not installed
 which zsh
 sudo lchsh -i
 
+# Set user to docker group
 sudo usermod -aG docker $USER
 
+# MPD and Background vars need this.  Would suggest throwing a background.jpg in the Images Dir.
 mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
 ```
