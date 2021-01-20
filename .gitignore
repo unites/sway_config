@@ -3,6 +3,7 @@
 !sway/
 !sway/config.d/
 !waybar/
+!alacritty/
 !wofi/
 !mpd/mpd.conf
 

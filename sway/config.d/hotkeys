@@ -6,8 +6,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-# set $term alacritty
-set $term gnome-terminal
+set $term alacritty
+# set $term gnome-terminal
 # Application launcher with fzf
 #set $menu exec $term --class=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
 set $menu exec wofi

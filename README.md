@@ -1,6 +1,12 @@
 # Personal Sway Config
 
-Base build, built on top of Fedora Server Min...
+## Pull config
+```sh
+cd ~
+git clone https://github.com/unites/sway_config.git
+```
+## Base Built and package install
+Base build, built on top of Fedora Server Minimal...
 ```sh
 #!/bin/sh
 
@@ -18,53 +24,56 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
+    
+# Update Dnf
+sudo dnf -y update
 
 # Install Base
 sudo dnf -y install sway \
-feh \
-fira-code-fonts \
-fontawesome-fonts \
-powerline-fonts \
-light \
-mako \
-pulseaudio \
-pavucontrol \
-ranger \
 swaylock \
 swayidle \
 waybar \
 wl-clipboard \
-mpc \
-rsync \
+fira-code-fonts \
+fontawesome-fonts \
+powerline-fonts \
+feh \
 grim \
 slurp \
+wofi \
+fzf \
 zsh \
 git \
 curl \
 wget \
-firefox-wayland \
-fzf \
-chromium \
-wofi \
-vlc \
-vim \
-wildmidi \
-libgnome-keyring \
+tar \
+rsync \
 cifs-utils \
+light \
+mako \
+ranger \
+sublime-text \
+vim \
+firefox-wayland \
+google-chrome-stable \
+chromium \
+libgnome-keyring \
 nautilus \
 seahorse \
 gnome-keyring \
 libsecret \
-google-chrome-stable \
-sublime-text \
 python3 \
 python3-pip \
 ruby \
 nodejs \
-tar \
+pulseaudio \
+pavucontrol \
+mpc \
 mpd \
 ncmpcpp \
-mpv
+mpv \
+vlc \
+wildmidi 
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
@@ -72,6 +81,8 @@ docker-ce \
 docker-ce-cli \
 containerd.io \
 obs-studio 
+
+echo "export EDITOR='vim'" >> ~/.bashrc
 ```
 
 Also Need to do the following...
