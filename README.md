@@ -3,6 +3,13 @@
 
 ## Base Built and package install
 Base build, built on top of Fedora Server Minimal...
+
+https://getfedora.org/en/server/download/
+
+Download, and select minimal install.
+
+In this case Fedora 33.
+
 ```sh
 #!/bin/sh
 
@@ -43,6 +50,7 @@ git \
 curl \
 wget \
 tar \
+bind-utils \
 rsync \
 cifs-utils \
 light \
@@ -69,7 +77,12 @@ mpd \
 ncmpcpp \
 mpv \
 vlc \
-wildmidi 
+wildmidi \
+pulseaudio-utils \
+bdf2psf \
+otf2bdf \
+wf-recorder \
+
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
@@ -130,3 +143,12 @@ mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
 ```
 
+# If you want to try out Microsoft Edge
+```sh
+## Setup
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
+## Install
+sudo dnf install microsoft-edge-dev
+```

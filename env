@@ -25,8 +25,8 @@ fi
 
 # Ease of Use
 alias vi=vim
-set -o vi
-alias dnf="sudo dnf"
+set -o vi alias dnf="sudo dnf"
+alias firewalld="sudo firewalld"
 
 # To Get Alacritty working.
 TERM=xterm-256color 
@@ -44,3 +44,6 @@ alias dnet="docker network ls -f driver=bridge --format "{{.ID}}" | xargs docker
 alias dnetwork="docker network ls"
 alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
+if [[ "$(tty)" == '/dev/tty1' ]]; then
+exec sway
+fi

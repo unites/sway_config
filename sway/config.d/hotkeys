@@ -125,8 +125,8 @@ bindsym $mod+r mode "resize"
 # swaymsg -t get_tree | grep -e class -e app_id
 # Use class for xwindows and app_id for wayland
 assign [class="Google-chrome"] $ws3
-assign [class="Microsoft-edge-dev"] $ws4
-assign [app_id="subliAme_text"] $ws2
+# assign [class="Microsoft-edge-dev"] $ws4
+assign [app_id="sublime_text"] $ws2
 assign [app_id="firefox"] $ws10
 assign [class="chromium-browser"] $ws5
 assign [class="discord"] $ws6
@@ -136,12 +136,14 @@ assign [class="discord"] $ws6
 # # Lock
 # bindsym $mod+q exec "swaylock -i ~/Images/background.jpg"
 
+# pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
+
 # bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
 
 # # volume / brightness / media controls
 # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 # bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ dnf toggle
 # bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # bindsym XF86MonBrightnessUp exec brightnessctl set +5%
