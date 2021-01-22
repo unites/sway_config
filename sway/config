@@ -3,6 +3,9 @@
 # Mod Key Mapping, Mod1 for Alt
 set $mod Mod4
 
+include ~/.config/sway/config.d/workspaces
+include ~/.config/sway/config.d/hotkeys
+
 # Font Config
 #font pango: Inconsolata 12
 font Hack Nerd Font 12
@@ -20,8 +23,7 @@ seat seat0 hide_cursor 5000
     #set $borderwidth 1
     hide_edge_borders both
 
-include ~/.config/sway/config.d/workspaces
-include ~/.config/sway/config.d/hotkeys
+
 
 # Bar
 bar {
