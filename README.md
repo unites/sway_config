@@ -82,7 +82,10 @@ pulseaudio-utils \
 bdf2psf \
 otf2bdf \
 wf-recorder \
-
+ffmpeg \
+NetworkManager-bluetooth \
+NetworkManager-wifi \
+NetworkManager-tui
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
@@ -107,6 +110,7 @@ Also Need to do the following...
 ```sh
 # Install Oh My ZSH
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo usermod -s $(which zsh) $USER
 
 # Fun Plugins for OhMyZSH
 cd ~
@@ -134,10 +138,8 @@ sudo ./install.sh Terminus
 # Switch Shell, because chsh is not installed
 which zsh
 sudo lchsh -i
-
 # Set user to docker group
 sudo usermod -aG docker $USER
-
 # MPD and Background vars need this.  Would suggest throwing a background.jpg in the Images Dir.
 mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
@@ -152,3 +154,11 @@ sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repo
 ## Install
 sudo dnf install microsoft-edge-dev
 ```
+
+# Warning, there be dragons here
+This is a Copr repo, meaning you need to trust the provider.  This package allows creation of virtual video streams to get around the inability of wayland to screen share in web apps.
+https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
+```sh
+dnf copr enable sentry/v4l2loopback
+
+ ```

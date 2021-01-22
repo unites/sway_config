@@ -20,6 +20,9 @@ seat seat0 hide_cursor 5000
     #set $borderwidth 1
     hide_edge_borders both
 
+include ~/.config/sway/config.d/workspaces
+include ~/.config/sway/config.d/hotkeys
+
 # Bar
 bar {
     position top
@@ -43,6 +46,5 @@ exec nextcloud --background
 exec mpd
 exec sleep 
 
-include ~/.config/sway/config.d/workspaces
-include ~/.config/sway/config.d/hotkeys
+
 include /usr/local/etc/sway/config.d/*

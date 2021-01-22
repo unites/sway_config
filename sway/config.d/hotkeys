@@ -130,6 +130,8 @@ assign [app_id="sublime_text"] $ws2
 assign [app_id="firefox"] $ws10
 assign [class="chromium-browser"] $ws5
 assign [class="discord"] $ws6
+assign [app_id="pavucontrol"] $ws5
+
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7
 
