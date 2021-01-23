@@ -6,5 +6,6 @@
 !alacritty/
 !wofi/
 !mpd/mpd.conf
+!bin/
 
 mimeapps.list

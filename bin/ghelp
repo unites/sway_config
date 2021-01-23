@@ -1,0 +1,47 @@
+#!/bin/sh
+
+read -r -d '' HELP << EOM
+# Github Help Examples
+
+## Admin
+  git status
+
+## Remote (GitHub)
+  git remote -v
+  git clone URL
+  git remote show origin
+
+## Standard Commit
+  git add .
+  git commit -m 'What you did'
+  git push origin master
+
+## Overwrite Local with Remote
+  git checkout master
+  git branch new-branch-to-save-current-commits
+  git fetch --all
+  git reset --hard origin/master
+
+## Update Current
+  git pull orign master
+
+## Create new Branch and switch
+  git branch -b branch_name
+
+### Short for
+  git branch branch_name
+  git checkout branch_name
+
+## Switch back to prod  
+  git checkout master
+
+### Merge branch with Master
+  git merge branch_name
+
+## Delete Branch
+  git -d branch_name
+
+
+EOM
+
+echo "$HELP"
