@@ -21,6 +21,7 @@ then
 	source $ZSH/oh-my-zsh.sh
 
 	[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 fi
 
 # Ease of Use
@@ -46,7 +47,7 @@ alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{
 
 export PATH=$PATH:~/.config/bin
 
-if which sway;
+if which sway > /dev/null ;
 then
 if [[ "$(tty)" == '/dev/tty1' ]]; then
 exec sway
