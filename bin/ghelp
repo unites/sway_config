@@ -5,6 +5,7 @@ read -r -d '' HELP << EOM
 
 ## Admin
   git status
+  git remote set-url URL/SSH
 
 ## Remote (GitHub)
   git remote -v
