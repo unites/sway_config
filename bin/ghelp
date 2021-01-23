@@ -26,7 +26,13 @@ read -r -d '' HELP << EOM
   git pull orign master
 
 ## Create new Branch and switch
-  git branch -b branch_name
+  git checkout -b branch_name
+  git push remote branch_name
+  git branch --move branch_name new_name
+  git push --set-upstream origin corrected-branch-name
+  git branch --all
+  git push origin --delete bad-branch-name
+
 
 ### Short for
   git branch branch_name
