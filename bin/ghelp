@@ -33,7 +33,6 @@ read -r -d '' HELP << EOM
   git branch --all
   git push origin --delete bad-branch-name
 
-
 ### Short for
   git branch branch_name
   git checkout branch_name

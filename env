@@ -46,6 +46,9 @@ alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{
 
 export PATH=$PATH:~/.config/bin
 
+if which sway;
+then
 if [[ "$(tty)" == '/dev/tty1' ]]; then
 exec sway
+fi
 fi
