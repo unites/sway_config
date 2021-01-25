@@ -5,7 +5,7 @@ output * bg ~/Images/background.jpg fill
 # Monitor placement
 # swaymsg -t get_outputs
 output HDMI-A-1 pos 0 0
-output DP-1 pos 2560 0
+#output DP-1 pos 2560 0
 
 # Monitor Config (if needed)
 # output HDMI-A-1 resolution 1920x1080 position 1920,0

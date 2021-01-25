@@ -83,6 +83,8 @@ bdf2psf \
 otf2bdf \
 wf-recorder \
 ffmpeg \
+screen \
+v4l2loopback-dkms \ 
 NetworkManager-bluetooth \
 NetworkManager-wifi \
 NetworkManager-tui
