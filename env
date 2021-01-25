@@ -1,5 +1,6 @@
-#Custom environment settings for Linux
+# Custom environment settings for Linux/Mac/WSL
 
+# ZSH Shell settings
 if [[ $SHELL == *"/usr/bin/zsh"* ]];
 then
 	if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; 
@@ -24,16 +25,28 @@ then
         typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 fi
 
-# Ease of Use
-alias vi=vim
-set -o vi alias dnf="sudo dnf"
-alias firewalld="sudo firewalld"
-
 # To Get Alacritty working.
 TERM=xterm-256color 
 EDITOR='vim'
 
-# Docker Aliases
+# Personal Script Directory
+export PATH=$PATH:~/.config/bin
+
+# Check for Sway, if exists start session if sway is installed
+if which sway > /dev/null ;
+then
+if [[ "$(tty)" == '/dev/tty1' ]]; then
+exec sway
+fi
+fi
+
+# Ease of Use, make life easier
+alias vi=vim
+set -o vi 
+alias dnf="sudo dnf"
+alias firewalld="sudo firewalld"
+
+# Docker 
 alias dimg="docker images"
 alias dx="docker exec"
 alias dps="docker ps -a --format 'table {{.Names}}\t{{.Status}}\t{{.Image}}'"
@@ -45,11 +58,7 @@ alias dnet="docker network ls -f driver=bridge --format "{{.ID}}" | xargs docker
 alias dnetwork="docker network ls"
 alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
-export PATH=$PATH:~/.config/bin
+# Github
+## Should be a part of your ZSH plugin, run alias in CLI
 
-if which sway > /dev/null ;
-then
-if [[ "$(tty)" == '/dev/tty1' ]]; then
-exec sway
-fi
-fi
+

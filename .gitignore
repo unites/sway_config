@@ -1,4 +1,7 @@
 */
+*.*
+
+!env
 
 !sway/
 !sway/config.d/
@@ -7,5 +10,6 @@
 !wofi/
 !mpd/mpd.conf
 !bin/
+
 
 mimeapps.list
