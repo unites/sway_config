@@ -49,12 +49,12 @@ set $menu exec wofi
     bindsym $mod+Shift+Right move right
 
 # Layout stuff:
-    bindsym $mod+b splith
+    bindsym $mod+c splith
     bindsym $mod+v splitv
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+b layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+g layout toggle split
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
@@ -106,7 +106,9 @@ bindsym $mod+r mode "resize"
 	bindsym Alt+Shift+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
 
 # Custom Keybinds
-	bindsym $mod+c exec google-chrome
+	# bindsym $mod+c exec google-chrome
+
+    bindsym $mod+Alt+l exec gnome-logs
 
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
@@ -128,10 +130,12 @@ bindsym $mod+r mode "resize"
 assign [class="Google-chrome"] $ws3
 # assign [class="Microsoft-edge-dev"] $ws4
 assign [app_id="sublime_text"] $ws2
-assign [app_id="firefox"] $ws10
+# assign [app_id="firefox"] $ws10
 assign [class="chromium-browser"] $ws5
 assign [class="discord"] $ws6
 assign [app_id="pavucontrol"] $ws5
+
+for_window [app_id="xfreerdp"] resize set 2000 1395
 
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7

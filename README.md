@@ -86,16 +86,26 @@ ffmpeg \
 screen \
 v4l2loopback-dkms \
 screenruler \
+traceroute \
+jack-audio-connection-kit \
+qjackctl \
 NetworkManager-bluetooth \
 NetworkManager-wifi \
-NetworkManager-tui
+NetworkManager-tui \
+gnome-bluetooth \
+gnome-logs
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
 docker-ce \
 docker-ce-cli \
 containerd.io \
-obs-studio 
+obs-studio \
+mesa-libGL-devel \
+ffmpeg-devel \
+mesa-libGLU-devel
+
+usermod -aG adm $USER
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```

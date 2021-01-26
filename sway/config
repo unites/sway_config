@@ -46,7 +46,8 @@ exec swayidle -w \
 exec mako 
 exec nextcloud --background
 exec mpd
-exec sleep 
+exec sleep
+exec gnome-bluetooth
 
 
 include /usr/local/etc/sway/config.d/*
