@@ -117,11 +117,10 @@ bindsym $mod+r mode "resize"
 	bindsym $mod+Alt+d exec Discord
 	bindsym $mod+Alt+x exec Citrix
 	bindsym $mod+Alt+r exec remmina
-	bindsym $mod+Alt+t exec gnome-terminal
+	bindsym $mod+Alt+t exec cool-retro-term
 	bindsym $mod+Alt+v exec chromium-browser
 	bindsym $mod+Alt+q kill
 
-    bindsym $mod+Alt+m exec xfreerdp /u:lux /v:ice  /h:1440 /w:3440 /smart-sizing
 	
 # Bind App to workspace
 # Check class by : xprop

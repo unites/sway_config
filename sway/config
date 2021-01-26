@@ -47,7 +47,6 @@ exec mako
 exec nextcloud --background
 exec mpd
 exec sleep
-exec gnome-bluetooth
-
+exec blueman-tray
 
 include /usr/local/etc/sway/config.d/*

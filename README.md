@@ -105,6 +105,15 @@ mesa-libGL-devel \
 ffmpeg-devel \
 mesa-libGLU-devel
 
+
+sudo dnf -y install qt5-qtbase \
+qt5-qtbase-devel \
+qt5-qtdeclarative \
+qt5-qtdeclarative-devel \
+qt5-qtgraphicaleffects \
+qt5-qtquickcontrols \
+redhat-rpm-config 
+
 usermod -aG adm $USER
 
 echo "export EDITOR='vim'" >> ~/.bashrc
@@ -156,6 +165,9 @@ sudo usermod -aG docker $USER
 # MPD and Background vars need this.  Would suggest throwing a background.jpg in the Images Dir.
 mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
+
+
+
 ```
 
 # If you want to try out Microsoft Edge
@@ -168,10 +180,5 @@ sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repo
 sudo dnf install microsoft-edge-dev
 ```
 
-# Warning, there be dragons here
-This is a Copr repo, meaning you need to trust the provider.  This package allows creation of virtual video streams to get around the inability of wayland to screen share in web apps.
-https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
-```sh
-dnf copr enable sentry/v4l2loopback
 
- ```
+# Warning, there be dragons here
