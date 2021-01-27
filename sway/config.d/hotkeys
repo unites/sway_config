@@ -58,7 +58,7 @@ set $menu exec wofi
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+q floating toggle
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
     # Move focus to the parent container
@@ -66,8 +66,8 @@ set $menu exec wofi
     
 # Scratchpad:
     # Move the currently focused window to the scratchpad, use mode shift space to pull objects out of scratch pad
-    bindsym $mod+i move scratchpad
-    bindsym $mod+u scratchpad show
+    bindsym $mod+e move scratchpad
+    bindsym $mod+w scratchpad show
 
 # Resizing containers:
 mode "resize" {
@@ -94,16 +94,17 @@ bindsym $mod+r mode "resize"
 	bindsym XF86AudioPause exec "mpc pause"
 
 # Mako Notifications
-	bindsym $mod+m exec makoctl dismiss
-	bindsym $mod+n exec makoctl invoke
+	bindsym $mod+x exec makoctl dismiss
+	bindsym $mod+z exec makoctl invoke
 	bindsym $mod+Shift+n exec makoctl dismiss -a
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
-	bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+	bindsym $mod+Ctrl+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
-	bindsym Alt+Shift+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
-	bindsym Alt+Shift+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
+	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
+    bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
+	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
 
 # Custom Keybinds
 	# bindsym $mod+c exec google-chrome
@@ -132,9 +133,12 @@ assign [app_id="sublime_text"] $ws2
 # assign [app_id="firefox"] $ws10
 assign [class="chromium-browser"] $ws5
 assign [class="discord"] $ws6
-assign [app_id="pavucontrol"] $ws5
+# assign [app_id="pavucontrol"] $ws5
 
-for_window [app_id="xfreerdp"] resize set 2000 1395
+for_window [app_id="ncmpcpp"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="pavucontrol"] resize set 1000 800
+for_window [class="xfreerdp"] resize set 2000 1395
 
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7
