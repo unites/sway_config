@@ -16,7 +16,8 @@ font=Hack 14
 border-color=#cccccc
 
 [urgency=normal]
-border-color=#d08770
+#border-color=#d08770
+border-color=#3581B8
 
 [urgency=high]
 border-color=#bf616a
