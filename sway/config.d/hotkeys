@@ -110,18 +110,25 @@ bindsym $mod+r mode "resize"
 	# bindsym $mod+c exec google-chrome
 
     bindsym $mod+Alt+l exec gnome-logs
+    bindsym $mod+Alt+n exec nautilus
+
 
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
 	bindsym $mod+Alt+e exec exec microsoft-edge-dev
 	bindsym $mod+Alt+s exec subl
 	bindsym $mod+Alt+d exec Discord
-	bindsym $mod+Alt+x exec Citrix
-	bindsym $mod+Alt+r exec remmina
+	# bindsym $mod+Alt+x exec Citrix
+	# bindsym $mod+Alt+r exec remmina
 	bindsym $mod+Alt+t exec cool-retro-term
-	bindsym $mod+Alt+v exec chromium-browser
+	# bindsym $mod+Alt+v exec chromium-browser
 	bindsym $mod+Alt+q kill
 
+# Audio
+bindsym $mod+m exec pactl set-source-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 	
 # Bind App to workspace
 # Check class by : xprop
@@ -138,7 +145,7 @@ assign [class="discord"] $ws6
 for_window [app_id="ncmpcpp"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="pavucontrol"] resize set 1000 800
-for_window [class="xfreerdp"] resize set 2000 1395
+# for_window [class="xfreerdp"] resize set 2000 1395
 
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7
@@ -151,9 +158,7 @@ for_window [class="xfreerdp"] resize set 2000 1395
 # bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
 
 # # volume / brightness / media controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
 # bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ dnf toggle
 # bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # bindsym XF86MonBrightnessUp exec brightnessctl set +5%

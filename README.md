@@ -93,7 +93,9 @@ NetworkManager-bluetooth \
 NetworkManager-wifi \
 NetworkManager-tui \
 gnome-bluetooth \
-gnome-logs
+gnome-logs \
+python-gobject3 \
+blueman
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
