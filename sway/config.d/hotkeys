@@ -106,23 +106,23 @@ bindsym $mod+r mode "resize"
     bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
 	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
 
-# Custom Keybinds
-	# bindsym $mod+c exec google-chrome
 
+# Custom Alt Binding
     bindsym $mod+Alt+l exec gnome-logs
     bindsym $mod+Alt+n exec nautilus
-
-
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
 	bindsym $mod+Alt+e exec exec microsoft-edge-dev
 	bindsym $mod+Alt+s exec subl
 	bindsym $mod+Alt+d exec Discord
 	# bindsym $mod+Alt+x exec Citrix
-	# bindsym $mod+Alt+r exec remmina
+	bindsym $mod+Alt+r exec retroarch-freeworld
 	bindsym $mod+Alt+t exec cool-retro-term
 	# bindsym $mod+Alt+v exec chromium-browser
 	bindsym $mod+Alt+q kill
+
+# Custom Ctrl bindings
+    bindsym $mod+Ctrl+q kill
 
 # Audio
 bindsym $mod+m exec pactl set-source-mute 0 toggle

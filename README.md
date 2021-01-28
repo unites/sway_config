@@ -84,7 +84,6 @@ otf2bdf \
 wf-recorder \
 ffmpeg \
 screen \
-v4l2loopback-dkms \
 screenruler \
 traceroute \
 jack-audio-connection-kit \
@@ -94,7 +93,7 @@ NetworkManager-wifi \
 NetworkManager-tui \
 gnome-bluetooth \
 gnome-logs \
-python-gobject3 \
+python3-gobject \
 blueman
 
 # Desktop Heavy (optional)
@@ -107,14 +106,14 @@ mesa-libGL-devel \
 ffmpeg-devel \
 mesa-libGLU-devel
 
-
-sudo dnf -y install qt5-qtbase \
-qt5-qtbase-devel \
-qt5-qtdeclarative \
-qt5-qtdeclarative-devel \
-qt5-qtgraphicaleffects \
-qt5-qtquickcontrols \
-redhat-rpm-config 
+sudo dnf -y install cool-retro-term
+# sudo dnf -y install qt5-qtbase \
+# qt5-qtbase-devel \
+# qt5-qtdeclarative \
+# qt5-qtdeclarative-devel \
+# qt5-qtgraphicaleffects \
+# qt5-qtquickcontrols \
+# redhat-rpm-config 
 
 usermod -aG adm $USER
 
