@@ -110,6 +110,7 @@ bindsym $mod+r mode "resize"
 # Custom Alt Binding
     bindsym $mod+Alt+l exec ksystemlog
     bindsym $mod+Alt+n exec nautilus
+    bindsym $mod+Alt+m exec gnome-system-monitor
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
 	bindsym $mod+Alt+e exec exec microsoft-edge-dev
