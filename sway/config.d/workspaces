@@ -70,7 +70,7 @@ set $lmon "HDMI-A-1"
     workspace $ws4 output $cmon
     workspace $ws5 output $cmon
     workspace $ws6 output $cmon
-    workspace $ws7 output $cmon
-    workspace $ws8 output $cmon
+    workspace $ws7 output $lmon
+    workspace $ws8 output $lmon
     workspace $ws9 output $lmon 
     workspace $ws10 output $lmon

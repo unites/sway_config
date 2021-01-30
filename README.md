@@ -94,7 +94,9 @@ NetworkManager-tui \
 gnome-bluetooth \
 gnome-logs \
 python3-gobject \
-blueman
+blueman \
+gmpc \
+ksystemlog
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
@@ -116,6 +118,9 @@ sudo dnf -y install cool-retro-term
 # redhat-rpm-config 
 
 usermod -aG adm $USER
+
+# Arcade, Attract mode
+sudo dnf -y install SFML SFML-devel openal-soft-devel libjpeg-turbo-devel gcc-c++
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
@@ -155,12 +160,12 @@ auth       optional     pam_gnome_keyring.so
 cd ~
 git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
 cd .nerd-fonts 
-sudo ./install.sh Hack
-sudo ./install.sh Terminus
+./install.sh Hack
+./install.sh Terminus
 
 # Switch Shell, because chsh is not installed
-which zsh
-sudo lchsh -i
+# which zsh
+# sudo lchsh -i
 # Set user to docker group
 sudo usermod -aG docker $USER
 # MPD and Background vars need this.  Would suggest throwing a background.jpg in the Images Dir.

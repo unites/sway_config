@@ -104,17 +104,18 @@ bindsym $mod+r mode "resize"
 	# Capture Screen Selection to clipboard
 	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
     bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
-	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
+	bindsym Alt+Ctrl+o exec 
 
 
 # Custom Alt Binding
-    bindsym $mod+Alt+l exec gnome-logs
+    bindsym $mod+Alt+l exec ksystemlog
     bindsym $mod+Alt+n exec nautilus
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
 	bindsym $mod+Alt+e exec exec microsoft-edge-dev
 	bindsym $mod+Alt+s exec subl
 	bindsym $mod+Alt+d exec Discord
+    bindsym $mod+Alt+a exec rdp_ice
 	# bindsym $mod+Alt+x exec Citrix
 	bindsym $mod+Alt+r exec retroarch-freeworld
 	bindsym $mod+Alt+t exec cool-retro-term

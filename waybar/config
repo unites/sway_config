@@ -14,16 +14,16 @@
         "all-outputs": true,
         "format": "{name}: {icon}",
         "format-icons": {
-            "1": " Terminal",
-            "2": " Code",
-            "3": " Chrome",
-            "4": " Remote",
-            "5": " Config",
-            "6": " Game",
-            "7": " Rebel",
-            "8": " Empire",
-            "9": " ScratchPad",
-            "10": " Firefox",
+            "1": "  Terminal",
+            "2": "  Code",
+            "3": "  Chrome",
+            "4": "  Remote",
+            "5": " Pawn",
+            "6": " Knight",
+            "7": " Bishop",
+            "8": " Rook",
+            "9": " Queen",
+            "10": " King",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -33,8 +33,8 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
-        // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {songPosition}|{queueLength} ",
+        // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
@@ -56,7 +56,7 @@
             "paused": "",
             "playing": ""
         },
-        "tooltip-format": "MPD (connected)",
+        "tooltip-format": " MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "idle_inhibitor": {
