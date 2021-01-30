@@ -119,8 +119,8 @@ sudo dnf -y install cool-retro-term
 
 usermod -aG adm $USER
 
-# Arcade, Attract mode
-sudo dnf -y install SFML SFML-devel openal-soft-devel libjpeg-turbo-devel gcc-c++
+# Arcade, Attract mode with retroarch
+sudo dnf -y install SFML SFML-devel openal-soft-devel libjpeg-turbo-devel gcc-c++ retroarch-freeworld
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```

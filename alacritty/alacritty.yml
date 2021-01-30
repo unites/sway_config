@@ -245,4 +245,34 @@ iceberg: &icedark
       cyan:    '#89ddff'
       white:   '#ffffff'  # Arbitrary
 
-colors: *material
+  firewatch: &firewatch
+    # Default colors
+    primary:
+      # hard contrast: background = '0xf9f5d7'
+      background: '0x1e2027'
+      # soft contrast: background = '0xf2e5bc'
+      foreground: '0x9ba2b2'
+
+    # Normal colors
+    normal:
+      black:   '0x585f6d'
+      red:     '0xd95360'
+      green:   '0x5ab977'
+      yellow:  '0xdfb563'
+      blue:    '0x4d89c4'
+      magenta: '0xd55119'
+      cyan:    '0x44a8b6'
+      white:   '0xe6e5ff'
+
+    # Bright colors
+    bright:
+      black:   '0x585f6d'
+      red:     '0xd95360'
+      green:   '0x5ab977'
+      yellow:  '0xdfb563'
+      blue:    '0x4c89c5'
+      magenta: '0xd55119'
+      cyan:    '0x44a8b6'
+      white:   '0xe6e5ff'
+
+colors: *firewatch

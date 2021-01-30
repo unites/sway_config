@@ -104,7 +104,8 @@ bindsym $mod+r mode "resize"
 	# Capture Screen Selection to clipboard
 	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
     bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
-	bindsym Alt+Ctrl+o exec 
+	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png -o $HOME/Image/screenshots/
+    bindsym $mod+Tab workspace back_and_forth
 
 
 # Custom Alt Binding
@@ -126,48 +127,88 @@ bindsym $mod+r mode "resize"
 # Custom Ctrl bindings
     bindsym $mod+Ctrl+q kill
 
+# F3-f24
+# pacmd list-sink-inputs |
+# tr '\n' '\r' |
+# perl -pe 's/ *index: ([0-9]+).+?application\.name = "([^\r]+)"\r.+?(?=index:|$)/\2:\1\r/g' |
+# tr '\r' '\n'
+
+# 3 sink input(s) available.
+# Music Player Daemon:14
+# Google Chrome:27
+# Microsoft Edge:35
+    bindcode 191 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
+    bindcode 192 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
+    bindcode 193 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindcode 194 exec pactl set-source-mute alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo toggle
+    
+    bindcode 195 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" down
+    bindcode 196 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
+    bindcode 197 exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindcode 198 exec pactl set-source-volume alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo -1%
+
+    bindcode 199 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" up
+    bindcode 200 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" up
+    bindcode 201 exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindcode 202 exec pactl set-source-volume alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo +1%
+
+    bindcode Alt+191 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
+    bindcode Alt+192 exec $HOME/.config/sway/sink_vol.sh "Firefox" mute
+    bindcode Alt+193 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" mute
+    bindcode Alt+194 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
+    
+    bindcode Alt+195 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" down
+    bindcode Alt+196 exec $HOME/.config/sway/sink_vol.sh "Firefox" down
+    bindcode Alt+197 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
+    bindcode Alt+198 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
+
+    bindcode Alt+199 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" up
+    bindcode Alt+200 exec $HOME/.config/sway/sink_vol.sh "Firefox" up
+    bindcode Alt+201 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" up
+    bindcode Alt+202 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" up
+
+# F3-f24
+    # bindcode 191 exec notify-send -i drive-harddisk "F13"
+    # bindcode 192 exec notify-send -i drive-harddisk "F14"
+    # bindcode 193 exec notify-send -i drive-harddisk "F15"
+    # bindcode 194 exec notify-send -i drive-harddisk "F16"
+    # bindcode 195 exec notify-send -i drive-harddisk "F17"
+    # bindcode 196 exec notify-send -i drive-harddisk "F18"
+    # bindcode 197 exec notify-send -i drive-harddisk "F19"
+    # bindcode 198 exec notify-send -i drive-harddisk "F20"
+    # bindcode 199 exec notify-send -i drive-harddisk "F21"
+    # bindcode 200 exec notify-send -i drive-harddisk "F22"
+    # bindcode 201 exec notify-send -i drive-harddisk "F23"
+    # bindcode 202 exec notify-send -i drive-harddisk "F24"
+
 # Audio
 bindsym $mod+m exec pactl set-source-mute 0 toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 	
-# Bind App to workspace
-# Check class by : xprop
 # swaymsg -t get_tree | grep -e class -e app_id
-# Use class for xwindows and app_id for wayland
 assign [class="Google-chrome"] $ws3
-# assign [class="Microsoft-edge-dev"] $ws4
 assign [app_id="sublime_text"] $ws2
-# assign [app_id="firefox"] $ws10
-assign [class="chromium-browser"] $ws5
+assign [class="chromium-browser"] $ws5    
 assign [class="discord"] $ws6
-# assign [app_id="pavucontrol"] $ws5
 
 for_window [app_id="ncmpcpp"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="pavucontrol"] resize set 1000 800
 # for_window [class="xfreerdp"] resize set 2000 1395
 
-# assign [app_id="org.remmina.Remmina"] $ws4
-# assign [class="Skype"] $ws7
-
 # # Lock
 # bindsym $mod+q exec "swaylock -i ~/Images/background.jpg"
-
 # pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
-
 # bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
-
 # # volume / brightness / media controls
-
 # bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ dnf toggle
 # bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # bindsym XF86AudioPlay exec playerctl play-pause
 # bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec playerctl previous
-
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
 # set $mode_launcher Launcher
