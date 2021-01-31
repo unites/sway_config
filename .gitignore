@@ -1,6 +1,8 @@
 */
 *.*
 
+!sway/*.sh
+
 !env
 !mako/
 !sway/
