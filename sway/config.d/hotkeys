@@ -137,17 +137,17 @@ bindsym $mod+r mode "resize"
 # Music Player Daemon:14
 # Google Chrome:27
 # Microsoft Edge:35
-    bindcode 191 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
+    bindcode 191 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" mute
     bindcode 192 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
     bindcode 193 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindcode 194 exec pactl set-source-mute alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo toggle
     
-    bindcode 195 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" down
+    bindcode 195 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
     bindcode 196 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
     bindcode 197 exec pactl set-sink-volume @DEFAULT_SINK@ -1%
     bindcode 198 exec pactl set-source-volume alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo -1%
 
-    bindcode 199 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" up
+    bindcode 199 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" up
     bindcode 200 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" up
     bindcode 201 exec pactl set-sink-volume @DEFAULT_SINK@ +1%
     bindcode 202 exec pactl set-source-volume alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo +1%
