@@ -104,7 +104,7 @@ bindsym $mod+r mode "resize"
 	# Capture Screen Selection to clipboard
 	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
     bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
-	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png -o $HOME/Image/screenshots/
+	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png
     bindsym $mod+Tab workspace back_and_forth
 
 
