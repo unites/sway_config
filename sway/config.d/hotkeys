@@ -104,7 +104,9 @@ bindsym $mod+r mode "resize"
 	# Capture Screen Selection to clipboard
 	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
     bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
-	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png
+	 # grim -g "$(slurp)" -t png ~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png
+    # bindsym Alt+Ctrl+o exec slurp | grim -g - $(xdg-user-dir Images)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+    bindsym Alt+Ctrl+o exec slurp | grim -g -t png - '~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png'
     bindsym $mod+Tab workspace back_and_forth
 
 
@@ -152,20 +154,20 @@ bindsym $mod+r mode "resize"
     bindcode 201 exec pactl set-sink-volume @DEFAULT_SINK@ +1%
     bindcode 202 exec pactl set-source-volume alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo +1%
 
-    bindcode Alt+191 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
-    bindcode Alt+192 exec $HOME/.config/sway/sink_vol.sh "Firefox" mute
-    bindcode Alt+193 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" mute
-    bindcode Alt+194 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
+    bindcode Alt+191 exec $HOME/.config/sway/sink_vol.sh "Firefox" mute
+    bindcode Alt+192 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" mute
+    bindcode Alt+193 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
+    bindcode Alt+194 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
     
-    bindcode Alt+195 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" down
-    bindcode Alt+196 exec $HOME/.config/sway/sink_vol.sh "Firefox" down
-    bindcode Alt+197 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
-    bindcode Alt+198 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
+    bindcode Alt+195 exec $HOME/.config/sway/sink_vol.sh "Firefox" down
+    bindcode Alt+196 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
+    bindcode Alt+197 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
+    bindcode Alt+198 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" down
 
-    bindcode Alt+199 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" up
-    bindcode Alt+200 exec $HOME/.config/sway/sink_vol.sh "Firefox" up
-    bindcode Alt+201 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" up
-    bindcode Alt+202 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" up
+    bindcode Alt+199 exec $HOME/.config/sway/sink_vol.sh "Firefox" up
+    bindcode Alt+200 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" up
+    bindcode Alt+201 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" up
+    bindcode Alt+202 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" up
 
 # F3-f24
     # bindcode 191 exec notify-send -i drive-harddisk "F13"
@@ -196,6 +198,12 @@ assign [class="discord"] $ws6
 for_window [app_id="ncmpcpp"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="pavucontrol"] resize set 1000 800
+
+bindsym $mod+y for_window [app_id="Firefox"] resize set width 600 pt
+
+for_window [app_id="firefox"] size set width 600 pt
+
+# for_window [workspace="__focused__"] 
 # for_window [class="xfreerdp"] resize set 2000 1395
 
 # # Lock
