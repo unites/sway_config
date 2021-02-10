@@ -96,7 +96,9 @@ gnome-logs \
 python3-gobject \
 blueman \
 gmpc \
-ksystemlog
+ksystemlog \
+ghostwriter \
+gimp
 
 # Desktop Heavy (optional)
 sudo dnf -y install nextcloud-client \
