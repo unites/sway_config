@@ -38,8 +38,8 @@ for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable
 
 # Lock 
 exec swayidle -w \
-        timeout 300 'swaylock -f -i ~/Images/background.jpg' \
-        timeout 600 'swaymsg "output * dpms off"' \
+        timeout 600 'swaylock -f -i ~/Images/background.jpg' \
+        timeout 1200 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' 
 
 # Start programs
