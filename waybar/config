@@ -16,7 +16,7 @@
         "format-icons": {
             "1": "  Terminal",
             "2": "  Code",
-            "3": "  Chrome",
+            "3": " Office",
             "4": "  Remote",
             "5": " Pawn",
             "6": " Knight",
@@ -142,7 +142,7 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-middle": "pavucontrol",
         "on-click-right": "pactl set-source-mute 0 toggle"
-        // "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"  
+        // "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
     "custom/media": {
         "format": "{icon} {}",

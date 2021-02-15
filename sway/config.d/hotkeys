@@ -63,7 +63,7 @@ set $menu exec wofi
     bindsym $mod+space focus mode_toggle
     # Move focus to the parent container
     bindsym $mod+a focus parent
-    
+
 # Scratchpad:
     # Move the currently focused window to the scratchpad, use mode shift space to pull objects out of scratch pad
     bindsym $mod+e move scratchpad
@@ -99,11 +99,11 @@ bindsym $mod+r mode "resize"
 	bindsym $mod+Shift+n exec makoctl dismiss -a
 
 # ScreenShots
-	# Capture the focused monitor to clipboard    
+	# Capture the focused monitor to clipboard
 	bindsym $mod+Ctrl+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
-	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
-    bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png 
+	bindsym Alt+Ctrl+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+    bindsym $mod+s  exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 	 # grim -g "$(slurp)" -t png ~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png
     # bindsym Alt+Ctrl+o exec slurp | grim -g - $(xdg-user-dir Images)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
     bindsym Alt+Ctrl+o exec slurp | grim -g -t png - '~/Images/screenshots/$(date +%m%d%Y.%Hh%Mm%Ss)_grim.png'
@@ -114,17 +114,19 @@ bindsym $mod+r mode "resize"
     bindsym $mod+Alt+l exec ksystemlog
     bindsym $mod+Alt+n exec nautilus
     bindsym $mod+Alt+m exec gnome-system-monitor
-	bindsym $mod+Alt+f exec firefox-wayland
-	bindsym $mod+Alt+c exec google-chrome
-	bindsym $mod+Alt+e exec exec microsoft-edge-dev
-	bindsym $mod+Alt+s exec subl
-	bindsym $mod+Alt+d exec Discord
+    bindsym $mod+Alt+f exec firefox-wayland
+    bindsym $mod+Alt+c exec google-chrome
+    bindsym $mod+Alt+e exec exec microsoft-edge-dev
+    bindsym $mod+Alt+s exec subl
+    bindsym $mod+Alt+d exec Discord
     bindsym $mod+Alt+a exec rdp_ice
-	# bindsym $mod+Alt+x exec Citrix
-	bindsym $mod+Alt+r exec retroarch-freeworld
-	bindsym $mod+Alt+t exec cool-retro-term
-	# bindsym $mod+Alt+v exec chromium-browser
-	bindsym $mod+Alt+q kill
+    # bindsym $mod+Alt+x exec Citrix
+    bindsym $mod+Alt+r exec retroarch-freeworld
+    bindsym $mod+Alt+t exec cool-retro-term
+    # bindsym $mod+Alt+v exec chromium-browser
+    bindsym $mod+Alt+q kill
+    bindsym $mod+Alt+y exec microsoft-edge --app=https://teams.microsoft.com
+    bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com
 
 # Custom Ctrl bindings
     bindsym $mod+Ctrl+q kill
@@ -143,7 +145,7 @@ bindsym $mod+r mode "resize"
     bindcode 192 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
     bindcode 193 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindcode 194 exec pactl set-source-mute alsa_input.usb-BLUE_MICROPHONE_Blue_Snowball_201305-00.analog-stereo toggle
-    
+
     bindcode 195 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
     bindcode 196 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
     bindcode 197 exec pactl set-sink-volume @DEFAULT_SINK@ -1%
@@ -158,7 +160,7 @@ bindsym $mod+r mode "resize"
     bindcode Alt+192 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" mute
     bindcode Alt+193 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" mute
     bindcode Alt+194 exec $HOME/.config/sway/sink_vol.sh "Music Player Daemon" mute
-    
+
     bindcode Alt+195 exec $HOME/.config/sway/sink_vol.sh "Firefox" down
     bindcode Alt+196 exec $HOME/.config/sway/sink_vol.sh "Microsoft Edge" down
     bindcode Alt+197 exec $HOME/.config/sway/sink_vol.sh "Google Chrome" down
@@ -188,11 +190,11 @@ bindsym $mod+m exec pactl set-source-mute 0 toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-	
+
 # swaymsg -t get_tree | grep -e class -e app_id
-assign [class="Google-chrome"] $ws3
+# assign [class="Google-chrome"] $ws3
 assign [app_id="sublime_text"] $ws2
-assign [class="chromium-browser"] $ws5    
+assign [class="chromium-browser"] $ws5
 assign [class="discord"] $ws6
 
 for_window [app_id="ncmpcpp"] floating enable
@@ -203,7 +205,7 @@ bindsym $mod+y for_window [app_id="Firefox"] resize set width 600 pt
 
 for_window [app_id="firefox"] size set width 600 pt
 
-# for_window [workspace="__focused__"] 
+# for_window [workspace="__focused__"]
 # for_window [class="xfreerdp"] resize set 2000 1395
 
 # # Lock
@@ -230,17 +232,17 @@ for_window [app_id="firefox"] size set width 600 pt
 #     bindsym Escape    mode "default"
 # }
 
-# Shutdown, Reboot, Lock Screen, and Logout 
+# Shutdown, Reboot, Lock Screen, and Logout
 
 # set $power_mode "power"
 # bindsym $mod+Shift+p      mode $power_mode
 # mode $power_mode {
 #     bindsym p         exec systemctl poweroff
-#     bindsym r         exec systemctl reboot 
+#     bindsym r         exec systemctl reboot
 #     bindsym l         exec swaylock -i ~/Images/background.jpg, mode "default"
 #     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-#     bindsym h         exec systemctl hibernate 
-#     #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+#     bindsym h         exec systemctl hibernate
+#     #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep
 #     bindsym s         exec pm-suspend
 
 #     bindsym Return    mode "default"

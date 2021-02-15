@@ -17,17 +17,17 @@ In this case Fedora 33.
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # Ensure Google Chrome repo is in place
-sudo dnf install fedora-workstation-repositories -y 
+sudo dnf install fedora-workstation-repositories -y
 sudo dnf config-manager --set-enabled google-chrome -y
 # Sublime Text Repo Addition
-sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg 
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo -y
 # Add Docker
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
-    
+
 # Update Dnf
 sudo dnf -y update
 
@@ -117,7 +117,7 @@ sudo dnf -y install cool-retro-term
 # qt5-qtdeclarative-devel \
 # qt5-qtgraphicaleffects \
 # qt5-qtquickcontrols \
-# redhat-rpm-config 
+# redhat-rpm-config
 
 usermod -aG adm $USER
 
@@ -161,7 +161,7 @@ auth       optional     pam_gnome_keyring.so
 # Nerd Fonts, my favs
 cd ~
 git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
-cd .nerd-fonts 
+cd .nerd-fonts
 ./install.sh Hack
 ./install.sh Terminus
 
@@ -190,3 +190,12 @@ sudo dnf install microsoft-edge-dev
 
 
 # Warning, there be dragons here
+
+Kernel 5.10 had wifi broken
+https://fedoraproject.org/wiki/Changes/StrongCryptoSettings2#Upgrade.2Fcompatibility_impact
+
+```sh
+update-crypto-policies --set DEFAULT:FEDORA32
+
+update-crypto-policies --set LEGACY
+```
