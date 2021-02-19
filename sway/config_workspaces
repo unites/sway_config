@@ -9,11 +9,11 @@ output HDMI-A-1 pos 0 0
 
 # Monitor Config (if needed)
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
-# set $lmon "HDMI-A-2" 
-# set $cmon "HDMI-A-1" 
+# set $lmon "HDMI-A-2"
+# set $cmon "HDMI-A-1"
 
 set $cmon "DP-1"
-set $lmon "HDMI-A-1" 
+set $lmon "HDMI-A-1"
 # Workspaces:
     # Switch to workspace
     # Workspace Variables
@@ -61,7 +61,7 @@ set $lmon "HDMI-A-1"
     bindsym $mod+Shift+7 move container to workspace $ws7
     bindsym $mod+Shift+8 move container to workspace $ws8
     bindsym $mod+Shift+9 move container to workspace $ws9
-    bindsym $mod+Shift+0 move container to workspace $ws10 
+    bindsym $mod+Shift+0 move container to workspace $ws10
 
     # monitors
     workspace $ws1 output $cmon
@@ -72,5 +72,5 @@ set $lmon "HDMI-A-1"
     workspace $ws6 output $cmon
     workspace $ws7 output $lmon
     workspace $ws8 output $lmon
-    workspace $ws9 output $lmon 
+    workspace $ws9 output $lmon
     workspace $ws10 output $lmon

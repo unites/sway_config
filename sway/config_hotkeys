@@ -7,6 +7,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
+set $term2 cool-retro-term
 # set $term gnome-terminal
 # Application launcher with fzf
 #set $menu exec $term --class=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
@@ -15,6 +16,7 @@ set $menu exec wofi
 ### Key bindings
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Alt+Return exec $term2
     # Kill focused window
     bindsym $mod+Shift+q kill
     # Start your launcher
@@ -119,15 +121,14 @@ bindsym $mod+r mode "resize"
     bindsym $mod+Alt+e exec exec microsoft-edge-dev
     bindsym $mod+Alt+s exec subl
     bindsym $mod+Alt+d exec Discord
-    bindsym $mod+Alt+a exec rdp_ice
+    bindsym $mod+Alt+a exec atom
     # bindsym $mod+Alt+x exec Citrix
-    bindsym $mod+Alt+r exec retroarch-freeworld
-    bindsym $mod+Alt+t exec cool-retro-term
+    # bindsym $mod+Alt+r exec retroarch-freeworld
     # bindsym $mod+Alt+v exec chromium-browser
     bindsym $mod+Alt+q kill
-    bindsym $mod+Alt+y exec microsoft-edge --app=https://teams.microsoft.com
-    bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com
-
+    bindsym $mod+Alt+t exec microsoft-edge --app=https://teams.microsoft.com --user-data-dir=$HOME/.config/microsoft-edge-dev-teams
+    bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com --user-data-dir=$HOME/.config/microsoft-edge-dev-outlook
+    bindsym $mod+Alt+p exec microsoft-edge --app=http://10.1.1.10:32400/web/index.html --user-data-dir=$HOME/.config/microsoft-edge-dev-plex
 # Custom Ctrl bindings
     bindsym $mod+Ctrl+q kill
 
