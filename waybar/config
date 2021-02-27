@@ -15,8 +15,8 @@
         "format": "{name}: {icon}",
         "format-icons": {
             "1": "  Terminal",
-            "2": " Chrome",
-            "3": " Comms",
+            "2": " Code",
+            "3": " Chrome",
             "4": " Office",
             "5": "  Remote",
             "6": " Knight",
