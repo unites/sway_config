@@ -42,7 +42,7 @@ exec swayidle -w \
 
 # Start programs
 exec mako
-exec nextcloud --background
+# exec nextcloud --background
 exec mpd
 exec sleep
 exec blueman-tray

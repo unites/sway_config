@@ -126,9 +126,14 @@ bindsym $mod+r mode "resize"
     # bindsym $mod+Alt+r exec retroarch-freeworld
     # bindsym $mod+Alt+v exec chromium-browser
     bindsym $mod+Alt+q kill
-    bindsym $mod+Alt+t exec microsoft-edge --app=https://teams.microsoft.com --user-data-dir=$HOME/.config/microsoft-edge-dev-teams
-    bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com --user-data-dir=$HOME/.config/microsoft-edge-dev-outlook
-    bindsym $mod+Alt+p exec microsoft-edge --app=http://10.1.1.10:32400/web/index.html --user-data-dir=$HOME/.config/microsoft-edge-dev-plex
+    # bindsym $mod+Alt+t exec microsoft-edge --app=https://teams.microsoft.com --user-data-dir=$HOME/.config/microsoft-edge-dev-teams
+    # bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com --user-data-dir=$HOME/.config/microsoft-edge-dev-outlook
+    # bindsym $mod+Alt+p exec microsoft-edge --app=http://10.1.1.10:32400/web/index.html --user-data-dir=$HOME/.config/microsoft-edge-dev-plex
+    # bindsym $mod+Alt+i exec microsoft-edge --app=https://discord.com/login --user-data-dir=$HOME/.config/microsoft-edge-dev-discord
+    bindsym $mod+Alt+t exec google-chrome --app=https://teams.microsoft.com
+    bindsym $mod+Alt+o exec google-chrome --app=https://outlook.office.com
+    bindsym $mod+Alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
+    bindsym $mod+Alt+i exec google-chrome --app=https://discord.com/login
 # Custom Ctrl bindings
     bindsym $mod+Ctrl+q kill
 
@@ -194,9 +199,9 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # swaymsg -t get_tree | grep -e class -e app_id
 # assign [class="Google-chrome"] $ws3
-assign [app_id="sublime_text"] $ws2
-assign [class="chromium-browser"] $ws5
-assign [class="discord"] $ws6
+# assign [app_id="sublime_text"] $ws2
+# assign [class="chromium-browser"] $ws5
+# assign [class="discord"] $ws6
 
 for_window [app_id="ncmpcpp"] floating enable
 for_window [app_id="pavucontrol"] floating enable
