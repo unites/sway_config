@@ -130,12 +130,15 @@ bindsym $mod+r mode "resize"
     # bindsym $mod+Alt+o exec microsoft-edge --app=https://outlook.office.com --user-data-dir=$HOME/.config/microsoft-edge-dev-outlook
     # bindsym $mod+Alt+p exec microsoft-edge --app=http://10.1.1.10:32400/web/index.html --user-data-dir=$HOME/.config/microsoft-edge-dev-plex
     # bindsym $mod+Alt+i exec microsoft-edge --app=https://discord.com/login --user-data-dir=$HOME/.config/microsoft-edge-dev-discord
-    bindsym $mod+Alt+t exec google-chrome --app=https://teams.microsoft.com
+    bindsym $mod+Alt+t exec echo test
     bindsym $mod+Alt+o exec google-chrome --app=https://outlook.office.com
-    bindsym $mod+Alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
-    bindsym $mod+Alt+i exec google-chrome --app=https://discord.com/login
+    bindsym $mod+Alt+i exec google-chrome --app=https://outlook.office.com/calendar/view/week
+    bindsym $mod+Alt+p exec microsoft-edge --app=http://10.1.1.10:32400/web/index.html
+    
+    bindsym $mod+Alt+g exec microsoft-edge --app=https://play.geforcenow.com/
 # Custom Ctrl bindings
     bindsym $mod+Ctrl+q kill
+
 
 # F3-f24
 # pacmd list-sink-inputs |
