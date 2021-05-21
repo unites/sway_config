@@ -3,8 +3,8 @@
 # Mod Key Mapping, Mod1 for Alt
 set $mod Mod4
 
-include ~/.config/sway/config.d/workspaces
-include ~/.config/sway/config.d/hotkeys
+include ~/.config/sway/workspaces
+include ~/.config/sway/hotkeys
 
 # Font Config
 #font pango: Inconsolata 12
@@ -22,8 +22,6 @@ seat seat0 hide_cursor 5000
     #smart_borders on
     #set $borderwidth 1
     hide_edge_borders both
-
-
 
 # Bar
 bar {
@@ -47,6 +45,5 @@ exec mako
 exec nextcloud --background
 exec mpd
 exec sleep 
-
 
 include /usr/local/etc/sway/config.d/*

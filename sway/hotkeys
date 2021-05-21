@@ -7,16 +7,15 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
-# set $term gnome-terminal
 # Application launcher with fzf
-#set $menu exec $term --class=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
 set $menu exec wofi
 
 ### Key bindings
     # Start a terminal
     bindsym $mod+Return exec $term
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    #bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
     # Start your launcher
     bindsym $mod+d exec $menu
     floating_modifier $mod normal
@@ -117,54 +116,42 @@ bindsym $mod+r mode "resize"
 	bindsym $mod+Alt+r exec remmina
 	bindsym $mod+Alt+t exec gnome-terminal
 	bindsym $mod+Alt+v exec chromium-browser
-	bindsym $mod+Alt+q kill
 
-	
 # Bind App to workspace
 # Check class by : xprop
 # swaymsg -t get_tree | grep -e class -e app_id
 # Use class for xwindows and app_id for wayland
-assign [class="Google-chrome"] $ws3
+# assign [class="Google-chrome"] $ws3
 # assign [class="Microsoft-edge-dev"] $ws4
-assign [app_id="sublime_text"] $ws2
-assign [app_id="firefox"] $ws10
-assign [class="chromium-browser"] $ws5
-assign [class="discord"] $ws6
-assign [app_id="pavucontrol"] $ws5
-
+# assign [app_id="sublime_text"] $ws2
+# assign [app_id="firefox"] $ws10
+# assign [class="chromium-browser"] $ws5
+# assign [class="discord"] $ws6
+# assign [app_id="pavucontrol"] $ws5
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7
 
 # # Lock
-# bindsym $mod+q exec "swaylock -i ~/Images/background.jpg"
-
-# pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
+#bindsym $mod+l exec "swaylock -i ~/Images/background.jpg"
 
 # bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
 
-# # volume / brightness / media controls
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-# bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ dnf toggle
-# bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-# bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-# bindsym XF86AudioPlay exec playerctl play-pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-# set $mode_launcher Launcher
-# bindsym $mod+o mode "$mode_launcher"
-# mode "$mode_launcher" {
-#     bindsym t exec microsoft-edge-dev --app=https://teams.microsoft.com
-#     bindsym o exec microsoft-edge-dev --app=https://outlook.office.com/mail/inbox
-#     bindsym n exec microsoft-edge-dev --app=https://www.office.com/launch/onenote
-#     bindsym d exec microsoft-edge-dev --app=https://discord.com/channels/@me
-#     bindsym Return mode "default"
-#     bindsym Escape    mode "default"
-# }
+ set $mode_launcher Launcher
+ bindsym $mod+o mode "$mode_launcher"
+ mode "$mode_launcher" {
+     bindsym t exec microsoft-edge-dev --app=https://teams.microsoft.com
+     bindsym o exec microsoft-edge-beta --app=https://outlook.office.com/mail/inbox --user-data-dir=~/.config/BraveAlt
+     bindsym n exec microsoft-edge-beta --app=https://www.office.com/launch/onenote --user-data-dir=~/.config/BraveAlt
+     bindsym d exec microsoft-edge-beta --app=https://discord.com/channels/@me --user-data-dir=~/.config/BraveAlt
+     bindsym Return mode "default"
+     bindsym Escape    mode "default"
+ }
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 

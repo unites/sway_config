@@ -1,23 +1,22 @@
-
 # Wallpaper
 output * bg ~/Images/background.jpg fill
 
 # Monitor placement
 # swaymsg -t get_outputs
-output HDMI-A-1 pos 0 0
-output DP-1 pos 2560 0
+#output HDMI-A-1 pos 0   0
+#output HDMI-A-2 pos 2560  0
+#output DP-1 pos 2560 0
 
 # Monitor Config (if needed)
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
 # set $lmon "HDMI-A-2" 
 # set $cmon "HDMI-A-1" 
 
-set $cmon "DP-1"
-set $lmon "HDMI-A-1" 
+set $cmon "HDMI-A-1"
+set $lmon "HDMI-A-2" 
 # Workspaces:
     # Switch to workspace
     # Workspace Variables
-
     set $ws1 1
     set $ws2 2
     set $ws3 3
@@ -28,16 +27,6 @@ set $lmon "HDMI-A-1"
     set $ws8 8
     set $ws9 9
     set $ws10 10
-    # set $ws1 "1:  Terminal"
-    # set $ws2 "2:  Code"
-    # set $ws3 "3:  Chrome"
-    # set $ws4 "4:  Remote"
-    # set $ws5 "5:  Config"
-    # set $ws6 "6:  Game"
-    # set $ws7 "7:  Rebel"
-    # set $ws8 "8:  Empire"
-    # set $ws9 "9:  ScratchPad"
-    # set $ws10 "10:  Firefox"
 
     # switch to workspace
     bindsym $mod+1 workspace $ws1

@@ -85,14 +85,31 @@ wf-recorder \
 ffmpeg \
 NetworkManager-bluetooth \
 NetworkManager-wifi \
-NetworkManager-tui
+NetworkManager-tui \
+fuse-sshfs \
+freerdp
+
+# Seafile File shareing client
+sudo cat > /etc/yum.repos.d/seafile.repo <<EOF
+[seafile]
+name=seafile
+baseurl=https://linux-clients.seafile.com/seafile-rpm/fedora32
+gpgcheck=0
+enabled=1
+EOF
+sudo yum install -y seafile
+
+#Brave Browser
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/ -y
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser -y
 
 # Desktop Heavy (optional)
-sudo dnf -y install nextcloud-client \
-docker-ce \
-docker-ce-cli \
-containerd.io \
-obs-studio 
+#sudo dnf -y install nextcloud-client \
+#docker-ce \
+#docker-ce-cli \
+#containerd.io \
+#obs-studio 
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
@@ -145,7 +162,7 @@ mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
 ```
 
-# If you want to try out Microsoft Edge
+## If you want to try out Microsoft Edge
 ```sh
 ## Setup
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -153,12 +170,23 @@ sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
 ## Install
 sudo dnf install microsoft-edge-dev
+sudo dnf install microsoft-edge-beta
 ```
 
-# Warning, there be dragons here
+## Warning, there be dragons here
 This is a Copr repo, meaning you need to trust the provider.  This package allows creation of virtual video streams to get around the inability of wayland to screen share in web apps.
 https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
 ```sh
 dnf copr enable sentry/v4l2loopback
 
  ```
+
+## Seafile
+
+```shell
+# choose a folder where to store the seafile client settings e.g ~/seafile-client
+mkdir ~/.seafile            # create the settings folder
+seaf-cli init -d ~/.seafile  # initialise seafile client with this folder
+seaf-cli start
+
+```
