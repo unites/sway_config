@@ -14,15 +14,15 @@ set $menu exec wofi
     # Start a terminal
     bindsym $mod+Return exec $term
     # Kill focused window
-    #bindsym $mod+Shift+q kill
-    bindsym $mod+q kill
+    #bindsym $mod+Ctrl+q kill
+    bindsym $mod+x kill
     # Start your launcher
     bindsym $mod+d exec $menu
     floating_modifier $mod normal
     # Reload the configuration file
     bindsym $mod+Shift+c reload
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Alt+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Moving around:
     # Move your focus around
@@ -51,9 +51,9 @@ set $menu exec wofi
     bindsym $mod+b splith
     bindsym $mod+v splitv
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+Ctrl+s layout stacking
+    bindsym $mod+Ctrl+w layout tabbed
+    bindsym $mod+Ctrl+e layout toggle split
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
@@ -65,8 +65,8 @@ set $menu exec wofi
     
 # Scratchpad:
     # Move the currently focused window to the scratchpad, use mode shift space to pull objects out of scratch pad
-    bindsym $mod+i move scratchpad
-    bindsym $mod+u scratchpad show
+    bindsym $mod+Ctrl+i move scratchpad
+    bindsym $mod+Ctrl+u scratchpad show
 
 # Resizing containers:
 mode "resize" {
@@ -83,7 +83,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+s mode "resize"
 
 # Multimedia keys bind to MPD
 	bindsym XF86AudioPlay  exec "mpc toggle"
@@ -99,18 +99,18 @@ bindsym $mod+r mode "resize"
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
-	bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+	#bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
-	bindsym Alt+Shift+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
-	bindsym Alt+Shift+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
+	bindsym Alt+Shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
 
 # Custom Keybinds
 	bindsym $mod+c exec google-chrome
 
 	bindsym $mod+Alt+f exec firefox-wayland
 	bindsym $mod+Alt+c exec google-chrome
-	bindsym $mod+Alt+e exec exec microsoft-edge-dev
-	bindsym $mod+Alt+s exec subl
+	#bindsym $mod+Alt+e exec exec microsoft-edge-dev
+	#bindsym $mod+Alt+s exec subl
 	bindsym $mod+Alt+d exec Discord
 	bindsym $mod+Alt+x exec Citrix
 	bindsym $mod+Alt+r exec remmina
@@ -131,6 +131,9 @@ bindsym $mod+r mode "resize"
 # assign [app_id="org.remmina.Remmina"] $ws4
 # assign [class="Skype"] $ws7
 
+# Audio control Floating with set Size
+for_window [app_id="pavucontrol"] floating enable, resize set 900 600
+
 # # Lock
 #bindsym $mod+l exec "swaylock -i ~/Images/background.jpg"
 
@@ -143,7 +146,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
  set $mode_launcher Launcher
- bindsym $mod+o mode "$mode_launcher"
+ bindsym $mod+Ctrl+o mode "$mode_launcher"
  mode "$mode_launcher" {
      bindsym t exec microsoft-edge-dev --app=https://teams.microsoft.com
      bindsym o exec microsoft-edge-beta --app=https://outlook.office.com/mail/inbox --user-data-dir=~/.config/BraveAlt

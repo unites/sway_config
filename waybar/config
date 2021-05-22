@@ -14,16 +14,16 @@
         "all-outputs": true,
         "format": "{name}: {icon}",
         "format-icons": {
-            "1": "爵 Browser",
+            "1": " Web",
             "2": " Obsidian",
             "3": " Sublime",
             "4": " Terminal",
-            "5": " Remote",
+            "5": " Remote",
             "6": " Game",
             "7": " Rebel",
             "8": " Empire",
-            "9": " Alt",
-            "10": " Firefox",
+            "9": " Edge",
+            "10": " Misc",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -33,8 +33,8 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
-        // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{totalTime}⸩ ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title}({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
@@ -57,7 +57,12 @@
             "playing": ""
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc toggle",
+        "on-click-middle": "mpc shuffle",
+        "on-click-right": "mpc repeat",
+        "on-scroll-up": "mpc next",
+        "on-scroll-down": "mpc prev"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -139,7 +144,9 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click-middle": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
     "custom/media": {
         "format": "{icon} {}",
