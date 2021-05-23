@@ -27,7 +27,15 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
-    
+#Brave Browser
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/ -y
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+
+# Edge
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
+
 # Update Dnf
 sudo dnf -y update
 
@@ -87,29 +95,18 @@ NetworkManager-bluetooth \
 NetworkManager-wifi \
 NetworkManager-tui \
 fuse-sshfs \
-freerdp
-
-# Seafile File shareing client
-sudo cat > /etc/yum.repos.d/seafile.repo <<EOF
-[seafile]
-name=seafile
-baseurl=https://linux-clients.seafile.com/seafile-rpm/fedora32
-gpgcheck=0
-enabled=1
-EOF
-sudo yum install -y seafile
-
-#Brave Browser
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/ -y
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-sudo dnf install brave-browser -y
+freerdp \
+nm-connection-editor \
+brave-browser \
+microsoft-edge-dev \
+microsoft-edge-beta \
+syncthing
 
 # Desktop Heavy (optional)
-#sudo dnf -y install nextcloud-client \
-#docker-ce \
-#docker-ce-cli \
-#containerd.io \
-#obs-studio 
+sudo dnf -y install docker-ce \
+docker-ce-cli \
+containerd.io \
+obs-studio 
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
