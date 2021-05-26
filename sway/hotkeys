@@ -99,6 +99,9 @@ bindsym $mod+s mode "resize"
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86MonBrightnessUp exec light -A 5
+    bindsym XF86MonBrightnessDown exec light -U 5
+    # XF86RFKILL
 
 # Mako Notifications
 	bindsym $mod+x exec makoctl dismiss
@@ -151,8 +154,8 @@ mode $power_mode {
     bindsym l         exec swayplock -i ~/Images/background.jpg, mode "default"
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
     bindsym h         exec systemctl hibernate 
-    #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-    bindsym s         exec pm-suspend
+    bindsym s           exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+    #bindsym s         exec pm-suspend
 
     bindsym Return    mode "default"
     bindsym Escape    mode "default"

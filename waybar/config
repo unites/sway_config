@@ -6,8 +6,8 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["sway/window"],
-    // "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "sway/language", "battery", "battery#bat2", "idle_inhibitor", "clock", "tray"],
-    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "idle_inhibitor", "clock", "tray"],
+    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray", "sway/language", "idle_inhibitor"],
+    //"modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "idle_inhibitor", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -107,7 +107,9 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
+        "format-icons": ["", ""],
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5"
     },
     "battery": {
         "states": {

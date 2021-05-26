@@ -35,11 +35,17 @@ bar {
 for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable
 
 # Lock 
-exec swayidle -w \
-        timeout 300 'swaylock -f -i ~/Images/background.jpg' \
-        timeout 600 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' 
-
+# exec swayidle -w \
+#         timeout 300 'swaylock -f -i ~/Images/background.jpg' \
+#         timeout 600 'swaymsg "output * dpms off"' \
+#         resume 'swaymsg "output * dpms on"' 
+# Lock, Notebook
+  exec swayidle -w \
+  	timeout 300 'swaylock -f -c 000000' \
+  	timeout 600 'swaymsg "output * dpms off"' \
+  		resume 'swaymsg "output * dpms on"' \
+  	before-sleep 'swaylock -f -c 000000'
+    
 # Start programs
 exec mako 
 exec nextcloud --background
