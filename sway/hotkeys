@@ -127,9 +127,8 @@ bindsym $mod+s mode "resize"
 	# bindsym $mod+Alt+r exec remmina
 	# bindsym $mod+Alt+t exec gnome-terminal
 	# bindsym $mod+Alt+v exec chromium-browser
-
+    bindsym $mod+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
     
-
     # Ctrl
     bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
     #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
