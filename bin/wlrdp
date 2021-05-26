@@ -1,0 +1,3 @@
+#!/bin/sh
+. ~/.creds  
+wlfreerdp /u:${uname} /p:${upass} /v:${hname} +fonts /dynamic-resolution -grab-keyboard

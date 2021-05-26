@@ -3,8 +3,10 @@ output * bg ~/Images/background.jpg fill
 
 # Monitor placement
 # swaymsg -t get_outputs
-#output HDMI-A-1 pos 0   0
-#output HDMI-A-2 pos 2560  0
+# Saber
+output HDMI-A-1 pos 1920   0
+output HDMI-A-2 pos 0  0
+# Other
 #output DP-1 pos 2560 0
 
 # Monitor Config (if needed)
