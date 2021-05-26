@@ -15,14 +15,14 @@ set $menu exec wofi
     bindsym $mod+Return exec $term
     # Kill focused window
     #bindsym $mod+Ctrl+q kill
-    bindsym $mod+x kill
+    bindsym $mod+Escape kill
     # Start your launcher
     bindsym $mod+d exec $menu
     floating_modifier $mod normal
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Ctrl+r reload
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Alt+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Moving around:
     # Move your focus around
@@ -47,13 +47,18 @@ set $menu exec wofi
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
 
+    # Alt Tab
+    bindsym $mod+tab workspace back_and_forth
+    # bindsym $mod+v workspace next_on_output 
+    # bindsym $mod+c workspace prev_on_output 
+
 # Layout stuff:
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Ctrl+b splith
+    bindsym $mod+Ctrl+v splitv
     # Switch the current container between different layout styles
     bindsym $mod+Ctrl+s layout stacking
     bindsym $mod+Ctrl+w layout tabbed
-    bindsym $mod+Ctrl+e layout toggle split
+    bindsym $mod+Ctrl+q layout toggle split
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
@@ -70,15 +75,15 @@ set $menu exec wofi
 
 # Resizing containers:
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 20px
+    bindsym $down resize grow height 20px
+    bindsym $up resize shrink height 20px
+    bindsym $right resize grow width 20px
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 20px
+    bindsym Down resize grow height 20px
+    bindsym Up resize shrink height 20px
+    bindsym Right resize grow width 20px
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -88,89 +93,70 @@ bindsym $mod+s mode "resize"
 # Multimedia keys bind to MPD
 	bindsym XF86AudioPlay  exec "mpc toggle"
 	bindsym XF86AudioStop  exec "mpc stop"
-	bindsym XF86AudioNext  exec "mpc next"
-	bindsym XF86AudioPrev  exec "mpc prev"
+	bindsym XF86AudioNext  exec "mpc next; notify-send $(mpc current) -t 5 -u low"
+	bindsym XF86AudioPrev  exec "mpc prev; notify-send $(mpc current) -t 5 -u low"
 	bindsym XF86AudioPause exec "mpc pause"
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Mako Notifications
-	bindsym $mod+m exec makoctl dismiss
-	bindsym $mod+n exec makoctl invoke
+	bindsym $mod+x exec makoctl dismiss
+	bindsym $mod+z exec makoctl invoke
 	bindsym $mod+Shift+n exec makoctl dismiss -a
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
-	#bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+	bindsym $mod+Shift+a exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
 	bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
-	bindsym Alt+Ctrl+o exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
+    # Capture Screen Selection to file
+	bindsym $mod+Shift+d exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
 
 # Custom Keybinds
-# Geforce now
-	bindsym $mod+Alt+c exec google-chrome --app=https://play.geforcenow.com/
+    # Alt
+	# bindsym $mod+Alt+c exec google-chrome --app=https://play.geforcenow.com/
+	# bindsym $mod+Alt+f exec firefox-wayland
+	# bindsym $mod+Alt+e exec exec microsoft-edge-dev
+	# bindsym $mod+Alt+s exec subl
+	# bindsym $mod+Alt+d exec Discord
+	# bindsym $mod+Alt+x exec Citrix
+	# bindsym $mod+Alt+r exec remmina
+	# bindsym $mod+Alt+t exec gnome-terminal
+	# bindsym $mod+Alt+v exec chromium-browser
 
-	bindsym $mod+Alt+f exec firefox-wayland
-	#bindsym $mod+Alt+e exec exec microsoft-edge-dev
-	#bindsym $mod+Alt+s exec subl
-	bindsym $mod+Alt+d exec Discord
-	bindsym $mod+Alt+x exec Citrix
-	bindsym $mod+Alt+r exec remmina
-	bindsym $mod+Alt+t exec gnome-terminal
-	bindsym $mod+Alt+v exec chromium-browser
+    
 
-# Bind App to workspace
-# Check class by : xprop
-# swaymsg -t get_tree | grep -e class -e app_id
-# Use class for xwindows and app_id for wayland
-# assign [class="Google-chrome"] $ws3
-# assign [class="Microsoft-edge-dev"] $ws4
-# assign [app_id="sublime_text"] $ws2
-# assign [app_id="firefox"] $ws10
-# assign [class="chromium-browser"] $ws5
-# assign [class="discord"] $ws6
-# assign [app_id="pavucontrol"] $ws5
-# assign [app_id="org.remmina.Remmina"] $ws4
-# assign [class="Skype"] $ws7
-
-# Audio control Floating with set Size
-for_window [app_id="pavucontrol"] floating enable, resize set 900 600
-
-for_window [app_id="nm-connection-editor"] floating enable
-
-# # Lock
-bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
-
-# bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-# Press $mod+o followed by either f, t, Esc or Return to launch firefox,
-# thunderbird or return to the default mode, respectively.
- set $mode_launcher Launcher
- bindsym $mod+Ctrl+o mode "$mode_launcher"
- mode "$mode_launcher" {
-     bindsym t exec microsoft-edge-dev --app=https://teams.microsoft.com
-     bindsym o exec microsoft-edge-beta --app=https://outlook.office.com/mail/inbox --user-data-dir=~/.config/BraveAlt
-     bindsym n exec microsoft-edge-beta --app=https://www.office.com/launch/onenote --user-data-dir=~/.config/BraveAlt
-     bindsym d exec microsoft-edge-beta --app=https://discord.com/channels/@me --user-data-dir=~/.config/BraveAlt
-     bindsym Return mode "default"
-     bindsym Escape    mode "default"
- }
+    # Ctrl
+    bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
+    #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
+    # Press $mod+o followed by either f, t, Esc or Return to launch 
+    set $mode_launcher Launcher
+    # bindsym $mod+z mode "$mode_launcher"
+    # mode "$mode_launcher" {
+    #     bindsym t exec teams
+    #     bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+    #     bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+    #     bindsym Return mode "default"
+    #     bindsym Escape    mode "default"
+    # }
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 
-# set $power_mode "power"
-# bindsym $mod+Shift+p      mode $power_mode
-# mode $power_mode {
-#     bindsym p         exec systemctl poweroff
-#     bindsym r         exec systemctl reboot 
-#     bindsym l         exec swaylock -i ~/Images/background.jpg, mode "default"
-#     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-#     bindsym h         exec systemctl hibernate 
-#     #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-#     bindsym s         exec pm-suspend
+set $power_mode "power"
+bindsym $mod+Ctrl+p mode $power_mode
+mode $power_mode {
+    bindsym p         exec systemctl poweroff
+    bindsym r         exec systemctl reboot 
+    bindsym l         exec swayplock -i ~/Images/background.jpg, mode "default"
+    bindsym q         exec --no-startup-id i3-msg exit, mode "default"
+    bindsym h         exec systemctl hibernate 
+    #bindsym s        exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+    bindsym s         exec pm-suspend
 
-#     bindsym Return    mode "default"
-#     bindsym Escape    mode "default"
-# }
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
+
+

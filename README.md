@@ -100,13 +100,25 @@ nm-connection-editor \
 brave-browser \
 microsoft-edge-dev \
 microsoft-edge-beta \
-syncthing
+syncthing \
+gnome-bluetooth \
+gnome-logs \
+python3-gobject \
+blueman \
+ksystemlog \
+ghostwriter \
+gimp \
+rsyslog \
+id3v2
 
 # Desktop Heavy (optional)
 sudo dnf -y install docker-ce \
 docker-ce-cli \
 containerd.io \
 obs-studio 
+
+sudo systemctl enable wpa_supplicant.service
+sudo systemctl start wpa_supplicant.service
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
@@ -159,17 +171,6 @@ mkdir -p ~/Music
 mkdir -p ~/Images/screenshots
 ```
 
-## If you want to try out Microsoft Edge
-```sh
-## Setup
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
-sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
-## Install
-sudo dnf install microsoft-edge-dev
-sudo dnf install microsoft-edge-beta
-```
-
 ## Warning, there be dragons here
 This is a Copr repo, meaning you need to trust the provider.  This package allows creation of virtual video streams to get around the inability of wayland to screen share in web apps.
 https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
@@ -177,13 +178,3 @@ https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
 dnf copr enable sentry/v4l2loopback
 
  ```
-
-## Seafile
-
-```shell
-# choose a folder where to store the seafile client settings e.g ~/seafile-client
-mkdir ~/.seafile            # create the settings folder
-seaf-cli init -d ~/.seafile  # initialise seafile client with this folder
-seaf-cli start
-
-```

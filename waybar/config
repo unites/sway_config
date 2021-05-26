@@ -22,8 +22,8 @@
             "6": " Game",
             "7": " Rebel",
             "8": " Empire",
-            "9": " Edge",
-            "10": " Misc",
+            "9": " Chat",
+            "10": " Chrome",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -34,7 +34,8 @@
     },
     "mpd": {
         // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{totalTime}⸩ ",
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title}({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        //"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {artist} - {title}({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {elapsedTime:%M:%S} ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
@@ -55,14 +56,15 @@
         "state-icons": {
             "paused": "",
             "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
+        }, 
+        //"tooltip-format": "MPD (connected)",
+        "tooltip-format": "{title}",
         "tooltip-format-disconnected": "MPD (disconnected)",
         "on-click": "mpc toggle",
         "on-click-middle": "mpc shuffle",
         "on-click-right": "mpc repeat",
-        "on-scroll-up": "mpc next",
-        "on-scroll-down": "mpc prev"
+        "on-scroll-up": "pactl set-sink-input-volume 82 +5%",
+        "on-scroll-down": "pactl set-sink-input-volume 82 -5%"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -77,17 +79,22 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
         // "format-alt": "{:%Y-%m-%d}"
-        "format-alt": "{:%m-%d-%Y}"
+        "format": "{:%H:%M %m/%d/%Y}",
+        "format-alt": "{:%H:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "gnome-system-monitor",
+        "on-click-right": "ksystemlog"
     },
     "memory": {
         "format": "{}% ",
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "gnome-system-monitor",
+        "on-click-right": "ksystemlog"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -95,7 +102,7 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
     },
     "backlight": {
         // "device": "acpi_video1",

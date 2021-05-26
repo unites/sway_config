@@ -9,4 +9,5 @@
 !mpd/mpd.conf
 !bin/
 
+ksystemlogrc
 mimeapps.list
