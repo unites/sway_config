@@ -53,12 +53,12 @@ set $menu exec wofi
     # bindsym $mod+c workspace prev_on_output 
 
 # Layout stuff:
-    bindsym $mod+Ctrl+b splith
-    bindsym $mod+Ctrl+v splitv
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
     # Switch the current container between different layout styles
-    bindsym $mod+Ctrl+s layout stacking
-    bindsym $mod+Ctrl+w layout tabbed
-    bindsym $mod+Ctrl+q layout toggle split
+    bindsym $mod+3 layout stacking
+    bindsym $mod+2 layout tabbed
+    bindsym $mod+1 layout toggle split
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
@@ -106,7 +106,7 @@ bindsym $mod+s mode "resize"
 # Mako Notifications
 	bindsym $mod+x exec makoctl dismiss
 	bindsym $mod+z exec makoctl invoke
-	bindsym $mod+Shift+n exec makoctl dismiss -a
+	bindsym $mod+Ctrl+x exec makoctl dismiss -a
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
@@ -127,13 +127,17 @@ bindsym $mod+s mode "resize"
 	# bindsym $mod+Alt+r exec remmina
 	# bindsym $mod+Alt+t exec gnome-terminal
 	# bindsym $mod+Alt+v exec chromium-browser
-    bindsym $mod+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym $mod+Ctrl+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym $mod+Ctrl+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym $mod+Ctrl+o exec Obsidian
+    bindsym $mod+Ctrl+s exec subl
+
     
     # Ctrl
     bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
     #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
     # Press $mod+o followed by either f, t, Esc or Return to launch 
-    set $mode_launcher Launcher
+    # set $mode_launcher Launcher
     # bindsym $mod+z mode "$mode_launcher"
     # mode "$mode_launcher" {
     #     bindsym t exec teams

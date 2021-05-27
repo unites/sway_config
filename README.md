@@ -109,7 +109,14 @@ ksystemlog \
 ghostwriter \
 gimp \
 rsyslog \
-id3v2
+id3v2 \
+pciutils \
+google-noto-emoji-color-fonts \
+google-noto-emoji-fonts
+
+# Python modules, General
+pip3 install requests
+pip3 instal youtube-dl
 
 # Desktop Heavy (optional)
 sudo dnf -y install docker-ce \
@@ -122,6 +129,7 @@ sudo systemctl start wpa_supplicant.service
 
 echo "export EDITOR='vim'" >> ~/.bashrc
 ```
+
 
 ## Pull config
 ```sh
@@ -178,3 +186,13 @@ https://copr.fedorainfracloud.org/coprs/sentry/v4l2loopback/
 dnf copr enable sentry/v4l2loopback
 
  ```
+
+## Wireless
+### For Desktop
+https://wiki.archlinux.org/title/Network_configuration/Wireless#Device_driver
+
+firmware
+```sh
+sudo dnf install iwl3160-firmware -y
+```
+
