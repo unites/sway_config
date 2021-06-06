@@ -106,7 +106,8 @@ bindsym $mod+s mode "resize"
 # Mako Notifications
 	bindsym $mod+x exec makoctl dismiss
 	bindsym $mod+z exec makoctl invoke
-	bindsym $mod+Ctrl+x exec makoctl dismiss -a
+	bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+    bindsym $mod+Ctrl+x exec makoctl dismiss -a
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
@@ -118,7 +119,7 @@ bindsym $mod+s mode "resize"
 
 # Custom Keybinds
     # Alt
-	# bindsym $mod+Alt+c exec google-chrome --app=https://play.geforcenow.com/
+	bindsym $mod+Ctrl+g exec google-chrome --app=https://play.geforcenow.com/
 	# bindsym $mod+Alt+f exec firefox-wayland
 	# bindsym $mod+Alt+e exec exec microsoft-edge-dev
 	# bindsym $mod+Alt+s exec subl
@@ -129,10 +130,11 @@ bindsym $mod+s mode "resize"
 	# bindsym $mod+Alt+v exec chromium-browser
     bindsym $mod+Ctrl+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym $mod+Ctrl+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+Ctrl+o exec Obsidian
+    bindsym $mod+Ctrl+o exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym $mod+Ctrl+d exec obsidian
     bindsym $mod+Ctrl+s exec subl
     bindsym $mod+Ctrl+p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
-
+    #bindsym $mod+Ctrl+l exec swayplock -i ~/Images/background.jpg, mode "default"
     
     # Ctrl
     bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"

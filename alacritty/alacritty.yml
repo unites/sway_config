@@ -13,6 +13,10 @@ key_bindings:
   - { key: C,        mods: Control|Shift, action: Copy                   }
   # - { key: C,        mods: Control|Shift, chars: "\x03"         }
   # - { key: X,        mods: Control, chars: "\x03"         }
+  - { key: PageUp,   mods: Shift,   action: ScrollPageUp   }
+  - { key: PageDown, mods: Shift,   action: ScrollPageDown }
+  - { key: End,      mods: Shift,   action: ScrollToBottom }
+  - { key: Home,     mods: Shift,   action: ScrollToTop    }
 
 
 # Font configuration (changes require restart)

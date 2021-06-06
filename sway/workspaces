@@ -40,7 +40,7 @@ set $lmon "HDMI-A-2"
     bindsym $mod+u workspace $ws7
     bindsym $mod+i workspace $ws8
     bindsym $mod+o workspace $ws9
-    bindsym $mod+p workspace $ws10
+    bindsym $mod+c workspace $ws10
     
     # move focused container to workspace
     bindsym $mod+Shift+q move container to workspace $ws1
@@ -60,17 +60,17 @@ set $lmon "HDMI-A-2"
     workspace $ws3 output $cmon
     workspace $ws4 output $cmon
     workspace $ws5 output $cmon
-    workspace $ws6 output $cmon
-    workspace $ws7 output $cmon
+    workspace $ws6 output $lmon
+    workspace $ws7 output $lmon
     workspace $ws8 output $lmon
     workspace $ws9 output $lmon 
-    workspace $ws10 output $lmon
+    workspace $ws10 output $cmon
 
 
 # Setup Floating Windows
 for_window [app_id="pavucontrol"] floating enable, resize set 900 600
 for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="gnome-system-monitor"] floating enable
+for_window [app_id="gnome-syst67em-monitor"] floating enable
 for_window [app_id="gnome-logs"] floating enable
 for_window [app_id="org.kde.ksystemlog"] floating enable, resize set 900 600
 
