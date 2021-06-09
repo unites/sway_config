@@ -4,8 +4,8 @@ output * bg ~/Images/background.jpg fill
 # Monitor placement
 # swaymsg -t get_outputs
 # Saber
-output HDMI-A-1 pos 1920   0
-output HDMI-A-2 pos 0  0
+output DVI-I-1 pos  0  0
+output HDMI-A-1 pos 1920  0
 # Other
 #output DP-1 pos 2560 0
 
@@ -15,7 +15,7 @@ output HDMI-A-2 pos 0  0
 # set $cmon "HDMI-A-1" 
 
 set $cmon "HDMI-A-1"
-set $lmon "HDMI-A-2" 
+set $lmon "DVI-I-1" 
 # Workspaces:
     # Switch to workspace
     # Workspace Variables
@@ -40,7 +40,7 @@ set $lmon "HDMI-A-2"
     bindsym $mod+u workspace $ws7
     bindsym $mod+i workspace $ws8
     bindsym $mod+o workspace $ws9
-    bindsym $mod+c workspace $ws10
+    bindsym $mod+p workspace $ws10
     
     # move focused container to workspace
     bindsym $mod+Shift+q move container to workspace $ws1
@@ -60,20 +60,23 @@ set $lmon "HDMI-A-2"
     workspace $ws3 output $cmon
     workspace $ws4 output $cmon
     workspace $ws5 output $cmon
-    workspace $ws6 output $lmon
+    workspace $ws6 output $cmon
     workspace $ws7 output $lmon
     workspace $ws8 output $lmon
     workspace $ws9 output $lmon 
-    workspace $ws10 output $cmon
+    workspace $ws10 output $lmon
 
 
 # Setup Floating Windows
 for_window [app_id="pavucontrol"] floating enable, resize set 900 600
 for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="gnome-syst67em-monitor"] floating enable
+for_window [app_id="gnome-system-monitor"] floating enable
+for_window [app_id="gnome-system-monitor"] floating enable, resize set 900 900
+for_window [app_id="ksystemlog"] floating enable
 for_window [app_id="gnome-logs"] floating enable
-for_window [app_id="org.kde.ksystemlog"] floating enable, resize set 900 600
-
+for_window [app_id="ksystemlog"] floating enable, resize set 900 600
+for_window [app_id="libreoffice-startcenter"] floating enable
+for_window [app_id="soffice"] floating enable
 
 # Bind App to workspace
 # Check class by : xprop

@@ -111,33 +111,34 @@ bindsym $mod+s mode "resize"
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
-	bindsym $mod+Shift+a exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+	bindsym $mod+Shift+d exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
 	bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
     # Capture Screen Selection to file
-	bindsym $mod+Shift+d exec grim -g "$(slurp)" -t png ~/Image/screenshots/ss_$(date +%m_%d_%y.%H:%M:%S).png
+	bindsym $mod+Shift+f exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png
 
 # Custom Keybinds
     # Alt
+    # bindsym $mod+Alt+f exec firefox-wayland
+    # bindsym $mod+Alt+e exec exec microsoft-edge-dev
+    # bindsym $mod+Alt+s exec subl
+    # bindsym $mod+Alt+d exec Discord
+    # bindsym $mod+Alt+x exec Citrix
+    # bindsym $mod+Alt+r exec remmina
+    # bindsym $mod+Alt+t exec gnome-terminal
+    # bindsym $mod+Alt+v exec chromium-browser
+    
+    # Ctrl
 	bindsym $mod+Ctrl+g exec google-chrome --app=https://play.geforcenow.com/
-	# bindsym $mod+Alt+f exec firefox-wayland
-	# bindsym $mod+Alt+e exec exec microsoft-edge-dev
-	# bindsym $mod+Alt+s exec subl
-	# bindsym $mod+Alt+d exec Discord
-	# bindsym $mod+Alt+x exec Citrix
-	# bindsym $mod+Alt+r exec remmina
-	# bindsym $mod+Alt+t exec gnome-terminal
-	# bindsym $mod+Alt+v exec chromium-browser
     bindsym $mod+Ctrl+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym $mod+Ctrl+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym $mod+Ctrl+o exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym $mod+Ctrl+d exec obsidian
     bindsym $mod+Ctrl+s exec subl
     bindsym $mod+Ctrl+p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
-    #bindsym $mod+Ctrl+l exec swayplock -i ~/Images/background.jpg, mode "default"
-    
-    # Ctrl
-    bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
+    bindsym $mod+Ctrl+l exec swaylock -i ~/Images/background.jpg, mode "default"
+    # bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
+
     #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
     # Press $mod+o followed by either f, t, Esc or Return to launch 
     # set $mode_launcher Launcher

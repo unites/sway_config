@@ -112,7 +112,9 @@ rsyslog \
 id3v2 \
 pciutils \
 google-noto-emoji-color-fonts \
-google-noto-emoji-fonts
+google-noto-emoji-fonts \
+gnome-system-monitor \
+ksystemlog
 
 # Python modules, General
 pip3 install requests
