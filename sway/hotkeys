@@ -17,7 +17,7 @@ set $menu exec wofi
     #bindsym $mod+Ctrl+q kill
     bindsym $mod+Escape kill
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+c exec $menu
     floating_modifier $mod normal
     # Reload the configuration file
     bindsym $mod+Ctrl+r reload
@@ -53,20 +53,20 @@ set $menu exec wofi
     # bindsym $mod+c workspace prev_on_output 
 
 # Layout stuff:
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Ctrl+q splith
+    bindsym $mod+Ctrl+w splitv
     # Switch the current container between different layout styles
     bindsym $mod+3 layout stacking
     bindsym $mod+2 layout tabbed
     bindsym $mod+1 layout toggle split
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+v fullscreen
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym $mod+z focus parent
     
 # Scratchpad:
     # Move the currently focused window to the scratchpad, use mode shift space to pull objects out of scratch pad
@@ -88,7 +88,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+s mode "resize"
+bindsym $mod+x mode "resize"
 
 # Multimedia keys bind to MPD
 	bindsym XF86AudioPlay  exec "mpc toggle"
@@ -104,18 +104,18 @@ bindsym $mod+s mode "resize"
     # XF86RFKILL
 
 # Mako Notifications
-	bindsym $mod+x exec makoctl dismiss
-	bindsym $mod+z exec makoctl invoke
+	bindsym $mod+b exec makoctl dismiss
+	bindsym $mod+n exec makoctl invoke
 	bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-    bindsym $mod+Ctrl+x exec makoctl dismiss -a
+    bindsym $mod+Ctrl+Shift+x exec makoctl dismiss -a
 
 # ScreenShots
 	# Capture the focused monitor to clipboard    
-	bindsym $mod+Shift+d exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+	bindsym $mod+Shift+c exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 	# Capture Screen Selection to clipboard
-	bindsym $mod+Shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+	bindsym $mod+Shift+x exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
     # Capture Screen Selection to file
-	bindsym $mod+Shift+f exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png
+	bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png
 
 # Custom Keybinds
     # Alt
@@ -142,14 +142,14 @@ bindsym $mod+s mode "resize"
     #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
     # Press $mod+o followed by either f, t, Esc or Return to launch 
     # set $mode_launcher Launcher
-    # bindsym $mod+z mode "$mode_launcher"
-    # mode "$mode_launcher" {
-    #     bindsym t exec teams
-    #     bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-    #     bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
-    #     bindsym Return mode "default"
-    #     bindsym Escape    mode "default"
-    # }
+    bindsym $mod+ mode "$mode_launcher"
+    mode "$mode_launcher" {
+        bindsym t exec teams
+        bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+        bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+        bindsym Return mode "default"
+        bindsym Escape    mode "default"
+    }
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 
