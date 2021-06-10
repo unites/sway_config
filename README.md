@@ -100,7 +100,19 @@ nm-connection-editor \
 brave-browser \
 microsoft-edge-dev \
 microsoft-edge-beta \
-syncthing
+syncthing \
+gnome-bluetooth \
+gnome-logs \
+python3-gobject \
+blueman \
+ksystemlog \
+ghostwriter \
+gimp \
+screen \
+screenruler \
+traceroute \
+jack-audio-connection-kit \
+qjackctl c
 
 # Desktop Heavy (optional)
 sudo dnf -y install docker-ce \
