@@ -6,16 +6,11 @@ output * bg ~/Images/background.jpg fill
 # Saber
 output DVI-I-1 pos  0  0
 output HDMI-A-1 pos 1920  0
+set $cmon "HDMI-A-1"
+set $lmon "DVI-I-1" 
 # Other
 #output DP-1 pos 2560 0
 
-# Monitor Config (if needed)
-# output HDMI-A-1 resolution 1920x1080 position 1920,0
-# set $lmon "HDMI-A-2" 
-# set $cmon "HDMI-A-1" 
-
-set $cmon "HDMI-A-1"
-set $lmon "DVI-I-1" 
 # Workspaces:
     # Switch to workspace
     # Workspace Variables

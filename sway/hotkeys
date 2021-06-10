@@ -1,170 +1,134 @@
-# Logo key. Use Mod1 for Alt.
-
 # Direction Keys
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Application launcher with fzf
-set $menu exec wofi
+set $term alacritty             # Your preferred terminal emulator
+set $menu exec wofi             # Application launcher
 
-### Key bindings
-    # Start a terminal
-    bindsym $mod+Return exec $term
-    # Kill focused window
-    #bindsym $mod+Ctrl+q kill
-    bindsym $mod+Escape kill
-    # Start your launcher
-    bindsym $mod+c exec $menu
-    floating_modifier $mod normal
-    # Reload the configuration file
-    bindsym $mod+Ctrl+r reload
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Return exec $term  # Start a terminal
+bindsym $mod+Escape kill        # Kill focused window
+bindsym $mod+c exec $menu       # Start your launcher
 
-# Moving around:
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+floating_modifier $mod normal
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+r reload      # Reload the configuration file
+bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    # Alt Tab
-    bindsym $mod+tab workspace back_and_forth
-    # bindsym $mod+v workspace next_on_output 
-    # bindsym $mod+c workspace prev_on_output 
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Alt Tab
+bindsym $mod+tab workspace back_and_forth
+bindsym Alt+tab workspace back_and_forth
+# bindsym $mod+v workspace next_on_output 
+# bindsym $mod+c workspace prev_on_output 
+
+bindsym $mod+z exec clipman pick -t wofi
+bindsym $mod+Shift+z exec clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
 
 # Layout stuff:
-    bindsym $mod+Ctrl+q splith
-    bindsym $mod+Ctrl+w splitv
-    # Switch the current container between different layout styles
-    bindsym $mod+3 layout stacking
-    bindsym $mod+2 layout tabbed
-    bindsym $mod+1 layout toggle split
-    # Make the current focus fullscreen
-    bindsym $mod+v fullscreen
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-    # Move focus to the parent container
-    bindsym $mod+z focus parent
+bindsym $mod+Ctrl+q splith
+bindsym $mod+Ctrl+w splitv
+# Switch the current container between different layout styles
+bindsym $mod+3 layout stacking
+bindsym $mod+2 layout tabbed
+bindsym $mod+1 layout toggle split
+
+bindsym $mod+v fullscreen                   # Make the current focus fullscreen
+bindsym $mod+Shift+space floating toggle    # Toggle the current focus between tiling and floating mode
+bindsym $mod+space focus mode_toggle        # Swap focus between the tiling area and the floating area
+bindsym $mod+Shift+s focus parent           # Move focus to the parent container
     
 # Scratchpad:
-    # Move the currently focused window to the scratchpad, use mode shift space to pull objects out of scratch pad
-    bindsym $mod+Ctrl+i move scratchpad
-    bindsym $mod+Ctrl+u scratchpad show
+# Move the currently focused window to the scratchpad
+bindsym $mod+i move scratchpad
+bindsym $mod+u scratchpad show
 
+# Mako Notifications
+bindsym $mod+b exec makoctl dismiss
+bindsym $mod+n exec makoctl invoke
+bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym $mod+Ctrl+Shift+x exec makoctl dismiss -a
+
+# ScreenShots
+bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png - | wl-copy -t image/png                                                # Capture Screen Selection to clipboard
+bindsym $mod+Shift+x exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png    # Capture Screen Selection to file
+
+# Multimedia keys bind to MPD
+bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioStop  exec "mpc stop"
+bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPause exec "mpc pause"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+# XF86RFKILL
+
+set $resize_mode "Resize"
+bindsym $mod+s mode $resize_mode 
 # Resizing containers:
-mode "resize" {
+mode $resize_mode  {
     bindsym $left resize shrink width 20px
     bindsym $down resize grow height 20px
     bindsym $up resize shrink height 20px
     bindsym $right resize grow width 20px
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 20px
     bindsym Down resize grow height 20px
     bindsym Up resize shrink height 20px
     bindsym Right resize grow width 20px
-    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+x mode "resize"
+ 
+set $mode_launcher Launcher
+bindsym $mod+o mode "$mode_launcher"
+mode "$mode_launcher" {
+    bindsym t exec teams
+    bindsym t exec teams
+    bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym g exec google-chrome --app=https://play.geforcenow.com/
+    bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym e exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym o exec obsidian
+    bindsym s exec obsidian
+    bindsym p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
+    bindsym l exec swaylock -i ~/Images/background.jpg, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape    mode "default"
+}
 
-# Multimedia keys bind to MPD
-	bindsym XF86AudioPlay  exec "mpc toggle"
-	bindsym XF86AudioStop  exec "mpc stop"
-	bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-	bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-	bindsym XF86AudioPause exec "mpc pause"
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86MonBrightnessUp exec light -A 5
-    bindsym XF86MonBrightnessDown exec light -U 5
-    # XF86RFKILL
-
-# Mako Notifications
-	bindsym $mod+b exec makoctl dismiss
-	bindsym $mod+n exec makoctl invoke
-	bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-    bindsym $mod+Ctrl+Shift+x exec makoctl dismiss -a
-
-# ScreenShots
-	# Capture the focused monitor to clipboard    
-	bindsym $mod+Shift+c exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
-	# Capture Screen Selection to clipboard
-	bindsym $mod+Shift+x exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
-    # Capture Screen Selection to file
-	bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png
-
-# Custom Keybinds
-    # Alt
-    # bindsym $mod+Alt+f exec firefox-wayland
-    # bindsym $mod+Alt+e exec exec microsoft-edge-dev
-    # bindsym $mod+Alt+s exec subl
-    # bindsym $mod+Alt+d exec Discord
-    # bindsym $mod+Alt+x exec Citrix
-    # bindsym $mod+Alt+r exec remmina
-    # bindsym $mod+Alt+t exec gnome-terminal
-    # bindsym $mod+Alt+v exec chromium-browser
-    
-    # Ctrl
-	bindsym $mod+Ctrl+g exec google-chrome --app=https://play.geforcenow.com/
-    bindsym $mod+Ctrl+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+Ctrl+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+Ctrl+o exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+Ctrl+d exec obsidian
-    bindsym $mod+Ctrl+s exec subl
-    bindsym $mod+Ctrl+p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym $mod+Ctrl+l exec swaylock -i ~/Images/background.jpg, mode "default"
-    # bindsym $mod+Ctrl+l exec "swaylock -i ~/Images/background.jpg"
-
-    #bindsym $mod+t exec "firefox-wayland -ssb http://10.1.1.10:32400/web/index.html"
-    # Press $mod+o followed by either f, t, Esc or Return to launch 
-    # set $mode_launcher Launcher
-    bindsym $mod+ mode "$mode_launcher"
-    mode "$mode_launcher" {
-        bindsym t exec teams
-        bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-        bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
-        bindsym Return mode "default"
-        bindsym Escape    mode "default"
-    }
-
-# Shutdown, Reboot, Lock Screen, and Logout 
-
-# set $power_mode "power"
-# bindsym $mod+Ctrl+p mode $power_mode
-# mode $power_mode {
-#     bindsym p         exec systemctl poweroff
-#     bindsym r         exec systemctl reboot 
-#     bindsym l         exec swayplock -i ~/Images/background.jpg, mode "default"
-#     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-#     bindsym h         exec systemctl hibernate 
-#     bindsym s           exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-#     #bindsym s         exec pm-suspend
-
-#     bindsym Return    mode "default"
-#     bindsym Escape    mode "default"
-# }
+set $power_mode "Power"
+bindsym $mod+Ctrl+p mode $power_mod
+mode $power_mode {
+    bindsym p         exec systemctl poweroff
+    bindsym r         exec systemctl reboot 
+    bindsym l         exec swaylock -i ~/Images/background.jpg, mode "default"
+    bindsym q         exec --no-startup-id i3-msg exit, mode "default"
+    bindsym h         exec systemctl hibernate 
+    bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+    #bindsym s        exec pm-suspend
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
 

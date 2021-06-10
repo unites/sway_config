@@ -114,7 +114,8 @@ pciutils \
 google-noto-emoji-color-fonts \
 google-noto-emoji-fonts \
 gnome-system-monitor \
-ksystemlog
+ksystemlog \
+clipman
 
 # Python modules, General
 pip3 install requests
