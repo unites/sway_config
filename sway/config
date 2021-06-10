@@ -14,14 +14,14 @@ font Hack Nerd Font 12
 seat seat0 hide_cursor 5000
 
 # i3-gaps in sway
-    # for_window [class="^.*"] border pixel 0
-    gaps inner 4
-    gaps outer 4
-    smart_gaps on
-    default_border pixel 1
-    #smart_borders on
-    #set $borderwidth 1
-    hide_edge_borders both
+# for_window [class="^.*"] border pixel 0
+gaps inner 4
+gaps outer 4
+smart_gaps on
+default_border pixel 1
+#smart_borders on
+#set $borderwidth 1
+hide_edge_borders both
 
 # Bar
 bar {

@@ -12,66 +12,65 @@ set $lmon "DVI-I-1"
 #output DP-1 pos 2560 0
 
 # Workspaces:
-    # Switch to workspace
-    # Workspace Variables
-    set $ws1 1
-    set $ws2 2
-    set $ws3 3
-    set $ws4 4
-    set $ws5 5
-    set $ws6 6
-    set $ws7 7
-    set $ws8 8
-    set $ws9 9
-    set $ws10 10
+# Switch to workspace
+# Workspace Variables
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
-    # switch to workspace
-    bindsym $mod+q workspace $ws1
-    bindsym $mod+w workspace $ws2
-    bindsym $mod+e workspace $ws3
-    bindsym $mod+r workspace $ws4
-    bindsym $mod+t workspace $ws5
-    bindsym $mod+a workspace $ws6
-    bindsym $mod+s workspace $ws7
-    bindsym $mod+d workspace $ws8
-    bindsym $mod+f workspace $ws9
-    bindsym $mod+g workspace $ws10
+# switch to workspace
+bindsym $mod+q workspace $ws1
+bindsym $mod+w workspace $ws2
+bindsym $mod+e workspace $ws3
+bindsym $mod+r workspace $ws4
+bindsym $mod+t workspace $ws5
+bindsym $mod+a workspace $ws6
+bindsym $mod+s workspace $ws7
+bindsym $mod+d workspace $ws8
+bindsym $mod+f workspace $ws9
+bindsym $mod+g workspace $ws10
 
-    # bindsym $mod+q workspace $ws1
-    # bindsym $mod+w workspace $ws2
-    # bindsym $mod+e workspace $ws3
-    # bindsym $mod+r workspace $ws4
-    # bindsym $mod+t workspace $ws5
-    # bindsym $mod+y workspace $ws6
-    # bindsym $mod+u workspace $ws7
-    # bindsym $mod+i workspace $ws8
-    # bindsym $mod+o workspace $ws9
-    # bindsym $mod+p workspace $ws10
-    
-    # move focused container to workspace
-    bindsym $mod+Shift+q move container to workspace $ws1
-    bindsym $mod+Shift+w move container to workspace $ws2
-    bindsym $mod+Shift+e move container to workspace $ws3
-    bindsym $mod+Shift+r move container to workspace $ws4
-    bindsym $mod+Shift+t move container to workspace $ws5
-    bindsym $mod+Shift+a move container to workspace $ws6
-    bindsym $mod+Shift+s move container to workspace $ws7
-    bindsym $mod+Shift+d move container to workspace $ws8
-    bindsym $mod+Shift+f move container to workspace $ws9
-    bindsym $mod+Shift+g move container to workspace $ws10 
+# bindsym $mod+q workspace $ws1
+# bindsym $mod+w workspace $ws2
+# bindsym $mod+e workspace $ws3
+# bindsym $mod+r workspace $ws4
+# bindsym $mod+t workspace $ws5
+# bindsym $mod+y workspace $ws6
+# bindsym $mod+u workspace $ws7
+# bindsym $mod+i workspace $ws8
+# bindsym $mod+o workspace $ws9
+# bindsym $mod+p workspace $ws10
 
-    # monitors
-    workspace $ws1 output $cmon
-    workspace $ws2 output $cmon
-    workspace $ws3 output $cmon
-    workspace $ws4 output $cmon
-    workspace $ws5 output $lmon
-    workspace $ws6 output $cmon
-    workspace $ws7 output $cmon
-    workspace $ws8 output $cmon
-    workspace $ws9 output $cmon 
-    workspace $ws10 output $lmon
+# move focused container to workspace
+bindsym $mod+Shift+q move container to workspace $ws1
+bindsym $mod+Shift+w move container to workspace $ws2
+bindsym $mod+Shift+e move container to workspace $ws3
+bindsym $mod+Shift+r move container to workspace $ws4
+bindsym $mod+Shift+t move container to workspace $ws5
+bindsym $mod+Shift+a move container to workspace $ws6
+bindsym $mod+Shift+s move container to workspace $ws7
+bindsym $mod+Shift+d move container to workspace $ws8
+bindsym $mod+Shift+f move container to workspace $ws9
+bindsym $mod+Shift+g move container to workspace $ws10 
 
+# monitors
+workspace $ws1 output $cmon
+workspace $ws2 output $cmon
+workspace $ws3 output $cmon
+workspace $ws4 output $cmon
+workspace $ws5 output $lmon
+workspace $ws6 output $cmon
+workspace $ws7 output $cmon
+workspace $ws8 output $cmon
+workspace $ws9 output $cmon 
+workspace $ws10 output $lmon
 
 # Setup Floating Windows
 for_window [app_id="pavucontrol"] floating enable, resize set 900 600
