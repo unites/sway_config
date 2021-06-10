@@ -5,11 +5,9 @@ set $up k
 set $right l
 set $term alacritty             # Your preferred terminal emulator
 set $menu exec wofi             # Application launcher
-
 bindsym $mod+Return exec $term  # Start a terminal
 bindsym $mod+Escape kill        # Kill focused window
 bindsym $mod+c exec $menu       # Start your launcher
-
 floating_modifier $mod normal
 
 bindsym $mod+Ctrl+r reload      # Reload the configuration file
@@ -20,42 +18,33 @@ bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 # Move the focused window with the same, but add Shift
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-# Ditto, with arrow keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # Alt Tab
 bindsym $mod+tab workspace back_and_forth
 bindsym Alt+tab workspace back_and_forth
-# bindsym $mod+v workspace next_on_output 
-# bindsym $mod+c workspace prev_on_output 
+bindsym $mod+Right workspace next_on_output 
+bindsym $mod+Left workspace prev_on_output 
 
 bindsym $mod+z exec clipman pick -t wofi
 bindsym $mod+Shift+z exec clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
 
 # Layout stuff:
-bindsym $mod+Ctrl+q splith
-bindsym $mod+Ctrl+w splitv
+bindsym $mod+Ctrl+s splith
+bindsym $mod+Ctrl+a splitv
 # Switch the current container between different layout styles
-bindsym $mod+3 layout stacking
-bindsym $mod+2 layout tabbed
-bindsym $mod+1 layout toggle split
+bindsym $mod+Ctrl+g layout stacking
+bindsym $mod+Ctrl+f layout tabbed
+bindsym $mod+Ctrl+d layout toggle split
 
 bindsym $mod+v fullscreen                   # Make the current focus fullscreen
 bindsym $mod+Shift+space floating toggle    # Toggle the current focus between tiling and floating mode
 bindsym $mod+space focus mode_toggle        # Swap focus between the tiling area and the floating area
-bindsym $mod+Shift+s focus parent           # Move focus to the parent container
+bindsym $mod+Ctrl+c focus parent            # Move focus to the parent container
     
 # Scratchpad:
 # Move the currently focused window to the scratchpad
@@ -72,37 +61,13 @@ bindsym $mod+Ctrl+Shift+x exec makoctl dismiss -a
 bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png - | wl-copy -t image/png                                                # Capture Screen Selection to clipboard
 bindsym $mod+Shift+x exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png    # Capture Screen Selection to file
 
-# Multimedia keys bind to MPD
-bindsym XF86AudioPlay  exec "mpc toggle"
-bindsym XF86AudioStop  exec "mpc stop"
-bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-bindsym XF86AudioPause exec "mpc pause"
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
-# XF86RFKILL
-
-set $resize_mode "Resize"
-bindsym $mod+s mode $resize_mode 
-# Resizing containers:
-mode $resize_mode  {
-    bindsym $left resize shrink width 20px
-    bindsym $down resize grow height 20px
-    bindsym $up resize shrink height 20px
-    bindsym $right resize grow width 20px
-    bindsym Left resize shrink width 20px
-    bindsym Down resize grow height 20px
-    bindsym Up resize shrink height 20px
-    bindsym Right resize grow width 20px
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+Shift+Left resize shrink width 20px
+bindsym $mod+Shift+Down resize grow height 20px
+bindsym $mod+Shift+Up resize shrink height 20px
+bindsym $mod+Shift+Right resize grow width 20px
  
-set $mode_launcher Launcher
-bindsym $mod+o mode "$mode_launcher"
+set $mode_launcher "Launcher"
+bindsym $mod+o mode $mode_launcher
 mode "$mode_launcher" {
     bindsym t exec teams
     bindsym t exec teams
@@ -131,4 +96,17 @@ mode $power_mode {
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
+
+# Multimedia keys bind to MPD
+bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioStop  exec "mpc stop"
+bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPause exec "mpc pause"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+# XF86RFKILL
 
