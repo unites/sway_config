@@ -10,7 +10,7 @@ bindsym $mod+Escape kill        # Kill focused window
 bindsym $mod+c exec $menu       # Start your launcher
 floating_modifier $mod normal
 
-bindsym $mod+Ctrl+r reload      # Reload the configuration file
+bindsym $mod+Ctrl+r exec sway reload      # Reload the configuration file
 bindsym $mod+Ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Move your focus around
@@ -31,7 +31,7 @@ bindsym $mod+Right workspace next_on_output
 bindsym $mod+Left workspace prev_on_output 
 
 bindsym $mod+z exec clipman pick -t wofi
-bindsym $mod+Shift+z exec clipman pick --print0 --tool=CUSTOM --tool-args="fzf --prompt 'pick > ' --bind 'tab:up' --cycle --read0"
+bindsym $mod+Ctrl+z exec clipman pick --tool wofi -T'--prompt=Clipboard_Contents -i'
 
 # Layout stuff:
 bindsym $mod+Ctrl+s splith
@@ -41,7 +41,7 @@ bindsym $mod+Ctrl+g layout stacking
 bindsym $mod+Ctrl+f layout tabbed
 bindsym $mod+Ctrl+d layout toggle split
 
-bindsym $mod+v fullscreen                   # Make the current focus fullscreen
+bindsym $mod+v exec sway fullscreen         # Make the current focus fullscreen
 bindsym $mod+Shift+space floating toggle    # Toggle the current focus between tiling and floating mode
 bindsym $mod+space focus mode_toggle        # Swap focus between the tiling area and the floating area
 bindsym $mod+Ctrl+c focus parent            # Move focus to the parent container
@@ -52,10 +52,10 @@ bindsym $mod+i move scratchpad
 bindsym $mod+u scratchpad show
 
 # Mako Notifications
-bindsym $mod+b exec makoctl dismiss
+bindsym $mod+x exec makoctl dismiss
 bindsym $mod+n exec makoctl invoke
 bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-bindsym $mod+Ctrl+Shift+x exec makoctl dismiss -a
+bindsym $mod+Ctrl+x exec makoctl dismiss -a
 
 # ScreenShots
 bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png - | wl-copy -t image/png                                                # Capture Screen Selection to clipboard
@@ -69,7 +69,8 @@ bindsym $mod+Shift+Right resize grow width 20px
 set $mode_launcher "Launcher"
 bindsym $mod+o mode $mode_launcher
 mode "$mode_launcher" {
-    bindsym t exec teams
+    bindsym Right workspace next_on_output 
+    bindsym Left  workspace prev_on_output 
     bindsym t exec teams
     bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym g exec google-chrome --app=https://play.geforcenow.com/
@@ -84,7 +85,7 @@ mode "$mode_launcher" {
 }
 
 set $power_mode "Power"
-bindsym $mod+Ctrl+p mode $power_mod
+bindsym $mod+p mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot 
@@ -94,7 +95,7 @@ mode $power_mode {
     bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
     #bindsym s        exec pm-suspend
     bindsym Return    mode "default"
-    bindsym Escape    mode "default"
+    bindsym Escape    mode "default"s4
 }
 
 # Multimedia keys bind to MPD
