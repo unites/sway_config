@@ -115,7 +115,9 @@ google-noto-emoji-color-fonts \
 google-noto-emoji-fonts \
 gnome-system-monitor \
 ksystemlog \
-clipman
+clipman \
+vinagre \
+remotely
 
 # Python modules, General
 pip3 install requests

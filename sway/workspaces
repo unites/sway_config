@@ -73,6 +73,7 @@ workspace $ws9 output $cmon
 workspace $ws10 output $lmon
 
 # Setup Floating Windows
+for_window [class="Steam"] floating enable
 for_window [app_id="pavucontrol"] floating enable, resize set 900 600
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable
