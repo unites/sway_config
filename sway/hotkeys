@@ -55,34 +55,28 @@ bindsym $mod+u scratchpad show
 bindsym $mod+x exec makoctl dismiss
 bindsym $mod+n exec makoctl invoke
 bindsym $mod+m exec "notify-send 'MPD Current' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-bindsym $mod+Ctrl+x exec makoctl dismiss -a
+bindsym $mod+Shift+x exec makoctl dismiss -a
 
 # ScreenShots
-bindsym $mod+Shift+z exec grim -g "$(slurp)" -t png - | wl-copy -t image/png                                                # Capture Screen Selection to clipboard
-bindsym $mod+Shift+x exec grim -g "$(slurp)" -t png /home/$(whoami)/Images/screenshots/ss_$(date +%m.%d.%y_%H.%M.%S).png    # Capture Screen Selection to file
+bindsym $mod+Shift+c exec grim -g "$(slurp)" -t png - | wl-copy -t image/png                                         # Capture Screen Selection to clipboard
+bindsym $mod+Shift+v exec grim -g "$(slurp)" -t png /home/$(whoami)/Screen/ss_$(date +%m.%d.%y_%H.%M.%S).png    # Capture Screen Selection to file
 
 bindsym $mod+Shift+Left resize shrink width 20px
 bindsym $mod+Shift+Down resize grow height 20px
 bindsym $mod+Shift+Up resize shrink height 20px
 bindsym $mod+Shift+Right resize grow width 20px
  
-set $mode_launcher "Launcher"
-bindsym $mod+o mode $mode_launcher
-mode "$mode_launcher" {
-    bindsym Right workspace next_on_output 
-    bindsym Left  workspace prev_on_output 
-    bindsym t exec teams
-    bindsym c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym g exec google-chrome --app=https://play.geforcenow.com/
-    bindsym b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym e exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym o exec obsidian
-    bindsym s exec obsidian
-    bindsym p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
-    bindsym l exec swaylock -i ~/Images/background.jpg, mode "default"
-    bindsym Return mode "default"
-    bindsym Escape    mode "default"
-}
+bindsym $mod+Alt+t exec teams
+bindsym $mod+Alt+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+g exec google-chrome --app=https://play.geforcenow.com/
+bindsym $mod+Alt+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+e exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+o exec obsidian
+bindsym $mod+Alt+s exec subl
+bindsym $mod+Alt+d exec Discord
+bindsym $mod+Alt+v exec vinagre
+bindsym $mod+Alt+p exec google-chrome-stable --app=http://10.1.1.10:32400/web/index.html --enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+l exec swaylock -i ~/Images/background.jpg, mode "default"
 
 set $power_mode "Power"
 bindsym $mod+p mode $power_mode

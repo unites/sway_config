@@ -28,7 +28,8 @@ fi
 alias vi=vim
 set -o vi alias dnf="sudo dnf"
 alias firewalld="sudo firewalld"
-alias weather="curl 'https://wttr.in/?format=v2'" 
+alias weatherd="curl 'https://wttr.in/?format=v2'" 
+alias weather="curl 'https://wttr.in'" 
 
 # To Get Alacritty working.
 TERM=xterm-256color 
@@ -50,5 +51,5 @@ alias ytdl='youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-q
 export PATH=$PATH:~/.config/bin
 
 if [[ "$(tty)" == '/dev/tty1' ]]; then
-exec sway
+exec sway 
 fi
