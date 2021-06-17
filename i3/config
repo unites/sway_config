@@ -1,0 +1,199 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# The same as default_border none
+default_border pixel 1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+font pango:TerminessTTF Nerd Font 14 
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Screen Lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+set $mod Mod4
+set $alt Mod1
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# Direction Keys
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty           
+set $menu "rofi -combi-modi window,drun -show combi"
+# To find monitor names
+# xrandr --current
+set $cmon "HDMI-1"
+set $lmon "DVI-I-1" 
+
+bindsym $mod+Return exec $term 
+bindsym $mod+Escape kill
+bindsym $mod+c exec $menu
+# bindsym $mod+c exec --no-startup-id rofi -show run -font 'DejaVu 9' -run-shell-command '{terminal} -e " {cmd}; read -n 1 -s" '
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Resize Windows using Arrows
+bindsym $mod+Shift+Left resize shrink width 20px
+bindsym $mod+Shift+Down resize grow height 20px
+bindsym $mod+Shift+Up resize shrink height 20px
+bindsym $mod+Shift+Right resize grow width 20px
+
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# split in vertical orientation
+bindsym $mod+v split v
+bindsym $mod+b split h
+# enter fullscreen mode for the focused container
+bindsym $mod+Ctrl+f fullscreen toggle
+# kill focused window
+bindsym $mod+Ctrl+q kill
+# reload the configuration file
+bindsym $mod+Ctrl+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Ctrl+e restart
+
+bindsym $mod+$alt+t exec teams
+bindsym $mod+$alt+m exec chromium-browser
+bindsym $mod+$alt+c exec google-chrome 
+bindsym $mod+$alt+g exec google-chrome --app=https://play.geforcenow.com/
+bindsym $mod+$alt+b exec brave-browser 
+bindsym $mod+$alt+e exec microsoft-edge --app=https://outlook.office.com/ 
+bindsym $mod+$alt+o exec obsidian
+bindsym $mod+$alt+s exec subl
+bindsym $mod+$alt+d exec Discord
+bindsym $mod+$alt+v exec vinagre
+bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: ﭮ"
+set $ws9 "9: "
+set $ws10 "10: ﮸"
+
+# # switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# # switch to workspace
+bindsym $mod+q workspace number $ws1
+bindsym $mod+w workspace number $ws2
+bindsym $mod+e workspace number $ws3
+bindsym $mod+r workspace number $ws4
+bindsym $mod+t workspace number $ws5
+bindsym $mod+a workspace number $ws6
+bindsym $mod+s workspace number $ws7
+bindsym $mod+d workspace number $ws8
+bindsym $mod+f workspace number $ws9
+bindsym $mod+g workspace number $ws10
+# move focused container to workspace
+bindsym $mod+Shift+q move container to workspace number $ws1
+bindsym $mod+Shift+w move container to workspace number $ws2
+bindsym $mod+Shift+e move container to workspace number $ws3
+bindsym $mod+Shift+r move container to workspace number $ws4
+bindsym $mod+Shift+t move container to workspace number $ws5
+bindsym $mod+Shift+a move container to workspace number $ws6
+bindsym $mod+Shift+s move container to workspace number $ws7
+bindsym $mod+Shift+d move container to workspace number $ws8
+bindsym $mod+Shift+f move container to workspace number $ws9
+bindsym $mod+Shift+g move container to workspace number $ws10 
+
+
+# monitors
+workspace $ws1 output $cmon
+workspace $ws2 output $cmon
+workspace $ws3 output $cmon
+workspace $ws4 output $cmon
+workspace $ws5 output $lmon
+workspace $ws6 output $cmon
+workspace $ws7 output $cmon
+workspace $ws8 output $cmon
+workspace $ws9 output $cmon 
+workspace $ws10 output $lmon
+
+
+bar {
+        i3bar_command i3bar
+        status_command i3status
+        position top
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#       tray_output primary
+#       tray_output eDP1
+
+        bindsym button4 nop
+        bindsym button5 nop
+#   font xft:URWGothic-Book 11
+        strip_workspace_numbers yes
+
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 #16a085 #292F34
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+  client.background       #2B2C2B
