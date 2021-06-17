@@ -67,8 +67,8 @@ bindsym $mod+Shift+Up resize shrink height 20px
 bindsym $mod+Shift+Right resize grow width 20px
  
 bindsym $mod+Alt+t exec teams
-bindsym $mod+Alt+c exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
-bindsym $mod+Alt+g exec google-chrome --app=https://play.geforcenow.com/
+bindsym $mod+Alt+c exec google-chrome --enable-features=UseOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+g exec google-chrome --enable-features=UseOzonePlatform --ozone-platform=wayland --app=https://play.geforcenow.com/
 bindsym $mod+Alt+b exec brave-browser --enable-features=UseOzonePlatform --ozone-platform=wayland
 bindsym $mod+Alt+e exec microsoft-edge --app=https://outlook.office.com/ --enable-features=UseOzonePlatform --ozone-platform=wayland
 bindsym $mod+Alt+o exec obsidian
