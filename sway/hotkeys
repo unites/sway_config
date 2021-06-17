@@ -86,8 +86,8 @@ mode $power_mode {
     bindsym l         exec swaylock -i ~/Images/background.jpg, mode "default"
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
     bindsym h         exec systemctl hibernate 
-    bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-    #bindsym s        exec pm-suspend
+    #bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+    bindsym s        exec systemctl suspend
     bindsym Return    mode "default"
     bindsym Escape    mode "default"s4
 }
