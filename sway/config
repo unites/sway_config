@@ -55,4 +55,13 @@ exec sleep
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_options caps:ctrl_modifier
+}
+
 include /usr/local/etc/sway/config.d/*
