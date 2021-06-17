@@ -201,3 +201,23 @@ firmware
 sudo dnf install iwl3160-firmware -y
 ```
 
+## I3
+
+```sh
+sudo dnf install xorg-x11-xinit \
+i3 \
+i3status \
+dmenu \
+i3lock \
+conky
+
+
+
+# for laptop
+# xbacklight 
+```
+
+
+yum install akmod-nvidia xorg-x11-drv-nvidia-libs kernel-devel acpid
+
+https://www.if-not-true-then-false.com/2013/fedora-19-nvidia-guide/

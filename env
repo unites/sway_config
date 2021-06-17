@@ -51,5 +51,5 @@ alias ytdl='youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-q
 export PATH=$PATH:~/.config/bin
 
 if [[ "$(tty)" == '/dev/tty1' ]]; then
-exec sway 
+#exec sway 
 fi
