@@ -9,6 +9,8 @@
 !mpd/mpd.conf
 !bin/
 !i3/
+!nitrogen/
+!polybar/
 
 ksystemlogrc
 mimeapps.list

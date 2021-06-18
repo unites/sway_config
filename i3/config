@@ -21,9 +21,12 @@ font pango:TerminessTTF Nerd Font 14
 
 # Screen Lock
 exec xset +dpms
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-# exec --no-startup-id $HOME/.config/bin/lock.sh
+exec xset s on
+exec xset s 600
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 330000 --nofork
 exec mpd
+exec --no-startup-id compton
+exec --no-startup-id nitrogen --restore
 
 set $mod Mod4
 set $alt Mod1
@@ -36,13 +39,9 @@ set $up k
 set $right l
 set $term alacritty           
 set $menu "rofi -combi-modi window,drun -show combi"
-# To find monitor names
-# xrandr --current
-set $cmon "HDMI-1"
-set $lmon "DVI-I-1" 
+
 
 bindsym $mod+Return exec $term 
-bindsym $mod+Escape kill
 bindsym $mod+c exec $menu
 # bindsym $mod+c exec --no-startup-id rofi -show run -font 'DejaVu 9' -run-shell-command '{terminal} -e " {cmd}; read -n 1 -s" '
 
@@ -66,6 +65,11 @@ bindsym $mod+Shift+Right resize grow width 20px
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+# focus the parent container
+bindsym Mod1+z focus parent
+# focus the child container
+bindsym Mod1+x focus child
+
 # split in vertical orientation
 bindsym $mod+v split v
 bindsym $mod+b split h
@@ -78,7 +82,7 @@ bindsym $mod+Ctrl+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Ctrl+e restart
 # bindsym $mod+Control+l exec i3lock -t -i $(echo $HOME)/Images/hex.png
-bindsym $mod+Control+l exec $HOME/.config/bin/lock2.sh
+bindsym $mod+Control+l exec i3lock -c 330000 
 
 bindsym $mod+$alt+t exec teams
 bindsym $mod+$alt+m exec chromium-browser
@@ -91,6 +95,8 @@ bindsym $mod+$alt+s exec subl
 bindsym $mod+$alt+d exec Discord
 bindsym $mod+$alt+v exec vinagre
 bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
+
+
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -151,7 +157,10 @@ bindsym $mod+Shift+d move container to workspace number $ws8
 bindsym $mod+Shift+f move container to workspace number $ws9
 bindsym $mod+Shift+g move container to workspace number $ws10 
 
-
+# To find monitor names
+# xrandr --current
+set $cmon "HDMI-0"
+set $lmon "DVI-I-1" 
 # monitors
 workspace $ws1 output $cmon
 workspace $ws2 output $cmon
@@ -164,34 +173,34 @@ workspace $ws8 output $cmon
 workspace $ws9 output $cmon 
 workspace $ws10 output $lmon
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# bar {
+#         i3bar_command i3bar
+#         status_command i3status
+#         position top
 
-bar {
-        i3bar_command i3bar
-        status_command i3status
-        position top
+# ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+# #       tray_output primary
+# #       tray_output eDP1
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#       tray_output primary
-#       tray_output eDP1
+#         bindsym button4 nop
+#         bindsym button5 nop
+# #   font xft:URWGothic-Book 11
+#         strip_workspace_numbers yes
 
-        bindsym button4 nop
-        bindsym button5 nop
-#   font xft:URWGothic-Book 11
-        strip_workspace_numbers yes
+#     colors {
+#         background #222D31
+#         statusline #F9FAF9
+#         separator  #454947
 
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
+# #                      border  backgr. text
+#         focused_workspace  #F9FAF9 #16a085 #292F34
+#         active_workspace   #595B5B #353836 #FDF6E3
+#         inactive_workspace #595B5B #222D31 #EEE8D5
+#         binding_mode       #16a085 #2C2C2C #F9FAF9
+#         urgent_workspace   #16a085 #FDF6E3 #E5201D
+#     }
+# }
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
