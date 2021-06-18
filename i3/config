@@ -7,24 +7,14 @@ default_border pixel 1
 # is used in the bar {} block below.
 # font pango:monospace 8
 font pango:TerminessTTF Nerd Font 14 
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Screen Lock
 exec xset +dpms
 exec xset s on
 exec xset s 600
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 330000 --nofork
-exec mpd
+exec --no-startup-id xss-lock -l -- i3lock -c 330000
+exec --no-startup-id mpd
 exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
 
@@ -40,10 +30,8 @@ set $right l
 set $term alacritty           
 set $menu "rofi -combi-modi window,drun -show combi"
 
-
 bindsym $mod+Return exec $term 
 bindsym $mod+c exec $menu
-# bindsym $mod+c exec --no-startup-id rofi -show run -font 'DejaVu 9' -run-shell-command '{terminal} -e " {cmd}; read -n 1 -s" '
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -80,7 +68,8 @@ bindsym $mod+Ctrl+q kill
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Ctrl+e restart
+bindsym $mod+Ctrl+t restart
+bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Control+l exec i3lock -t -i $(echo $HOME)/Images/hex.png
 bindsym $mod+Control+l exec i3lock -c 330000 
 
@@ -95,8 +84,6 @@ bindsym $mod+$alt+s exec subl
 bindsym $mod+$alt+d exec Discord
 bindsym $mod+$alt+v exec vinagre
 bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
-
-
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -135,26 +122,26 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # # switch to workspace
-bindsym $mod+q workspace number $ws1
-bindsym $mod+w workspace number $ws2
-bindsym $mod+e workspace number $ws3
-bindsym $mod+r workspace number $ws4
-bindsym $mod+t workspace number $ws5
-bindsym $mod+a workspace number $ws6
-bindsym $mod+s workspace number $ws7
-bindsym $mod+d workspace number $ws8
-bindsym $mod+f workspace number $ws9
+bindsym $mod+a workspace number $ws1
+bindsym $mod+s workspace number $ws2
+bindsym $mod+d workspace number $ws3
+bindsym $mod+f workspace number $ws4
+bindsym $mod+q workspace number $ws5
+bindsym $mod+w workspace number $ws6
+bindsym $mod+e workspace number $ws7
+bindsym $mod+r workspace number $ws8
+bindsym $mod+t workspace number $ws9
 bindsym $mod+g workspace number $ws10
 # move focused container to workspace
-bindsym $mod+Shift+q move container to workspace number $ws1
-bindsym $mod+Shift+w move container to workspace number $ws2
-bindsym $mod+Shift+e move container to workspace number $ws3
-bindsym $mod+Shift+r move container to workspace number $ws4
-bindsym $mod+Shift+t move container to workspace number $ws5
-bindsym $mod+Shift+a move container to workspace number $ws6
-bindsym $mod+Shift+s move container to workspace number $ws7
-bindsym $mod+Shift+d move container to workspace number $ws8
-bindsym $mod+Shift+f move container to workspace number $ws9
+bindsym $mod+Shift+a move container to workspace number $ws1
+bindsym $mod+Shift+s move container to workspace number $ws2
+bindsym $mod+Shift+d move container to workspace number $ws3
+bindsym $mod+Shift+f move container to workspace number $ws4
+bindsym $mod+Shift+q move container to workspace number $ws5
+bindsym $mod+Shift+w move container to workspace number $ws6
+bindsym $mod+Shift+e move container to workspace number $ws7
+bindsym $mod+Shift+r move container to workspace number $ws8
+bindsym $mod+Shift+t move container to workspace number $ws9
 bindsym $mod+Shift+g move container to workspace number $ws10 
 
 # To find monitor names
@@ -166,12 +153,16 @@ workspace $ws1 output $cmon
 workspace $ws2 output $cmon
 workspace $ws3 output $cmon
 workspace $ws4 output $cmon
-workspace $ws5 output $lmon
+workspace $ws5 output $cmon
 workspace $ws6 output $cmon
 workspace $ws7 output $cmon
 workspace $ws8 output $cmon
-workspace $ws9 output $cmon 
+workspace $ws9 output $lmon 
 workspace $ws10 output $lmon
+
+# To find Class/window names:
+# xprop | grep -i 'class'
+for_window [class="Pavucontrol"] floating enable, resize set 900 900
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # bar {
