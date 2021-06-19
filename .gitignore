@@ -12,6 +12,7 @@
 !nitrogen/
 !polybar/
 !rofi/
+!dunst/
 
 ksystemlogrc
 mimeapps.list
