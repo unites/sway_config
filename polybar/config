@@ -56,9 +56,9 @@
 	font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
 	font-2 = siji:pixelsize=10;1
 
-	modules-left =  pulseaudio filesystem
-	modules-center =  i3
-	modules-right =    xkeyboard memory cpu temperature eth date 
+	modules-left =   i3
+	modules-center =  xwindow
+	modules-right =    pulseaudio xkeyboard memory cpu temperature eth date 
 
 	tray-position = right
 	tray-padding = 2
@@ -110,8 +110,6 @@ label-indicator-underline = ${colors.secondary}
 	format = <label-state> <label-mode>
 	index-sort = true
 	wrapping-scroll = false
-
-	;ws-icon-[0-9]+ = <label>;<icon>
 
 	ws-icon-0 = 1;♚
 	ws-icon-1 = 2;♛
@@ -272,6 +270,34 @@ label-indicator-underline = ${colors.secondary}
 	bar-volume-empty = ─
 	bar-volume-empty-font = 2
 	bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/sn]
+	type = custom/text
+	content = "  "
+	tail = true
+	format = <label>
+	content-background = ${colors.background}
+	click-left = mpc next
+
+[module/sp]
+	type = custom/text
+	content = "  "
+	content-background = ${colors.background}
+	click-left = mpc prev
+
+[module/spp]
+	type = custom/script
+	interval = 0
+	;exec = $HOME/.config/polybar/mc //script below
+	format = <label>
+	format-background = ${colors.background}
+	click-left = mpc next
+
+[module/sps]
+	type = custom/text
+	content = "  "
+	format = <label>
+	content-background = ${colors.background}
 
 [module/temperature]
 	type = internal/temperature

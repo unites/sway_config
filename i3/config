@@ -17,6 +17,7 @@ exec --no-startup-id xss-lock -l -- i3lock -c 330000
 exec --no-startup-id mpd
 exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id dunst
 
 set $mod Mod4
 set $alt Mod1
@@ -71,8 +72,12 @@ bindsym $mod+Ctrl+r reload
 bindsym $mod+Ctrl+t restart
 bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Control+l exec i3lock -t -i $(echo $HOME)/Images/hex.png
-bindsym $mod+Control+l exec i3lock -c 330000 
+bindsym $mod+Ctrl+l exec i3lock -c 330000 
 
+bindsym $mod+Ctrl+c exec maim -s -u | xclip -selection clipboard -t image/png -i
+bindsym $mod+Ctrl+v exec maim -s -u | tee ~/Screen/$(date +%s).png | xclip -selection clipboard -t image/png
+
+bindsym $mod+$alt+x exec xrdp
 bindsym $mod+$alt+t exec teams
 bindsym $mod+$alt+m exec chromium-browser
 bindsym $mod+$alt+c exec google-chrome 
@@ -84,6 +89,15 @@ bindsym $mod+$alt+s exec subl
 bindsym $mod+$alt+d exec Discord
 bindsym $mod+$alt+v exec vinagre
 bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
+
+# Multimedia keys bind to MPD
+bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioStop  exec "mpc stop"
+bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPause exec "mpc pause"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
