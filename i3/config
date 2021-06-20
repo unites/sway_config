@@ -55,9 +55,13 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # focus the parent container
-bindsym Mod1+z focus parent
+bindsym $mod+z focus parent
 # focus the child container
-bindsym Mod1+x focus child
+bindsym $mod+x focus child
+
+bindsym $mod+Ctrl+t layout stacking
+bindsym $mod+Ctrl+e layout tabbed
+bindsym $mod+Ctrl+w layout toggle split
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -69,10 +73,13 @@ bindsym $mod+Ctrl+q kill
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Ctrl+t restart
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+Shift+r restart
+bindsym $mod+Ctrl+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Control+l exec i3lock -t -i $(echo $HOME)/Images/hex.png
 bindsym $mod+Ctrl+l exec i3lock -c 330000 
+bindsym $mod+Ctrl+k exec xset dpms force standby
+bindsym $mod+Ctrl+a exec pavucontrol
+bindsym $mod+Ctrl+m exec gnome-system-monitor
 
 bindsym $mod+Ctrl+c exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+Ctrl+v exec maim -s -u | tee ~/Screen/$(date +%s).png | xclip -selection clipboard -t image/png
@@ -93,11 +100,18 @@ bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.ht
 # Multimedia keys bind to MPD
 bindsym XF86AudioPlay  exec "mpc toggle"
 bindsym XF86AudioStop  exec "mpc stop"
-bindsym XF86AudioNext  exec "mpc next; makoctl dismiss;notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
-bindsym XF86AudioPrev  exec "mpc prev; makoctl dismiss;notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioNext  exec "mpc next; notify-send 'MPD Next' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
+bindsym XF86AudioPrev  exec "mpc prev; notify-send 'MPD Prev' $(mpc current | sed 's/\.mp3//g') --icon=dialog-information -t 1 -u low"
 bindsym XF86AudioPause exec "mpc pause"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Pull sinks
+# pacmd list-sinks|egrep -i 'index:|name:'
+
+bindsym $mod+Ctrl+1 exec pactl set-default-sink alsa_output.pci-0000_09_00.3.analog-stereo
+bindsym $mod+Ctrl+2 exec pactl set-default-sink alsa_output.usb-Generic_USB_Audio-00.analog-stereo
+bindsym $mod+Ctrl+3 exec pactl set-default-sink alsa_output.usb-Kingston_HyperX_Cloud_Stinger_Core_Wireless___7.1_000000000000-00.analog-stereo
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -177,6 +191,10 @@ workspace $ws10 output $lmon
 # To find Class/window names:
 # xprop | grep -i 'class'
 for_window [class="Pavucontrol"] floating enable, resize set 900 900
+for_window [class="nm-connection-editor"] floating enable
+for_window [class="Gnome-system-monitor"] floating enable, resize set 900 900
+for_window [class="gnome-logs"] floating enable
+for_window [class="Ksystemlog"] floating enable, resize set 900 900
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # bar {
@@ -207,12 +225,20 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #     }
 # }
 
-# Theme colors
+# Theme colors for Manjero like look
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  # client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  # client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  # client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  # client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  # client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+  # client.background       #2B2C2B
+
+  client.focused          #556064 #556064 #FDF6E3 #FDF6E3
+  client.focused_inactive #222222 #222222 #FDF6E3 #454948
+  client.unfocused        #222222 #222222 #FDF6E3 #454948
+  client.urgent           #CB4B16 #FDF6E3 #FDF6E3 #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       #2B2C2B

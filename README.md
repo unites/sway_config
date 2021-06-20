@@ -211,6 +211,32 @@ dmenu \
 i3lock \
 conky
 
+sudo dnf install akmod-nvidia
+sudo dnf install xorg-x11-drv-nouveau
+sudo dnf install i3 i3status dmenu i3lock
+sudo dnf install i3 xorg suckless-tools
+sudo dnf install xorg-x11-drv-libinput
+sudo dnf install cdm
+sudo dnf install gnome-connections
+sudo dnf install xorg-x11-xinit
+sudo dnf install ckb-next
+sudo dnf install kbd
+sudo dnf install xrandr
+sudo dnf install nm-applet
+sudo dnf install rofi
+sudo dnf install xss-lock
+sudo dnf install ImageMagick
+sudo dnf install xautolock
+sudo dnf install xset
+sudo dnf install polybar
+sudo dnf install compton
+sudo dnf install nitrogen
+sudo dnf install flameshot
+sudo dnf install maim
+sudo dnf install xclip
+sudo dnf install dunst
+sudo dnf install qt-qdbusviewer.x86_64
+sudo dnf install gnome-icon-theme
 
 
 # for laptop
