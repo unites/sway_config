@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $(mpc status | grep playing) == 'playing' ]];
+if [[ $(mpc status | grep playing) =~ "playing" ]];
   then
     echo '  '
   else

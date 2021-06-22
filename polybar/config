@@ -58,8 +58,8 @@
 	;font-2 = siji:pixelsize=10;1
 
 	modules-left =   i3
-	modules-center =  xwindow
-	modules-right =    sp st sn pulseaudio xkeyboard memory cpu temperature eth date 
+	modules-center =  
+	modules-right =    songtitle pulseaudio sp spp sn wake memory cpu temperature eth date 
 
 	tray-position = right
 	tray-padding = 2
@@ -171,46 +171,74 @@ label-indicator-underline = ${colors.secondary}
 [module/cpu]
 	type = internal/cpu
 	interval = 2
-	format-prefix = " "
+	format-prefix = " "
 	format-prefix-foreground = ${colors.foreground-alt}
 	format-underline = #f90000
-	label = %percentage:2%%
+	;label = %percentage:2%%
+	label = CPU %percentage%%
+	;format = <label> <ramp-coreload>
+	format = <label>
+	ramp-coreload-spacing = 1
+	ramp-coreload-0 = ▁
+	ramp-coreload-1 = ▂
+	ramp-coreload-2 = ▃
+	ramp-coreload-3 = ▄
+	ramp-coreload-4 = ▅
+	ramp-coreload-5 = ▆
+	ramp-coreload-6 = ▇
+	ramp-coreload-7 = █
 
 [module/memory]
 	type = internal/memory
 	interval = 2
-	format-prefix = " "
+	label-active-font = 1
+	format-prefix = " "
 	format-prefix-foreground = ${colors.foreground-alt}
 	format-underline = #4bffdc
-	label = %percentage_used%%
+	;label = %percentage_used%%
+	label = RAM %percentage_used%%
+	format = <label> <ramp-used>
+	ramp-used-0 = ▁
+	ramp-used-1 = ▂
+	ramp-used-2 = ▃
+	ramp-used-3 = ▄
+	ramp-used-4 = ▅
+	ramp-used-5 = ▆
+	ramp-used-6 = ▇
+	ramp-used-7 = █
+
 
 [module/eth]
 	type = internal/network
 	interface = enp6s0
-	interval = 3.0
+	interval = 3.0 
+	label-active-font = 1
 
 	format-connected-underline = #55aa55
-	format-connected-prefix = " "
+	format-connected-prefix = ""
 	format-connected-prefix-foreground = ${colors.foreground-alt}
-	label-connected = %local_ip%
+	label-connected = %local_ip%%downspeed:9%
+	;label-connected =  %local_ip%
 
 	format-disconnected =
 	;format-disconnected = <label-disconnected>
 	;format-disconnected-underline = ${self.format-connected-underline}
-	;label-disconnected = %ifname% disconnected
+	label-disconnected =  %ifname% disconnected
 	;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 	type = internal/date
 	interval = 5
+	label-active-font = 1
 
 	date =
-	date-alt = %{F#0a81f5}%m-%d-%Y%{F-}
+	date-alt =  %m-%d-%Y
+	;date-alt =  %{F#0a81f5}%m-%d-%Y%{F-}
 
 	time = %H:%M
 	time-alt = %H:%M:%S
 
-	format-prefix = 
+	format-prefix = 
 	format-prefix-foreground = ${colors.foreground-alt}
 	format-underline = #0a6cf5
 
@@ -223,12 +251,20 @@ label-indicator-underline = ${colors.secondary}
 	click-right = pavucontrol
 	; click-middle = 
 
-	format-volume = <label-volume> <bar-volume>
-	label-volume = "   Vol %percentage%%"
+	label-active-font = 1
+
+	;format-volume = <ramp-volume> <label-volume> <bar-volume>
+	format-volume = <bar-volume> <ramp-volume> <label-volume>
+	label-volume = "%percentage%%"
 	label-volume-foreground = ${root.foreground}
 
-	label-muted = 🔇 muted
+	;format-muted =  <ramp-volume> <label-volume>
+	label-muted = ﱝ %percentage%%
 	label-muted-foreground = #666
+
+	ramp-volume-0 = 奄
+	ramp-volume-1 = 奔
+	ramp-volume-2 = 墳
 
 	bar-volume-width = 10
 	bar-volume-foreground-0 = #55aa55
@@ -284,34 +320,48 @@ label-indicator-underline = ${colors.secondary}
 	tail = true
 	format = <label>
 	content-background = ${colors.background}
-	click-left = mpc next
+	click-left = mpc next;dunstify "Next Song:" -h string:x-canonical-private-synchronous:music  "`mpc current | sed 's/\.mp3//g'`" -u low -i audio-headphones -t 3000
 
 [module/sp]
 	type = custom/text
 	content = " 玲 "
 	content-background = ${colors.background}
-	click-left = mpc prev
+	click-left = mpc next;dunstify "Previous Song:" -h string:x-canonical-private-synchronous:music "`mpc current | sed 's/\.mp3//g'`" -u low -i audio-headphones -t 3000
 
 [module/spp]
 	type = custom/script
 	interval = 0
-	;exec = $HOME/.config/polybar/mc //script below
+	exec = $HOME/.config/bin/music_pause.sh
 	format = <label>
 	format-background = ${colors.background}
 	click-left = mpc toggle
+	click-right = $HOME/.config/bin/song_info.sh
 
-[module/st]
-	type = custom/text
-	content = " 懶 "
+[module/songtitle]
+	type = custom/script
+	interval = 0
+	exec = $HOME/.config/bin/title_song.sh
+	format = <label>
+	format-background = ${colors.background}
+
+[module/wake]
+	type = custom/script
+	interval = 0
+	format-underline = #f5a70a
+	;format-foreground = #f5a70a
+	exec = $HOME/.config/bin/eye.sh
 	format = <label>
 	content-background = ${colors.background}
-	click-left = mpc toggle
+	click-left = xset dpms 600 1200 1800; xset +dpms
+	click-right = xset dpms 20864 20864 20864; xset -dpms
+
 
 [module/temperature]
 	type = internal/temperature
 	hwmon-path = /sys/class/hwmon/hwmon1/temp2_input
 	thermal-zone = 0
 	warn-temperature = 60
+	label-active-font = 1
 
 	format = <ramp> <label>
 	format-underline = #f50a4d
@@ -322,21 +372,21 @@ label-indicator-underline = ${colors.secondary}
 	label-warn = %temperature-c%
 	label-warn-foreground = ${colors.secondary}
 
-	ramp-0 = 
-	ramp-1 = 
-	ramp-2 = 
+	ramp-0 = 
+	ramp-1 = 
+	ramp-2 = 
 	ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 	type = custom/menu
-
 	expand-right = true
-
 	format-spacing = 1
 
-	label-open = Power
+	label-active-font = 1
+
+	label-open = ⏻
 	label-open-foreground = ${colors.secondary}
-	label-close =  cancel
+	label-close =  
 	label-close-foreground = ${colors.secondary}
 	label-separator = |
 	label-separator-foreground = ${colors.foreground-alt}
@@ -346,14 +396,14 @@ label-indicator-underline = ${colors.secondary}
 	menu-0-1 = power off
 	menu-0-1-exec = menu-open-2
 
-	menu-1-0 = cancel
+	menu-1-0 = 
 	menu-1-0-exec = menu-open-0
 	menu-1-1 = reboot
 	menu-1-1-exec = sudo reboot
 
 	menu-2-0 = power off
 	menu-2-0-exec = sudo poweroff
-	menu-2-1 = cancel
+	menu-2-1 = 
 	menu-2-1-exec = menu-open-0
 
 [settings]
