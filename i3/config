@@ -193,6 +193,7 @@ workspace $ws10 output $lmon
 # xprop | grep -i 'class'
 for_window [class="Pavucontrol"] floating enable, resize set 900 900
 for_window [class="nm-connection-editor"] floating enable
+for_window [class="Nvidia-settings"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable, resize set 900 900
 for_window [class="gnome-logs"] floating enable
 for_window [class="Ksystemlog"] floating enable, resize set 900 900

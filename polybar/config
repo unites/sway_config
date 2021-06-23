@@ -59,7 +59,7 @@
 
 	modules-left =   i3
 	modules-center =  
-	modules-right =    songtitle pulseaudio sp spp sn wake memory cpu temperature eth date 
+	modules-right =    songtitle pulseaudio sp spp sn  memory cpu temperature eth date wake notifications
 
 	tray-position = right
 	tray-padding = 2
@@ -352,9 +352,17 @@ label-indicator-underline = ${colors.secondary}
 	exec = $HOME/.config/bin/eye.sh
 	format = <label>
 	content-background = ${colors.background}
-	click-left = xset dpms 600 1200 1800; xset +dpms
-	click-right = xset dpms 20864 20864 20864; xset -dpms
+	click-left = xset dpms 600 1200 1800; xset +dpms; xset s on
+	click-right = xset dpms 20864 20864 20864; xset -dpms; xset s off
 
+[module/notifications]
+	type = custom/script
+	interval = 0
+	format-underline = #FDF6E3
+	exec = $HOME/.config/bin/notification_status.sh
+	format = <label>
+	content-background = ${colors.background}
+	click-left = dunstctl set-paused toggle
 
 [module/temperature]
 	type = internal/temperature
