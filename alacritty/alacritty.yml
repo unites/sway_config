@@ -1,21 +1,42 @@
 
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
 
-env:
+#env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  #TERM: alacritty
+  #TERM: xterm-256color
 
-background_opacity: 0.85  # value range is 0 ~ 1
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+# Scroll to the bottom when new text is written to the terminal.
+auto_scroll: true
+
+background_opacity: 0.5  # value range is 0 ~ 1
 window:
   padding:
     x: 10
     y: 10
   dynamic_padding: true
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  decorations: full 
+
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  #
+  # Values for `startup_mode` (macOS only):
+  #   - SimpleFullscreen
+  startup_mode: SimpleFullscreen
 
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste                  }
@@ -31,22 +52,21 @@ font:
   # The normal (roman) font face to use.
   normal:
     #family: Droid Sans Mono Slashed for Powerline
-    family: TerminessTTF Nerd Font
-    #family: Hack Nerd Font
+    #family: TerminessTTF Nerd Font
+    family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     style: Regular
-
   # The bold font face
   bold:
-    #family: Hack Nerd Font
-    family: TerminessTTF Nerd Font
+    #family: TerminessTTF Nerd Font
+    family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    #family: Hack Nerd Font
-    family: TerminessTTF Nerd Font
+    #family: TerminessTTF Nerd Font
+    family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     style: Italic
 
@@ -106,7 +126,7 @@ schemes:
     normal:
       black:   '#1c1c1c'
       red:     '#bc5653'
-      green:   '#598030'
+      green:   '#909d63'
       yellow:  '#ebc17a'
       blue:    '#7eaac7'
       magenta: '#aa6292'
@@ -254,4 +274,4 @@ iceberg: &icedark
       cyan:    '#89ddff'
       white:   '#ffffff'  # Arbitrary
 
-colors: *afterglow
+  colors: *afterglow

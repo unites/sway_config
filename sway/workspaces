@@ -26,16 +26,27 @@ set $ws9 9
 set $ws10 10
 
 # switch to workspace
-bindsym $mod+q workspace $ws1
-bindsym $mod+w workspace $ws2
-bindsym $mod+e workspace $ws3
-bindsym $mod+r workspace $ws4
-bindsym $mod+t workspace $ws5
-bindsym $mod+a workspace $ws6
-bindsym $mod+s workspace $ws7
-bindsym $mod+d workspace $ws8
-bindsym $mod+f workspace $ws9
+bindsym $mod+a workspace $ws1
+bindsym $mod+s workspace $ws2
+bindsym $mod+d workspace $ws3
+bindsym $mod+f workspace $ws4
+bindsym $mod+q workspace $ws5
+bindsym $mod+w workspace $ws6
+bindsym $mod+e workspace $ws7
+bindsym $mod+r workspace $ws8
+bindsym $mod+t workspace $ws9
 bindsym $mod+g workspace $ws10
+
+bindsym $mod+Shift+a move container to workspace $ws1
+bindsym $mod+Shift+s move container to workspace $ws2
+bindsym $mod+Shift+d move container to workspace $ws3
+bindsym $mod+Shift+f move container to workspace $ws4
+bindsym $mod+Shift+q move container to workspace $ws5
+bindsym $mod+Shift+w move container to workspace $ws6
+bindsym $mod+Shift+e move container to workspace $ws7
+bindsym $mod+Shift+r move container to workspace $ws8
+bindsym $mod+Shift+t move container to workspace $ws9
+bindsym $mod+Shift+g move container to workspace $ws10 
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -47,18 +58,6 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+q move container to workspace $ws1
-bindsym $mod+Shift+w move container to workspace $ws2
-bindsym $mod+Shift+e move container to workspace $ws3
-bindsym $mod+Shift+r move container to workspace $ws4
-bindsym $mod+Shift+t move container to workspace $ws5
-bindsym $mod+Shift+a move container to workspace $ws6
-bindsym $mod+Shift+s move container to workspace $ws7
-bindsym $mod+Shift+d move container to workspace $ws8
-bindsym $mod+Shift+f move container to workspace $ws9
-bindsym $mod+Shift+g move container to workspace $ws10 
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -87,7 +86,6 @@ workspace $ws10 output $lmon
 for_window [class="Steam"] floating enable
 for_window [app_id="pavucontrol"] floating enable, resize set 900 600
 for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="gnome-system-monitor"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable, resize set 900 900
 for_window [app_id="ksystemlog"] floating enable
 for_window [app_id="gnome-logs"] floating enable
