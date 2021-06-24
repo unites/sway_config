@@ -13,6 +13,8 @@
 !polybar/
 !rofi/
 !dunst/
+!conky
+!i3status/
 
 ksystemlogrc
 mimeapps.list
