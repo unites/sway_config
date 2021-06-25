@@ -10,7 +10,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
-background_opacity: 0.65  # value range is 0 ~ 1
+background_opacity: 0.5  # value range is 0 ~ 1
 window:
   padding:
     x: 10
@@ -106,7 +106,7 @@ schemes:
     normal:
       black:   '#1c1c1c'
       red:     '#bc5653'
-      green:   '#598030'
+      green:   '#909d63'
       yellow:  '#ebc17a'
       blue:    '#7eaac7'
       magenta: '#aa6292'
@@ -254,4 +254,4 @@ iceberg: &icedark
       cyan:    '#89ddff'
       white:   '#ffffff'  # Arbitrary
 
-colors: *afterglow
+colors: *material
