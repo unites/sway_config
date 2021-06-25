@@ -254,4 +254,4 @@ iceberg: &icedark
       cyan:    '#89ddff'
       white:   '#ffffff'  # Arbitrary
 
-colors: *material
+colors: *afterglow
