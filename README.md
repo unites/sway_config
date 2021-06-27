@@ -173,6 +173,7 @@ git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
 cd .nerd-fonts 
 sudo ./install.sh Hack
 sudo ./install.sh Terminus
+sudo ./install.sh HeavyData
 
 # Switch Shell, because chsh is not installed
 which zsh

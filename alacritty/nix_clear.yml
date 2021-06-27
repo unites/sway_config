@@ -10,7 +10,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
-background_opacity: 0.75  # value range is 0 ~ 1
+background_opacity: 0  # value range is 0 ~ 1
 window:
   padding:
     x: 10
@@ -33,7 +33,7 @@ font:
     #family: Droid Sans Mono Slashed for Powerline
     family: TerminessTTF Nerd Font
     #family: Hack Nerd Font
-    #Style can be specified to pick a specific face.
+    # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face

@@ -19,7 +19,7 @@ exec --no-startup-id compton
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
 exec --no-startup-id conky -b
-exec --no-startup-id conky -b -c $HOME/.config/conky/music.conf
+# exec --no-startup-id conky -b -c $HOME/.config/conky/music.conf
 
 set $mod Mod4
 set $alt Mod1
@@ -30,11 +30,13 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty           
+set $term alacritty --config-file $HOME/.config/alacritty/nix.yml    
+set $term-alt alacritty --config-file $HOME/.config/alacritty/nix_clear.yml     
 set $menu "rofi -combi-modi window,drun,run -show combi"
 set $menu-run "rofi -combi-modi window,drun,run -theme solarized -show combi "
 
 bindsym $mod+Return exec $term 
+bindsym $mod+Shift+Return exec $term-alt
 bindsym $mod+c exec $menu
 bindsym $mod+Shift+c exec $menu-alt
 
@@ -108,10 +110,11 @@ bindsym XF86AudioStop  exec "mpc stop"
 bindsym XF86AudioNext  exec "mpc next;$HOME/.config/bin/song_info.sh"
 bindsym XF86AudioPrev  exec "mpc prev;$HOME/.config/bin/song_info.sh"
 bindsym XF86AudioPause exec "mpc pause"
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym Shift+XF86AudioPause exec "$HOME/.config/bin/song_info.sh"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
@@ -233,8 +236,8 @@ bar {
   bindsym button2 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   bindsym button3 exec pavucontrol
   #bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-  bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +3%
-  bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+  bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+  bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 # font xft:URWGothic-Book 11
 
   colors {
