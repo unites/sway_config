@@ -162,15 +162,11 @@ youtube-dl
 # for laptop
 # xbacklight 
 
-
-# Link setup scripts to home dir from config
-ln -fs ~/.config/.zshrc ~/.zshrc
-ln -fs ~/.config/.vimrc ~/.vimrc
-ln -fs ~/.config/.xinitrc ~/.xinitrc
-
 # Install Oh My ZSH
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+exit
 sudo usermod -s $(which zsh) $USER
+
 
 # Fun Plugins for OhMyZSH
 cd ~
@@ -194,9 +190,9 @@ cd ~
 git clone --depth=1 https://github.com/ryanoasis/nerd-fonts ~/.nerd-fonts
 cd .nerd-fonts 
 fc-cache -fv
-sudo ./install.sh Hack
-sudo ./install.sh Terminus
-sudo ./install.sh HeavyData
+./install.sh Hack
+./install.sh Terminus
+./install.sh HeavyData
 fc-cache -fv
 
 echo << EOF
@@ -205,3 +201,7 @@ Switch Shell, because chsh is not installed. Run these:
 	sudo lchsh -i
 EOF
 
+# Link setup scripts to home dir from config
+ln -fs ~/.config/.zshrc ~/.zshrc
+ln -fs ~/.config/.vimrc ~/.vimrc
+ln -fs ~/.config/.xinitrc ~/.xinitrc
