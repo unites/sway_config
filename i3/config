@@ -115,6 +115,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+# bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+# bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
@@ -238,6 +240,8 @@ bar {
   #bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
   bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+  bindsym $mod+button4 exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+  bindsym $mod+button5 exec pactl set-sink-volume @DEFAULT_SINK@ -10%
   
 # font xft:URWGothic-Book 11
 
