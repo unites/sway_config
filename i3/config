@@ -113,8 +113,8 @@ bindsym XF86AudioPause exec "mpc pause"
 bindsym Shift+XF86AudioPause exec "$HOME/.config/bin/song_info.sh"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
@@ -233,11 +233,12 @@ bar {
 #tray_output primary
 # tray_output eDP1
 
-  bindsym button2 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-  bindsym button3 exec pavucontrol
+  bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+  bindsym button2 exec pavucontrol
   #bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
   bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+  
 # font xft:URWGothic-Book 11
 
   colors {
@@ -247,8 +248,8 @@ bar {
       separator  #454947
 
                         #border  backgr. text
-      focused_workspace  #FDF6E3 #2C2C2C #FDF6E3
-      active_workspace   #595B5B #00000000 #FDF6E3
+      focused_workspace  #00000000 #00000000 #CB4B16
+      active_workspace   #00000000 #00000000 #FDF6E3
       inactive_workspace #00000000 #00000000 #EEE8D5
       binding_mode       #16a085 #2C2C2C #F9FAF9
       urgent_workspace   #16a085 #FDF6E3 #E5201D
