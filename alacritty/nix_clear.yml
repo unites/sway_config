@@ -13,9 +13,9 @@ env:
 background_opacity: 0  # value range is 0 ~ 1
 window:
   padding:
-    x: 10
-    y: 10
-  dynamic_padding: true
+    x: 50
+    y: 50
+  dynamic_padding: false
 
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste                  }
