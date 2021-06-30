@@ -248,3 +248,211 @@ youtube-dl
 yum install akmod-nvidia xorg-x11-drv-nvidia-libs kernel-devel acpid
 
 https://www.if-not-true-then-false.com/2013/fedora-19-nvidia-guide/
+
+
+## Arch Linux
+
+```
+pacman -Sy sway \
+swaylock \
+swayidle \
+waybar \
+wl-clipboard \
+powerline-fonts \
+feh \
+grim \
+slurp \
+wofi \
+fzf \
+zsh \
+git \
+curl \
+wget \
+tar \
+rsync \
+cifs-utils \
+light \
+mako \
+ranger \
+vim \
+chromium \
+libgnome-keyring \
+nautilus \
+seahorse \
+gnome-keyring \
+libsecret \
+python3 \
+ruby \
+nodejs \
+pulseaudio \
+pavucontrol \
+mpc \
+mpd \
+ncmpcpp \
+mpv \
+vlc \
+wildmidi \
+wf-recorder \
+ffmpeg \
+freerdp \
+nm-connection-editor \
+syncthing \
+gnome-bluetooth \
+gnome-logs \
+blueman \
+ksystemlog \
+ghostwriter \
+gimp \
+id3v2 \
+pciutils \
+gnome-system-monitor \
+ksystemlog \
+vinagre \
+i3 \
+i3status \
+dmenu \
+i3lock \
+conky \
+gnome-connections \
+kbd \
+rofi \
+xss-lock \
+xautolock \
+compton \
+nitrogen \
+flameshot \
+maim \
+xclip \
+dunst \
+gnome-icon-theme 
+
+yay -S microsoft-edge-dev \
+brave-bin \
+brave-beta-bin \
+brave-nightly-bin \
+google-chrome
+
+
+error: target not found: fira-code-fonts
+error: target not found: fontawesome-fonts
+error: target not found: bind-utils
+error: target not found: sublime-text
+error: target not found: firefox-wayland
+error: target not found: google-chrome-stable
+error: target not found: python3-pip
+error: target not found: pulseaudio-utils
+error: target not found: bdf2psf
+error: target not found: otf2bdf
+error: target not found: NetworkManager-bluetooth
+error: target not found: NetworkManager-wifi
+error: target not found: NetworkManager-tui
+error: target not found: fuse-sshfs
+error: target not found: brave-browser
+error: target not found: microsoft-edge-dev
+error: target not found: microsoft-edge-beta
+error: target not found: python3-gobject
+error: target not found: rsyslog
+error: target not found: google-noto-emoji-color-fonts
+error: target not found: google-noto-emoji-fonts
+error: target not found: clipman
+error: target not found: remotely
+error: target not found: ckb-next
+error: target not found: xrandr
+error: target not found: ImageMagick
+error: target not found: xset
+error: target not found: polybar
+error: target not found: qt-qdbusviewer.x86_64
+error: target not found: gnome-shell-extension-caffeine
+
+```
+
+
+```sh
+lsblk
+
+timedatectl set-ntp true
+
+droot=sda
+label_name=alpha
+namehost=excalibur
+
+# May need to use LV tools to remove lv/vgs from disk before running below
+
+wipefs -fa /dev/${droot}
+
+parted -s /dev/${droot} mklabel gpt
+
+parted /dev/${droot} mkpart ESP fat32 1MiB 512MiB
+mkfs.fat -F32 /dev/${droot}1
+
+#parted -sa opt /dev/${droot} mkpart primary ext4 0% 100%
+parted -sa opt /dev/${droot} mkpart primary ext4 512MiB 100%
+mkfs.ext4 -L ${label_name} /dev/${droot}2
+
+mount /dev/${droot}2 /mnt
+mkdir /mnt/boot
+mount /dev/${droot}1 /mnt/boot
+
+pacstrap /mnt base linux linux-firmware
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+
+ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+
+hwclock --systohc
+
+sed -i 's/^#en_US.UTF/en_US.UTF/g' /etc/locale.gen
+locale-gen
+
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+echo "${namehost}" > /etc/hostname
+echo "127.0.0.1 localhost" > /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 ${namehost}.localdomain ${namehost}" >> /etc/hosts
+
+cat /etc/hostname
+cat /etc/hosts
+
+mkinitcpio -P
+
+pacman -Sy grub os-prober efibootmgr vi vim git --noconfirm
+
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+
+pacman -S git base-devel
+
+useradd -m ${user_accnt}
+passwd ${user_accnt}
+
+visudo
+
+# remove wheel section comments
+
+su - ${user_accnt}
+
+cd yay/  
+makepkg -sri
+
+yay -S microsoft-edge-dev \
+brave-bin \
+brave-beta-bin \
+brave-nightly-bin \
+
+
+passwd
+
+
+# probably want to copy .config out now
+
+# Also need to create script that does the following...
+
+systemctl enable NetworkManager
+systemctl enable sshd.service
+systemctl start NetworkManager
+systemctl start sshd.service
+
+```
