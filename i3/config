@@ -1,7 +1,14 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# The same as default_border none
+# i3-gaps in sway
+# for_window [class="^.*"] border pixel 0
+gaps inner 5
+gaps outer 5
+smart_gaps on
 default_border pixel 1
+#smart_borders on
+#set $borderwidth 1
+hide_edge_borders both
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -15,7 +22,7 @@ font pango:TerminessTTF Nerd Font 14
 # exec xset s 600
 exec --no-startup-id xss-lock -l -- i3lock -c 330000
 exec --no-startup-id mpd
-exec --no-startup-id compton
+exec --no-startup-id picom
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
 exec --no-startup-id conky -b
@@ -94,15 +101,15 @@ bindsym $mod+Ctrl+v exec maim -s -u | tee ~/Screen/$(date +%s).png | xclip -sele
 bindsym $mod+$alt+x exec xrdp
 bindsym $mod+$alt+t exec teams
 bindsym $mod+$alt+m exec chromium-browser
-bindsym $mod+$alt+c exec google-chrome 
-bindsym $mod+$alt+g exec google-chrome --app=https://play.geforcenow.com/
+bindsym $mod+$alt+c exec google-chrome-stable
+bindsym $mod+$alt+g exec google-chrome-stable --app=https://play.geforcenow.com/
 bindsym $mod+$alt+b exec brave-browser 
-bindsym $mod+$alt+e exec microsoft-edge --app=https://outlook.office.com/ 
+bindsym $mod+$alt+e exec microsoft-edge-dev --app=https://outlook.office.com/ 
 bindsym $mod+$alt+o exec obsidian
 bindsym $mod+$alt+s exec subl
 bindsym $mod+$alt+d exec Discord
 bindsym $mod+$alt+v exec vinagre
-bindsym $mod+$alt+p exec google-chrome --app=http://10.1.1.10:32400/web/index.html
+bindsym $mod+$alt+p exec chromium --app=http://10.1.1.10:32400/web/index.html
 
 # Multimedia keys bind to MPD
 bindsym XF86AudioPlay  exec "mpc toggle;$HOME/.config/bin/song_info.sh"
