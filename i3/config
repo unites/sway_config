@@ -103,13 +103,14 @@ bindsym $mod+$alt+t exec teams
 bindsym $mod+$alt+m exec chromium-browser
 bindsym $mod+$alt+c exec google-chrome-stable
 bindsym $mod+$alt+g exec google-chrome-stable --app=https://play.geforcenow.com/
-bindsym $mod+$alt+b exec brave-browser 
+bindsym $mod+$alt+b exec brave
 bindsym $mod+$alt+e exec microsoft-edge-dev --app=https://outlook.office.com/ 
 bindsym $mod+$alt+o exec obsidian
 bindsym $mod+$alt+s exec subl
 bindsym $mod+$alt+d exec Discord
 bindsym $mod+$alt+v exec vinagre
 bindsym $mod+$alt+p exec chromium --app=http://10.1.1.10:32400/web/index.html
+bindsym $mod+$alt+n exec chromium --app=https://www.netflix.com/browse
 
 # Multimedia keys bind to MPD
 bindsym XF86AudioPlay  exec "mpc toggle;$HOME/.config/bin/song_info.sh"
@@ -127,20 +128,20 @@ bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
-bindsym $mod+Ctrl+1 exec pactl set-default-sink alsa_output.pci-0000_0a_00.3.analog-stereo
+bindsym $mod+Ctrl+1 exec pactl set-default-sink alsa_output.pci-0000_0b_00.3.analog-stereo
 bindsym $mod+Ctrl+2 exec pactl set-default-sink alsa_output.usb-Generic_USB_Audio-00.analog-stereo
 bindsym $mod+Ctrl+3 exec pactl set-default-sink alsa_output.usb-Kingston_HyperX_Cloud_Stinger_Core_Wireless___7.1_000000000000-00.analog-stereo
 
 # Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
+# We use variables to avoid repeating the names in multiple places. : "
+set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: ﮸"
 
@@ -184,23 +185,23 @@ bindsym $mod+a workspace number $ws1
 bindsym $mod+s workspace number $ws2
 bindsym $mod+d workspace number $ws3
 bindsym $mod+f workspace number $ws4
-bindsym $mod+q workspace number $ws5
-bindsym $mod+w workspace number $ws6
-bindsym $mod+e workspace number $ws7
-bindsym $mod+r workspace number $ws8
-bindsym $mod+t workspace number $ws9
-bindsym $mod+g workspace number $ws10
+bindsym $mod+g workspace number $ws5
+bindsym $mod+q workspace number $ws6
+bindsym $mod+w workspace number $ws7
+bindsym $mod+e workspace number $ws8
+bindsym $mod+r workspace number $ws9
+bindsym $mod+t workspace number $ws10
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace number $ws1
 bindsym $mod+Shift+s move container to workspace number $ws2
 bindsym $mod+Shift+d move container to workspace number $ws3
 bindsym $mod+Shift+f move container to workspace number $ws4
-bindsym $mod+Shift+q move container to workspace number $ws5
-bindsym $mod+Shift+w move container to workspace number $ws6
-bindsym $mod+Shift+e move container to workspace number $ws7
-bindsym $mod+Shift+r move container to workspace number $ws8
-bindsym $mod+Shift+t move container to workspace number $ws9
-bindsym $mod+Shift+g move container to workspace number $ws10 
+bindsym $mod+Shift+g move container to workspace number $ws5
+bindsym $mod+Shift+q move container to workspace number $ws6
+bindsym $mod+Shift+w move container to workspace number $ws7
+bindsym $mod+Shift+e move container to workspace number $ws8
+bindsym $mod+Shift+r move container to workspace number $ws9
+bindsym $mod+Shift+t move container to workspace number $ws10 
 
 # To find monitor names
 # xrandr --current
@@ -222,6 +223,7 @@ workspace $ws10 output $lmon
 # xprop | grep -i 'class'
 for_window [class="Pavucontrol"] floating enable, resize set 900 900
 for_window [class="nm-connection-editor"] floating enable
+# for_window [class="Steam"] floating enable, resize set 1920 1080
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable, resize set 900 900
 for_window [class="gnome-logs"] floating enable
