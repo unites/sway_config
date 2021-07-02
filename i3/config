@@ -2,8 +2,8 @@
 
 # i3-gaps in sway
 # for_window [class="^.*"] border pixel 0
-gaps inner 5
-gaps outer 5
+gaps inner 7
+gaps outer 7
 smart_gaps on
 default_border pixel 1
 #smart_borders on
@@ -90,6 +90,7 @@ bindsym $mod+Ctrl+Shift+r restart
 bindsym $mod+Ctrl+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Control+l exec i3lock -t -i $(echo $HOME)/Images/hex.png
 bindsym $mod+Ctrl+l exec i3lock -c 330000 
+bindsym $mod+Ctrl+Shift+l exec systemctl suspend
 bindsym $mod+Ctrl+k exec xset dpms force standby
 bindsym $mod+Ctrl+a exec pavucontrol
 bindsym $mod+Ctrl+m exec gnome-system-monitor
@@ -133,15 +134,15 @@ bindsym $mod+Ctrl+2 exec pactl set-default-sink alsa_output.usb-Generic_USB_Audi
 bindsym $mod+Ctrl+3 exec pactl set-default-sink alsa_output.usb-Kingston_HyperX_Cloud_Stinger_Core_Wireless___7.1_000000000000-00.analog-stereo
 
 # Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places. : "
+# We use variables to avoid repeating the names in multiple places. : ": ": "
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
 set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: ﮸"
 
@@ -237,8 +238,8 @@ bar {
   status_command i3status
   strip_workspace_numbers yes
   position top
-  # hidden_state hide
-  # modifier $mod
+  #hidden_state hide
+  #modifier $mod
 
 # please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #tray_output primary
