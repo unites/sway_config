@@ -25,8 +25,10 @@ exec --no-startup-id mpd
 exec --no-startup-id picom
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
-exec --no-startup-id conky -b
-# exec --no-startup-id conky -b -c $HOME/.config/conky/music.conf
+# exec --no-startup-id conky -b
+exec --no-startup-id conky -b -c $HOME/.config/conky/info.conf
+for_window [class="ConkySys"] move scratchpad
+for_window [class="ConkySys"] resize set 450 1000
 
 set $mod Mod4
 set $alt Mod1
@@ -45,7 +47,7 @@ set $menu-run "rofi -combi-modi window,drun,run -theme solarized -show combi "
 bindsym $mod+Return exec $term 
 bindsym $mod+Shift+Return exec $term-alt
 bindsym $mod+c exec $menu
-bindsym $mod+Shift+c exec $menu-alt
+bindsym $mod+Shift+c exec $menu-al
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -62,15 +64,21 @@ bindsym $mod+Shift+Left resize shrink width 20px
 bindsym $mod+Shift+Down resize grow height 20px
 bindsym $mod+Shift+Up resize shrink height 20px
 bindsym $mod+Shift+Right resize grow width 20px
+bindsym $mod+Shift+n move scratchpad
+bindsym $mod+Shift+b scratchpad show
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # focus the parent container
-bindsym $mod+z focus parent
+bindsym $mod+z focus parent       
 # focus the child container
 bindsym $mod+x focus child
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
 bindsym $mod+Ctrl+t layout stacking
 bindsym $mod+Ctrl+e layout tabbed
@@ -95,6 +103,8 @@ bindsym $mod+Ctrl+k exec xset dpms force standby
 bindsym $mod+Ctrl+a exec pavucontrol
 bindsym $mod+Ctrl+m exec gnome-system-monitor
 bindsym $mod+Ctrl+n exec nvidia-settings
+bindsym $mod+Ctrl+s [class="^ConkySys"] scratchpad show
+
 
 bindsym $mod+Ctrl+c exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+Ctrl+v exec maim -s -u | tee ~/Screen/$(date +%s).png | xclip -selection clipboard -t image/png
@@ -229,6 +239,7 @@ for_window [class="Nvidia-settings"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable, resize set 900 900
 for_window [class="gnome-logs"] floating enable
 for_window [class="Ksystemlog"] floating enable, resize set 900 900
+for_window [class="ConkySys"] floating enable
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bar {

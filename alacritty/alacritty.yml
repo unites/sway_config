@@ -36,7 +36,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: SimpleFullscreen
+  startup_mode: Maximized
 
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste                  }
