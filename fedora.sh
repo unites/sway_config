@@ -4,6 +4,11 @@
 uname="$1"
 hdir="/home/$uname"
 
+if [ -z $1 ]; then
+    echo "User Name was not given, please give a user name or pass \$USER"
+    exit
+fi
+
 # Make sure sudo or root
 if [ `whoami` != root ]; then
     echo Please run this script as root or using sudo
@@ -105,20 +110,29 @@ xorg-x11-server-Xorg \
 xorg-x11-xinit \
 xinit 
 
+# Docker
+sudo dnf -y install docker-ce \
+docker-ce-cli 
+
+# Add user to docker group
+sudo usermod -aG docker $uname
+
 # Config File Pull
 cd $hdir
 git clone https://github.com/unites/.config.git
 
 # Nerd Fonts
-mkdir -p ~/.local/share/fonts/NerdFonts
-cd ~/.local/share/fonts/NerdFonts
+mkdir -p  $hdir/.local/share/fonts/NerdFonts
+cd  $hdir/.local/share/fonts/NerdFonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Terminus.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DejaVuSansMono.zip
-unzip *.zip
+unzip Terminus.zip
+unzip Hack.zip
+unzip DejaVuSansMono.zip
 rm *.zip
 rm *Windows*.ttf
-fc-cache -fv ~/.local/share/fonts/NerdFonts
+fc-cache -fv  $hdir/.local/share/fonts/NerdFonts
 
 # Install Oh My ZSH
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -144,6 +158,16 @@ ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 
 # Flatpak install and pacakges TODO
 # obsidian, obs, teams, steam
+sudo dnf -y install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub com.valvesoftware.Steam
+flatpak install -y flathub md.obsidian.Obsidian
+flatpak install -y flathub com.obsproject.Studio
+flatpak install -y flathub com.discordapp.Discord
+# flatpak install -y flathub com.microsoft.Teams
+# flatpak install -y flathub com.valvesoftware.SteamLink
+# flatpak install -y flathub org.wireshark.Wireshark
+
 
 # Dir and OS changes
 mkdir -p $hdir/Music
