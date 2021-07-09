@@ -137,20 +137,27 @@ fc-cache -fv  $hdir/.local/share/fonts/NerdFonts
 # Install Oh My ZSH
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 sudo usermod --shell /usr/bin/zsh $uname
+sudo usermod --shell /usr/bin/zsh root
 
 # Plugins for OhMyZSH
 cd $hdir
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$hdir/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$hdir/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # P10k for ohmyzsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
+
+cp -r ~/.oh-my-zsh $hdir
+
+sed -i 's/robbyrussell/avit/g' ~/.zshrc
+echo "DISABLE_AUTO_UPDATE='true'" >> ~/.zshrc
 
 # Nvidia Driver Install, requires reboot
 # sudo dnf -y install nvidia
 
 # Link setup scripts to home dir from config
 ln -fs $hdir/.config/.zshrc $hdir/.zshrc
+ln -fs $hdir/.config/.p10k.zsh $hdir/.p10k.zsh
 ln -fs $hdir/.config/.vimrc $hdir/.vimrc
 ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 
@@ -160,14 +167,13 @@ ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 # obsidian, obs, teams, steam
 sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub com.valvesoftware.Steam
-flatpak install -y flathub md.obsidian.Obsidian
-flatpak install -y flathub com.obsproject.Studio
-flatpak install -y flathub com.discordapp.Discord
+# flatpak install -y flathub com.valvesoftware.Steam
+# flatpak install -y flathub md.obsidian.Obsidian
+# flatpak install -y flathub com.obsproject.Studio
+# flatpak install -y flathub com.discordapp.Discord
 # flatpak install -y flathub com.microsoft.Teams
 # flatpak install -y flathub com.valvesoftware.SteamLink
 # flatpak install -y flathub org.wireshark.Wireshark
-
 
 # Dir and OS changes
 mkdir -p $hdir/Music
@@ -180,3 +186,8 @@ mkdir -p $hdir/.app/chromium_geforce
 
 chmod -R 755 $hdir/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 chmod -R 755 $hdir/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+chown -R $uname:$uname $hdir
+
+# Notification won't work without allowing DBUS to bet set
+sed -i 's/unset\ DBUS_SESSION_BUS_ADDRESS/#unset\ DBUS_SESSION_BUS_ADDRESS/g' /usr/bin/startx

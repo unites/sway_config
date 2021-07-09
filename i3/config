@@ -282,7 +282,7 @@ for_window [class="Ksystemlog"] floating enable, resize set 900 900
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bar {
   # Specify the priamry display, or what shows the bar
-  output HDMI-0
+  # output HDMI-0
   i3bar_command i3bar  --transparency
   status_command i3status
   strip_workspace_numbers yes
@@ -297,10 +297,10 @@ bar {
   bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
   bindsym button2 exec pavucontrol
   #bindsym button3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-  bindsym button4 workspace next
-  bindsym button5 workspace prev
-  # bindsym $mod+button4 exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-  # bindsym $mod+button5 exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+  # bindsym button4 workspace next
+  # bindsym button5 workspace prev
+  bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+  bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
   
 # font xft:URWGothic-Book 11
 
