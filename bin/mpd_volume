@@ -38,3 +38,4 @@ else
 	print qq(Please pass either 'up' or 'down' to control volume);
 }
 
+qx(notify_vol_mpd)

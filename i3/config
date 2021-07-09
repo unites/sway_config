@@ -20,16 +20,16 @@ for_window [class="Alacritty_class"] floating enable, move scratchpad, resize se
 for_window [class="Steam"] floating enable, move scratchpad, resize set 1700 1000
 bindsym $mod+n [class="^ConkySys"] scratchpad show
 bindsym $mod+z [class="^discord"] scratchpad show
-bindsym $mod+x [class="^obsidian"] scratchpad show
+bindsym $mod+x [class="obsidian"] scratchpad show
 bindsym $mod+s [class="^Sublime_text"] scratchpad show
 bindsym $mod+t [class="Alacritty_class"] scratchpad show
 bindsym $mod+c [class="iTeams"] scratchpad show
 bindsym $mod+g [class="Steam"] scratchpad show
 
-bindsym $mod+e exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+q exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $mod+$shf+e exec mpd_volume up
-bindsym $mod+$shf+q exec mpd_volume down
+bindsym $mod+e exec "pactl set-sink-volume @DEFAULT_SINK@ +5%; notify_vol"
+bindsym $mod+q exec "pactl set-sink-volume @DEFAULT_SINK@ -5%; notify_vol"
+bindsym $mod+$shf+e exec mpd_vol up
+bindsym $mod+$shf+q exec mpd_vol down
 
 # enter fullscreen mode for the focused container
 bindsym $mod+w fullscreen toggle
@@ -112,7 +112,7 @@ bindsym $mod+Tab workspace back_and_forth
 # focus the child container
 # bindsym $mod+x focus child
 # toggle tiling / floating
-bindsym $mod+$shf+space floating toggle
+bindsym $mod+$cmd+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 

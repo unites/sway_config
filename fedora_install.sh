@@ -164,8 +164,6 @@ ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 cp $hdir/.config/.p10k_root.zsh /root/.p10k.zsh
 cp $hdir/.config/.zshrc /root
 
-
-
 # Flatpak install and pacakges 
 sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

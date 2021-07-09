@@ -1,0 +1,61 @@
+#!/usr/bin/env perl
+use strict;
+# use warnings;
+# use Data::Dumper;
+
+my $volume;
+my @sinks;
+my @sink;
+my $sink_inputs_raw = qx(pactl list sink-inputs);
+my @sink_inputs = split('\n', $sink_inputs_raw);
+
+# print Dumper(@sink_inputs);
+
+my $counter = 0;
+
+foreach(@sink_inputs)
+{
+	if ( $_ =~ '^Sink.*$')
+	{
+		$counter = $counter + 1;
+		push(@sinks, "$counter#  $_");
+	}
+	else
+	{
+		push(@sinks, "$counter# $_");
+	}
+}
+
+# print Dumper(@sinks);
+
+my $sink_number;
+my @vol;
+foreach(@sinks)
+{
+	if ( $_ =~ '^*.Music\ Player\ Daemon.*$')
+	{
+		$_ =~ s/\#.*$//;
+		chomp($_);
+		$sink_number = $_;
+	}
+}
+foreach(@sinks)
+{
+	if ( $_ =~ /^${sink_number}\#.*Volume.*$/ )
+	{
+		$_ =~ s/^.*\#//;
+		chomp($_);
+		@vol = split(' ',$_);
+	}
+}
+
+foreach(@vol)
+{
+	if ( $_ =~ /[0-9]\%/)
+	{
+		$volume = $_;
+		chomp($volume);
+	}
+}
+
+qx(dunstify -h string:x-canonical-private-synchronous:music "Music Player Volume $volume" -t 4000 -i audio-headphones -h int:value:"$volume");
