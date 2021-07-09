@@ -47,16 +47,19 @@ hide_edge_borders both
 
 workspace_auto_back_and_forth yes
 
+# --no-startup-id disables startup notifications for this window. 
+# They are used to properly launch windows on the right workspace 
+# when starting and to display an hourglass mouse pointer while startup is in progress. 
+
 exec --no-startup-id xss-lock -l -- i3lock -c 330000
 exec --no-startup-id mpd
 exec --no-startup-id picom
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst
-# exec --no-startup-id conky -b
 exec --no-startup-id conky -b -c $HOME/.config/conky/info.conf
-exec alacritty --config-file $HOME/.config/alacritty/scratch.yml
-exec subl
-exec obsidian
+exec --no-startup-id alacritty --config-file $HOME/.config/alacritty/scratch.yml
+exec --no-startup-id subl
+exec --no-startup-id obsidian
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
