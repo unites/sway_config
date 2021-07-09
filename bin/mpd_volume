@@ -1,0 +1,40 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Data::Dumper;
+
+my $sink_id;
+
+my $get_client = q(pactl list clients short | grep mpd | awk '{print $1}');
+my $mpd_cid = qx($get_client);
+
+my $get_sinks = q(pactl list sink-inputs short);
+my $mpd_id = qx($get_sinks);
+
+my @rows = split('\n', $mpd_id);
+# print Dumper(@rows);
+foreach (@rows) 
+{
+	my @line = split(' ', $_);
+	if ($line[2] eq '2')
+	{
+		$sink_id = $line[0];
+		chomp($sink_id);
+	}
+}
+
+my $first = shift @ARGV;
+
+if ($first eq "up")
+{
+	qx(pactl set-sink-input-volume $sink_id +5%);
+}
+elsif ($first eq "down")
+{
+	qx(pactl set-sink-input-volume $sink_id -5%);
+}
+else
+{
+	print qq(Please pass either 'up' or 'down' to control volume);
+}
+

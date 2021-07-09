@@ -28,6 +28,8 @@ bindsym $mod+g [class="Steam"] scratchpad show
 
 bindsym $mod+e exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+q exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+$shf+e exec mpd_volume up
+bindsym $mod+$shf+q exec mpd_volume down
 
 # enter fullscreen mode for the focused container
 bindsym $mod+w fullscreen toggle

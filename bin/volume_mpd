@@ -1,8 +1,0 @@
-#!/usr/bin/env python3
-
-import os
-
-def get_ids():
-    os.system(pactl list clients short | grep mpd | awk '{print $1}')
-
-    os.system(pactl list clients short | grep mpd | awk '{print $1}')
