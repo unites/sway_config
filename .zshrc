@@ -19,7 +19,7 @@ then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
 
-  export ZSH="/home/lux/.oh-my-zsh"
+  export ZSH="/home/$USER/.oh-my-zsh"
 
   DISABLE_AUTO_UPDATE="true"
 

@@ -456,3 +456,61 @@ systemctl start NetworkManager
 systemctl start sshd.service
 
 ```
+
+
+
+```
+: 1625091482:0;pacman -Sy lchsh
+: 1625091486:0;sudo pacman -Sy lchsh
+: 1625092599:0;sudo pacman -Sy nvidia
+: 1625094558:0;sudo pacman -Sy nvidia-settings
+: 1625097087:0;sudo pacman -Sy sublime-text
+: 1625098903:0;curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+: 1625098917:0;echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+: 1625098924:0;sudo pacman -Syu sublime-text
+: 1625100976:0;sudo pacman -Syu steam
+: 1625101018:0;vi /etc/pacman.conf
+: 1625101051:0;sudo vi /etc/pacman.conf
+: 1625101086:0;sudo pacman -Syu
+: 1625101096:0;sudo pacman -Syu steam
+: 1625102458:0;sudo pacman -Syu slock
+: 1625106333:0;man pacman
+: 1625106457:0;sudo pacman -Syu
+: 1625106461:0;sudo pacman -SyU
+: 1625106465:0;sudo pacman -U
+: 1625107295:0;sudo pacman -Syu docker
+: 1625149977:0;sudo pacman -Syu discord
+: 1625150182:0;sudo pacman -Syu obs-studio
+: 1625167084:0;sudo pacman -Syu bluetoothctl
+: 1625167108:0;sudo pacman -Syu bluetoothctl
+: 1625169049:0;sudo pacman -Syu dnsutils
+: 1625169090:0;sudo pacman -Syu bind-tools
+: 1625174643:0;pacman -Qa
+: 1625174649:0;pacman -Qm
+: 1625175440:0;pacman -Q
+: 1625186408:0;sudo pacman -Syu imagemagick
+: 1625253320:0;sudo pacman -Syu lm-sensors
+: 1625253326:0;sudo pacman -Syu lm_sensors
+: 1625253615:0;sudo pacman -Syu psensors
+: 1625253619:0;sudo pacman -Syu psensor
+: 1625513265:0;sudo pacman -Syu i3blocks
+: 1625514540:0;sudo pacman -Syu
+: 1625514555:0;sudo pacman -Qm
+: 1625671171:0;sudo pacman -Swyu
+: 1625671184:0;sudo pacman -Syu
+: 1625671197:0;sudo pacman -help
+: 1625671203:0;sudo pacman -Q
+: 1625671207:0;sudo pacman -help
+: 1625671302:0;pacman -F conky
+: 1625671307:0;sudo pacman -F conky
+: 1625671314:0;sudo pacman -Fy conky
+: 1625671325:0;sudo pacman -Fy conky-toggle
+: 1625708430:0;pacman -Syu urxvt
+: 1625708434:0;sudo pacman -Syu urxvt
+: 1625708482:0;sudo pacman -Syu rxvt-unicode
+: 1625709288:0;pacman -R rxvt-unicode
+: 1625709291:0;sudo pacman -R rxvt-unicode
+: 1625754377:0;sudo pacman -Syu neofetch
+: 1625759379:0;grep pacman .zsh_history
+
+```

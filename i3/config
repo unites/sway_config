@@ -10,6 +10,33 @@ set $app Ctrl
 set $cmd Mod1
 set $shf Shift
 
+# ScratchPad
+for_window [class="discord"] floating enable, move scratchpad, resize set 1700 1000
+for_window [class="iTeams"] floating enable, move scratchpad, resize set 1700 1000
+for_window [class="obsidian"] floating enable, move scratchpad, resize set 1700 1000
+for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1800 1000
+for_window [class="ConkySys"] floating enable, move scratchpad, resize set 450 1000
+for_window [class="Alacritty_class"] floating enable, move scratchpad, resize set 1700 1000
+for_window [class="Steam"] floating enable, move scratchpad, resize set 1700 1000
+bindsym $mod+n [class="^ConkySys"] scratchpad show
+bindsym $mod+z [class="^discord"] scratchpad show
+bindsym $mod+x [class="^obsidian"] scratchpad show
+bindsym $mod+s [class="^Sublime_text"] scratchpad show
+bindsym $mod+t [class="Alacritty_class"] scratchpad show
+bindsym $mod+c [class="iTeams"] scratchpad show
+bindsym $mod+g [class="Steam"] scratchpad show
+
+bindsym $mod+e exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+q exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# enter fullscreen mode for the focused container
+bindsym $mod+w fullscreen toggle
+bindsym $mod+a workspace prev
+bindsym $mod+d workspace next
+# split in vertical orientation
+bindsym $mod+v split v
+bindsym $mod+b split h
+
 # i3-gaps in sway
 # for_window [class="^.*"] border pixel 0
 gaps inner 7
@@ -28,7 +55,8 @@ exec --no-startup-id dunst
 # exec --no-startup-id conky -b
 exec --no-startup-id conky -b -c $HOME/.config/conky/info.conf
 exec alacritty --config-file $HOME/.config/alacritty/scratch.yml
-
+exec subl
+exec obsidian
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,8 +72,8 @@ set $menu-run "rofi -combi-modi window,drun,run -theme solarized -show combi "
 
 bindsym $mod+Return exec $term 
 bindsym $mod+$shf+Return exec $term-alt
-bindsym $mod+c exec $menu
-bindsym $mod+$shf+c exec $menu-al
+bindsym $mod+f exec $menu
+bindsym $mod+$shf+f exec $menu-al
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -72,12 +100,12 @@ bindsym $mod+$cmd+Left workspace prev
 # bindsym $mod+s workspace next
 # bindsym $mod+a workspace prev
 bindsym $mod+Tab workspace back_and_forth
-bindsym Alt+Tab workspace back_and_forth
+# bindsym Alt+Tab workspace back_and_forth
 
 # focus the parent container
-bindsym $mod+z focus parent       
+# bindsym $mod+z focus parent       
 # focus the child container
-bindsym $mod+x focus child
+# bindsym $mod+x focus child
 # toggle tiling / floating
 bindsym $mod+$shf+space floating toggle
 # change focus between tiling / floating windows
@@ -87,11 +115,6 @@ bindsym $mod+$cmd+t layout stacking
 bindsym $mod+$cmd+e layout tabbed
 bindsym $mod+$cmd+w layout toggle split
 
-# split in vertical orientation
-bindsym $mod+v split v
-bindsym $mod+b split h
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
 # kill focused window
 bindsym $mod+$cmd+q kill
 # reload the configuration file
@@ -106,29 +129,29 @@ bindsym $mod+$cmd+k exec xset dpms force standby
 bindsym $mod+$cmd+p exec pavucontrol
 bindsym $mod+$cmd+m exec gnome-system-monitor
 bindsym $mod+$cmd+n exec nvidia-settings
-bindsym $mod+g [class="^ConkySys"] scratchpad show
-bindsym $mod+d [class="^discord"] scratchpad show
-bindsym $mod+a [class="^obsidian"] scratchpad show
-bindsym $mod+s [class="^Sublime_text"] scratchpad show
-bindsym $mod+t [class="Alacritty_class"] scratchpad show
-
 
 bindsym $mod+$cmd+c exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+$cmd+v exec maim -s -u | tee ~/Screen/$(date +%s).png | xclip -selection clipboard -t image/png
 
+set $edge microsoft-edge-dev
+set $chrome google-chrome-stable
+set $chromium chromium
+set $brave brave
+set $firefox firefox
+
 bindsym $mod+$app+x exec xrdp
-bindsym $mod+$app+t exec teams
-bindsym $mod+$app+m exec chromium-browser
-bindsym $mod+$app+c exec google-chrome-stable
-bindsym $mod+$app+g exec google-chrome-stable --app=https://play.geforcenow.com/
-bindsym $mod+$app+b exec brave
-bindsym $mod+$app+e exec microsoft-edge-dev --app=https://outlook.office.com/ 
+bindsym $mod+$app+c exec $chrome
+bindsym $mod+$app+b exec $brave
+bindsym $mod+$app+f exec $firefox
 bindsym $mod+$app+o exec obsidian
 bindsym $mod+$app+s exec subl
 bindsym $mod+$app+d exec Discord
 bindsym $mod+$app+v exec vinagre
-bindsym $mod+$app+p exec chromium --app=http://10.1.1.10:32400/web/index.html
-bindsym $mod+$app+n exec chromium --app=https://www.netflix.com/browse
+bindsym $mod+$app+m exec $edge --app=https://outlook.office.com/ --user-data-dir=$HOME/.app/edge_outlook --class="iOutlook"
+bindsym $mod+$app+t exec $edge --app=https://teams.microsoft.com/ --user-data-dir=$HOME/.app/edge_teams --class="iTeams"
+bindsym $mod+$app+p exec $chromium --app=http://10.1.1.10:32400/web/index.html --user-data-dir=$HOME/.app/chromium_plex --class="iPlex"
+bindsym $mod+$app+n exec $chromium --app=https://www.netflix.com/browse --user-data-dir=$HOME/.app/chromium_netflix --class="iNetflix"
+bindsym $mod+$app+g exec $chromium --app=https://play.geforcenow.com/ --user-data-dir=$HOME/.app/chromium_geforce --class="iGeforce"
 
 # Multimedia keys bind to MPD
 bindsym XF86AudioPlay  exec "mpc toggle;$HOME/.config/bin/song_info.sh"
@@ -139,10 +162,10 @@ bindsym XF86AudioPause exec "mpc pause"
 bindsym $shf+XF86AudioPause exec "$HOME/.config/bin/song_info.sh"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $shf+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym $shf+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-# bindsym $shf+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-# bindsym $shf+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
@@ -197,6 +220,16 @@ bindsym $mod+$shf+8 move container to workspace number $ws8
 bindsym $mod+$shf+9 move container to workspace number $ws9
 bindsym $mod+$shf+0 move container to workspace number $ws10
 
+# bindsym $mod+q workspace number $ws1
+# bindsym $mod+w workspace number $ws2
+# bindsym $mod+e workspace number $ws3
+# bindsym $mod+r workspace number $ws4
+# bindsym $mod+t workspace number $ws5
+# bindsym $mod+$shf+q move container to workspace number $ws1
+# bindsym $mod+$shf+w move container to workspace number $ws2
+# bindsym $mod+$shf+e move container to workspace number $ws3
+# bindsym $mod+$shf+r move container to workspace number $ws4
+# bindsym $mod+$shf+t move container to workspace number $ws5
 # # switch to workspace
 # bindsym $mod+a workspace number $ws1
 # bindsym $mod+s workspace number $ws2
@@ -240,7 +273,7 @@ workspace $ws10 output $lmon
 # xprop | grep -i 'class'
 for_window [class="Pavucontrol"] floating enable, resize set 900 900
 for_window [class="nm-connection-editor"] floating enable
-# for_window [class="Steam"] floating enable, resize set 1920 1080
+
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable, resize set 900 900
 for_window [class="gnome-logs"] floating enable
@@ -299,9 +332,3 @@ bar {
   client.placeholder      #000000 #0c0c0c #ffffff #000000
   client.background       #2B2C2B
 
-for_window [class="discord"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="teams"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="obsidian"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="ConkySys"] floating enable, move scratchpad, resize set 450 1000
-for_window [class="Alacritty_class"] floating enable, move scratchpad, resize set 1700 1000

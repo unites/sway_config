@@ -9,7 +9,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
-background_opacity: 0.75  # value range is 0 ~ 1
+background_opacity: 1  # value range is 0 ~ 1
 window:
   padding:
     x: 10
