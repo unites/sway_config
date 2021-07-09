@@ -149,8 +149,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/th
 
 cp -r ~/.oh-my-zsh $hdir
 
-sed -i 's/robbyrussell/avit/g' ~/.zshrc
-echo "DISABLE_AUTO_UPDATE='true'" >> ~/.zshrc
+# sed -i 's/robbyrussell/avit/g' ~/.zshrc
+# echo "DISABLE_AUTO_UPDATE='true'" >> ~/.zshrc
 
 # Nvidia Driver Install, requires reboot
 # sudo dnf -y install nvidia
@@ -161,12 +161,13 @@ ln -fs $hdir/.config/.p10k.zsh $hdir/.p10k.zsh
 ln -fs $hdir/.config/.vimrc $hdir/.vimrc
 ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 
-# Fix for Dbus session, remove unset for dbus TODO
+cp $hdir/.config/.p10k.zsh ~
+cp $hdir/.config/.zshrc ~
 
-# Flatpak install and pacakges TODO
-# obsidian, obs, teams, steam
+# Flatpak install and pacakges 
 sudo dnf -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+# Uncomment what you want
 # flatpak install -y flathub com.valvesoftware.Steam
 # flatpak install -y flathub md.obsidian.Obsidian
 # flatpak install -y flathub com.obsproject.Studio

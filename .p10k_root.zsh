@@ -60,10 +60,3 @@ alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{
 alias ytdl='youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0'
 
 export PATH=$PATH:~/.config/bin
-
-#if [[ "$(tty)" == '/dev/tty1' ]]; then
-  #exec sway 
-#fi
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec startx
-fi
