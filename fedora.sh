@@ -141,16 +141,16 @@ sudo usermod --shell /usr/bin/zsh root
 
 # Plugins for OhMyZSH
 cd $hdir
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # P10k for ohmyzsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.oh-my-zsh/themes/powerlevel10k
 
-cp -r ~/.oh-my-zsh $hdir
+cp -r /root/.oh-my-zsh $hdir
 
-# sed -i 's/robbyrussell/avit/g' ~/.zshrc
-# echo "DISABLE_AUTO_UPDATE='true'" >> ~/.zshrc
+# sed -i 's/robbyrussell/avit/g' /root/.zshrc
+# echo "DISABLE_AUTO_UPDATE='true'" >> /root/.zshrc
 
 # Nvidia Driver Install, requires reboot
 # sudo dnf -y install nvidia
@@ -161,8 +161,8 @@ ln -fs $hdir/.config/.p10k.zsh $hdir/.p10k.zsh
 ln -fs $hdir/.config/.vimrc $hdir/.vimrc
 ln -fs $hdir/.config/.xinitrc $hdir/.xinitrc
 
-cp $hdir/.config/.p10k.zsh ~
-cp $hdir/.config/.zshrc ~
+cp $hdir/.config/.p10k_root.zsh /root/.p10k.zsh
+cp $hdir/.config/.zshrc /root
 
 # Flatpak install and pacakges 
 sudo dnf -y install flatpak
