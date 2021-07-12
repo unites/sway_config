@@ -1,9 +1,0 @@
-#!/bin/sh
-
-volume=`pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g'`
-
-mpd_id=`pactl list sink-inputs | grep -B 17 "Music Player Daemon" | awk '/Volume: front/{ print $5 }' | sed 's/[%|,]//g'`
-
-echo $mpd_id
-
-# dunstify -h string:x-canonical-private-synchronous:music "Music Player Volume $mpd_vol" -t 4000 -i audio-headphones -h int:value:"$mpd_vol"

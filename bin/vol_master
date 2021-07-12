@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [[ $1 =~ "up" ]];
+then
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+	volume=`pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g'`
+	dunstify -h string:x-canonical-private-synchronous:music "Master Volume $volume%" -t 4000 -i audio-headphones -h int:value:"$volume"
+else
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+	volume=`pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g'`
+	dunstify -h string:x-canonical-private-synchronous:music "Master Volume $volume%" -t 4000 -i audio-headphones -h int:value:"$volume"
+fi

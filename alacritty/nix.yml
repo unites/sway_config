@@ -32,20 +32,20 @@ font:
   normal:
     #family: Droid Sans Mono Slashed for Powerline
     family: TerminessTTF Nerd Font
-    #family: Hack Nerd Font
+    # family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    #family: Hack Nerd Font
+    # family: Hack Nerd Font
     family: TerminessTTF Nerd Font
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    #family: Hack Nerd Font
+    # family: Hack Nerd Font
     family: TerminessTTF Nerd Font
     # Style can be specified to pick a specific face.
     style: Italic
