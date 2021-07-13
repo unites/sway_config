@@ -10,27 +10,31 @@ set $app Ctrl
 set $cmd Mod1
 set $shf Shift
 
-# ScratchPad
-for_window [class="discord"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="iTeams"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="obsidian"] floating enable, move scratchpad, resize set 1700 1000
-for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1800 1000
-for_window [class="ConkySys"] floating enable, move scratchpad, resize set 450 1000
-for_window [class="Alacritty_class"] move scraTachpad, resize set 1700 1000
-for_window [class="Steam"] floating enable, move scratchpad, resize set 1700 1000
-bindsym $mod+n [class="ConkySys"] scratchpad show
-bindsym $mod+z [class="discord"] scratchpad show
-bindsym $mod+x [class="obsidian"] scratchpad show
-bindsym $mod+s [class="Sublime_text"] scratchpad show
-bindsym $mod+t [class="Alacritty_class"] scratchpad show
-bindsym $mod+c [class="iTeams"] scratchpad show
-bindsym $mod+g [class="Steam"] scratchpad show
+# Picom set to xrender and use this to use vsync like features inside nvidia driver
+# nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
-bindsym $mod+e exec vol_mpd up
-bindsym $mod+q exec vol_mpd down
+# ScratchPad
+for_window [class="discord"] floating enable, move scratchpad, resize set 1900 1000
+for_window [class="obsidian"] floating enable, move scratchpad, resize set 1900 1000
+for_window [class="ConkySys"] floating enable, move scratchpad, resize set 450 1000
+for_window [class="Alacritty_class"] move scratchpad, resize set 1900 1000
+# for_window [class="Steam"] floating enable, move scratchpad, resize set 1900 1000
+# for_window [class="iTeams"] floating enable, move scratchpad, resize set 1900 1000
+# for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1900 1000
+bindsym $mod+n [class="ConkySys"] scratchpad show
+bindsym $mod+r [class="discord"] scratchpad show
+bindsym $mod+e [class="obsidian"] scratchpad show, resize set 1900 1000
+bindsym $mod+q [class="Sublime_text"] scratchpad show, resize set 1900 1000
+# bindsym $mod+t [class="Alacritty_class"] scratchpad show, resize set 1900 1000
+bindsym $mod+t [class="iTeams"] scratchpad show, resize set 1900 1000
+bindsym $mod+g [class="iOutlook"] scratchpad show, resize set 1900 1000
+bindsym $mod+m [class="Steam"] scratchpad show, resize set 1900 1000
+
+# bindsym $mod+e exec vol_mpd up
+# bindsym $mod+q exec vol_mpd down
 bindsym $mod+$shf+e exec exec vol_master up
 bindsym $mod+$shf+q exec exec vol_master down
-bindsym $mod+r exec "mpc toggle;$HOME/.config/bin/song_info.sh"
+bindsym $mod+semicolon exec "mpc toggle;$HOME/.config/bin/song_info.sh"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+w fullscreen toggle
@@ -97,8 +101,7 @@ bindsym $mod+$shf+Left resize shrink width 20px
 bindsym $mod+$shf+Down resize grow height 20px
 bindsym $mod+$shf+Up resize shrink height 20px
 bindsym $mod+$shf+Right resize grow width 20px
-bindsym $mod+$shf+n move scratchpad
-bindsym $mod+$shf+b scratchpad show
+
 
 #navigate workspaces next / previous
 bindsym $mod+$cmd+Right workspace next
@@ -107,16 +110,17 @@ bindsym $mod+$cmd+Left workspace prev
 # bindsym $mod+s workspace next
 # bindsym $mod+a workspace prev
 bindsym $mod+Tab workspace back_and_forth
-bindsym $cmd+Tab exec rofi -show window
+bindsym $cmd+Tab workspace back_and_forth
 
-# focus the parent container
+# # focus the parent container
 # bindsym $mod+z focus parent       
-# focus the child container
+# # focus the child container
 # bindsym $mod+x focus child
-# toggle tiling / floating
-bindsym $mod+$cmd+space floating toggle
-# change focus between tiling / floating windows
+
+bindsym $mod+s floating toggle
 bindsym $mod+space focus mode_toggle
+bindsym $mod+x move scratchpad
+bindsym $mod+$cmd+f scratchpad show
 
 bindsym $mod+$cmd+t layout stacking
 bindsym $mod+$cmd+e layout tabbed
@@ -151,7 +155,7 @@ bindsym $mod+$app+c exec $chrome
 bindsym $mod+$app+b exec $brave
 bindsym $mod+$app+f exec $firefox
 bindsym $mod+$app+o exec obsidian
-bindsym $mod+$app+s exec subl
+bindsym $mod+$app+s '[class="Sublime_text"] floating enable, move scratchpad, resize set 1900 1000; exec subl'
 bindsym $mod+$app+d exec Discord
 bindsym $mod+$app+v exec vinagre
 bindsym $mod+$app+m exec $edge --app=https://outlook.office.com/ --user-data-dir=$HOME/.app/edge_outlook --class="iOutlook"
@@ -169,10 +173,11 @@ bindsym XF86AudioPause exec "mpc pause"
 bindsym $shf+XF86AudioPause exec "$HOME/.config/bin/song_info.sh"
 bindsym XF86AudioRaiseVolume exec vol_master up
 bindsym XF86AudioLowerVolume exec vol_master down
+bindsym $shf+XF86AudioRaiseVolume exec vol_mpd up
+bindsym $shf+XF86AudioLowerVolume exec vol_mpd down
 bindsym $mod+Up exec vol_master up
-bindsym $mod+Down exec vol_master up
-bindsym $app+XF86AudioRaiseVolume exec vol_mpd up
-bindsym $app+XF86AudioLowerVolume exec vol_mpd down
+bindsym $mod+Down exec vol_master down
+
 
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
@@ -184,12 +189,12 @@ bindsym $mod+$cmd+3 exec pactl set-default-sink alsa_output.usb-Kingston_HyperX_
 # We use variables to avoid repeating the names in multiple places. : ": ": "
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
+set $ws3 "3: "
+set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
+set $ws7 "7: "
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: ﮸"
 
@@ -197,7 +202,7 @@ set $ws10 "10: ﮸"
 # set $ws2 "2: "
 # set $ws3 "3: "
 # set $ws4 "4: "
-# set $ws5 "5: "
+# set $ws5 "5: " "3: "
 # set $ws6 "6: "
 # set $ws7 "7: "
 # set $ws8 "8: ﭮ"

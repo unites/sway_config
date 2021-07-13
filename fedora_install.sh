@@ -192,5 +192,5 @@ chmod -R 755 $hdir/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 chown -R $uname:$uname $hdir
 
-# Notification won't work without allowing DBUS to bet set
+# Notification won't work without having dbus set
 sed -i 's/unset\ DBUS_SESSION_BUS_ADDRESS/#unset\ DBUS_SESSION_BUS_ADDRESS/g' /usr/bin/startx
