@@ -178,7 +178,6 @@ bindsym $shf+XF86AudioLowerVolume exec vol_mpd down
 bindsym $mod+Up exec vol_master up
 bindsym $mod+Down exec vol_master down
 
-
 # Pull sinks
 # pacmd list-sinks|egrep -i 'index:|name:'
 bindsym $mod+$cmd+1 exec pactl set-default-sink alsa_output.pci-0000_0b_00.3.analog-stereo
