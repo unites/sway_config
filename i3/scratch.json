@@ -1,0 +1,22 @@
+{
+    // floating_con with 1 children
+    "rect": {
+       "height": 1000,
+       "width": 1900,
+       "x": 1921,
+       "y": 35
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "marks": ["start_on_scratch"],
+            "swallows": [
+               {
+               "class": "^Sublime_text$",
+               "instance": "^sublime_text$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
