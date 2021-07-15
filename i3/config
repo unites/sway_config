@@ -34,7 +34,6 @@ for_window [class="iTeams"] floating enable, resize set 1900 1000,move position 
 for_window [class="iOutlook"] floating enable, resize set 1900 1000,move position center
 # for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1900 1000,move position center
 
-
 bindsym $mod+n [class="ConkySys"] scratchpad show
 bindsym $mod+z [class="discord"] scratchpad show
 bindsym $mod+x [class="obsidian"] scratchpad show, resize set 1900 1000
@@ -70,12 +69,12 @@ exec --no-startup-id picom
 # exec --no-startup-id nitrogen --restore
 exec --no-startup-id feh --bg-center $HOME/Images/drive.jpg
 exec --no-startup-id dunst
-exec --no-startup-id conky -b -c $HOME/.config/conky/info.conf
+exec --no-startup-id "conky -b -c ~/.config/conky/info.conf"
 # exec --no-startup-id alacritty --config-file $HOME/.config/alacritty/scratch.yml
 exec --no-startup-id obsidian
 
 for_window [con_mark=start_on_scratch] move scratchpad
-exec --no-startup-id "i3-msg append_layout $HOME/.config/i3/scratch.json"
+exec --no-startup-id "i3-msg append_layout ~/.config/i3/scratch.json"
 exec --no-startup-id subl
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -158,7 +157,7 @@ bindsym $mod+$app+c exec $chrome
 bindsym $mod+$app+b exec $brave
 bindsym $mod+$app+f exec $firefox
 bindsym $mod+$app+o exec obsidian
-bindsym $mod+$app+s exec subl
+bindsym $mod+$app+s exec subl; [class='Sublime_text'] floating enable, move scratchpad, resize set 1900 1000
 bindsym $mod+$app+d exec Discord
 bindsym $mod+$app+v exec vinagre
 bindsym $mod+$app+m exec $edge --app=https://outlook.office.com/ --user-data-dir=$HOME/.app/edge_outlook --class="iOutlook"
@@ -186,6 +185,7 @@ bindsym $mod+Down exec vol_master down
 bindsym $mod+$cmd+1 exec pactl set-default-sink alsa_output.pci-0000_0b_00.3.analog-stereo
 bindsym $mod+$cmd+2 exec pactl set-default-sink alsa_output.usb-Generic_USB_Audio-00.analog-stereo
 bindsym $mod+$cmd+3 exec pactl set-default-sink alsa_output.usb-Kingston_HyperX_Cloud_Stinger_Core_Wireless___7.1_000000000000-00.analog-stereo
+bindsym $mod+$cmd+4 exec pactl set-default-sink alsa_output.usb-FIIO_FiiO_USB_DAC-E10-01.analog-stereo
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places. : ": ": "
