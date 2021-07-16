@@ -153,7 +153,7 @@ cp -r /root/.oh-my-zsh $hdir
 # echo "DISABLE_AUTO_UPDATE='true'" >> /root/.zshrc
 
 # Nvidia Driver Install, requires reboot
-# sudo dnf -y install nvidia
+# sudo dnf install akmod-nvidia
 
 # Link setup scripts to home dir from config
 ln -fs $hdir/.config/.zshrc $hdir/.zshrc
