@@ -30,7 +30,7 @@ for_window [class="ConkySys"] floating enable, move scratchpad, resize set 450 1
 for_window [class="Alacritty_class"] move scratchpad, resize set 1900 1000
 for_window [class="Steam"] floating enable, resize set 1900 1000
 # for_window [class="iTeams"] floating enable, move scratchpad, resize set 1900 1000
-for_window [class="iTeams"] floating enable, resize set 1900 1000,move position center
+for_window [class="Microsoft Teams - Preview"] floating enable,move position center
 for_window [class="iOutlook"] floating enable, resize set 1900 1000,move position center
 # for_window [class="Sublime_text"] floating enable, move scratchpad, resize set 1900 1000,move position center
 
@@ -39,7 +39,7 @@ bindsym $mod+z [class="discord"] scratchpad show
 bindsym $mod+x [class="obsidian"] scratchpad show, resize set 1900 1000
 bindsym $mod+c [class="Sublime_text"] scratchpad show, resize set 1900 1000
 # bindsym $mod+t [class="Alacritty_class"] scratchpad show, resize set 1900 1000
-bindsym $mod+t [class="iTeams"] scratchpad show, resize set 1900 1000
+bindsym $mod+t [class="Microsoft Teams - Preview"] scratchpad show, resize set 1900 1000
 bindsym $mod+g [class="iOutlook"] scratchpad show, resize set 1900 1000
 bindsym $mod+m [class="Steam"] scratchpad show, resize set 1900 1000
 
@@ -51,7 +51,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+a workspace prev
 bindsym $mod+d workspace next
 bindsym $mod+q kill
-bindsym $mod+r floating toggle
+bindsym $mod+e floating toggle
 bindsym $mod+w move scratchpad
 bindsym $mod+s scratchpad show
 bindsym $mod+space focus mode_toggle
@@ -91,8 +91,8 @@ set $menu-run "rofi -combi-modi window,drun,run -theme solarized -show combi "
 
 bindsym $mod+Return exec $term 
 bindsym $mod+$shf+Return exec $term-alt
-bindsym $mod+e exec $menu
-bindsym $mod+$shf+e exec $menu-al
+bindsym $mod+r exec $menu
+bindsym $mod+$shf+r exec $menu-al
 
 # Move your focus around
 bindsym $mod+$left focus left

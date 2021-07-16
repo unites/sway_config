@@ -60,8 +60,10 @@ rsync \
 cifs-utils \
 light \
 ranger \
+alacritty \
 vim \
 chromium \
+firefox \
 nautilus \
 seahorse \
 python3 \
@@ -108,7 +110,8 @@ bind-utils \
 util-linux-user \
 xorg-x11-server-Xorg \
 xorg-x11-xinit \
-xinit 
+xinit \
+xset
 
 # Docker
 sudo dnf -y install docker-ce \
