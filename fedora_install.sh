@@ -35,16 +35,29 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
 
-# Add Docker
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager \
-    --add-repo \
-    https://download.docker.com/linux/fedora/docker-ce.repo
+# # Add Docker
+# sudo dnf -y install dnf-plugins-core
+# sudo dnf config-manager \
+#     --add-repo \
+#     https://download.docker.com/linux/fedora/docker-ce.repo
 
 # Update Repo's and Install packages
 sudo dnf -y update
 
+# Minimal
 sudo dnf -y install git \
+xorg-x11-server-Xorg \
+xorg-x11-xinit \
+xinit \
+i3-gaps \
+i3status \
+xss-lock \
+xautolock \
+picom \
+dmenu \
+rofi \
+i3lock \
+conky \
 powerline-fonts \
 feh \
 zsh \
@@ -57,68 +70,60 @@ wget \
 tar \
 unzip \
 rsync \
-cifs-utils \
-light \
 ranger \
 alacritty \
 vim \
-chromium \
-firefox \
-nautilus \
-seahorse \
 python3 \
-ruby \
-nodejs \
 pulseaudio \
 pavucontrol \
 mpc \
 mpd \
 ncmpcpp \
 mpv \
-vlc \
 ffmpeg \
 freerdp \
-syncthing \
-gnome-bluetooth \
-gnome-logs \
 blueman \
-ksystemlog \
-gimp \
 id3v2 \
-gnome-system-monitor \
-ksystemlog \
-i3-gaps \
-i3status \
-dmenu \
-i3lock \
-conky \
-gnome-connections \
 kbd \
-rofi \
-xss-lock \
-xautolock \
-picom \
-nitrogen \
+neofetch \
+cifs-utils \
+bind-utils \
+util-linux-user \
+xset \
+conky \
 maim \
 xclip \
 dunst \
-gnome-icon-theme \
-neofetch \
-conky \
-ImageMagick \
-bind-utils \
-util-linux-user \
-xorg-x11-server-Xorg \
-xorg-x11-xinit \
-xinit \
-xset
+syncthing \
+podman
 
-# Docker
-sudo dnf -y install docker-ce \
-docker-ce-cli 
+# # Heavier Weight Install
+# sudo dnf -y install chromium \
+# firefox \
+# google-chrome-stable \
+# nautilus \
+# seahorse \
+# ksystemlog \
+# gnome-bluetooth \
+# gnome-logs \
+# gnome-system-monitor \
+# ksystemlog \
+# gnome-connections \
+# gnome-icon-theme \
+# light \
+# ruby \
+# nodejs \
+# nitrogen \
+# gimp \
+# ImageMagick \
+# vlc \
 
-# Add user to docker group
-sudo usermod -aG docker $uname
+# # Docker
+# sudo dnf -y install docker-ce \
+# docker-ce-cli 
+
+# # Add user to docker group
+# sudo usermod -aG docker $uname
 
 # Config File Pull
 cd $hdir
@@ -197,3 +202,7 @@ chown -R $uname:$uname $hdir
 
 # Notification won't work without having dbus set
 sed -i 's/unset\ DBUS_SESSION_BUS_ADDRESS/#unset\ DBUS_SESSION_BUS_ADDRESS/g' /usr/bin/startx
+
+# Turbo charge repo...
+sudo echo "fastestmirror=true" >> /etc/dnf/dnf.conf
+sudo echo "deltarpm=true">> /etc/dnf/dnf.conf
