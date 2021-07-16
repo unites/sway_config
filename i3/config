@@ -76,7 +76,7 @@ exec --no-startup-id xss-lock -l -- i3lock -c 330000
 exec --no-startup-id mpd
 exec --no-startup-id picom
 # exec --no-startup-id nitrogen --restore
-exec --no-startup-id feh --bg-center $HOME/Images/drive.jpg
+exec --no-startup-id feh --bg-center $HOME/Images/background.jpg
 exec --no-startup-id dunst
 exec --no-startup-id "conky -b -c ~/.config/conky/info.conf"
 # exec --no-startup-id alacritty --config-file $HOME/.config/alacritty/scratch.yml
