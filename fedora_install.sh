@@ -95,7 +95,9 @@ maim \
 xclip \
 dunst \
 syncthing \
-podman
+podman \
+lm_sensors \
+htop
 
 # # Heavier Weight Install
 # sudo dnf -y install chromium \
@@ -162,7 +164,8 @@ cp -r /root/.oh-my-zsh $hdir
 # echo "DISABLE_AUTO_UPDATE='true'" >> /root/.zshrc
 
 # Nvidia Driver Install, requires reboot
-# sudo dnf install akmod-nvidia
+# sudo dnf -y install akmod-nvidia \
+# xorg-x11-drv-nvidia-cuda
 
 # Link setup scripts to home dir from config
 ln -fs $hdir/.config/.zshrc $hdir/.zshrc
@@ -184,6 +187,8 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 # flatpak install -y flathub com.microsoft.Teams
 # flatpak install -y flathub com.valvesoftware.SteamLink
 # flatpak install -y flathub org.wireshark.Wireshark
+
+# Note for steam: flatpak override --user --filesystem=/vault com.valvesoftware.Steam
 
 # Dir and OS changes
 mkdir -p $hdir/Music
