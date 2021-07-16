@@ -128,6 +128,7 @@ podman
 # Config File Pull
 cd $hdir
 git clone https://github.com/unites/.config.git
+git remote set-url origin git@github.com:unites/.config.git
 
 # Nerd Fonts
 mkdir -p  $hdir/.local/share/fonts/NerdFonts
